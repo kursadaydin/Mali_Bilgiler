@@ -27,8 +27,6 @@ import java.io.IOException;
 
 public class PDFActivity extends AppCompatActivity  {
     // Remove the below line after defining your own ad unit ID.
-    private static final String TOAST_TEXT = "Test ads are being shown. "
-            + "To show live ads, replace the ad unit ID in res/values/strings.xml with your own ad unit ID.";
 
     private static final int START_LEVEL = 1;
     private int mLevel;
@@ -53,13 +51,7 @@ public class PDFActivity extends AppCompatActivity  {
         webView.setHorizontalScrollBarEnabled(true);
         webView.loadUrl("http://kursadaydin.hayatimizburada.com/esp/deneme.html");
 
-
-
-
-
     }
-
-
 
     private InterstitialAd newInterstitialAd() {
         InterstitialAd interstitialAd = new InterstitialAd(this);
