@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,10 +23,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 
-import es.voghdev.pdfviewpager.library.PDFViewPager;
-import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
-import es.voghdev.pdfviewpager.library.asset.CopyAsset;
-import es.voghdev.pdfviewpager.library.asset.CopyAssetThreadImpl;
 
 
 public class PDFActivity extends AppCompatActivity  {
@@ -36,7 +33,7 @@ public class PDFActivity extends AppCompatActivity  {
     private static final int START_LEVEL = 1;
     private int mLevel;
     private InterstitialAd mInterstitialAd;
-    PDFViewPager pdfViewPager;
+    private WebView webView;
 
 
 
@@ -50,23 +47,19 @@ public class PDFActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_pdf);
         mLevel = START_LEVEL;
 
+        webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setVerticalScrollBarEnabled(true);
+        webView.setHorizontalScrollBarEnabled(true);
+        webView.loadUrl("http://kursadaydin.hayatimizburada.com/esp/deneme.html");
 
-
-        CopyAsset copyAsset = new CopyAssetThreadImpl(PDFActivity.this, new Handler());
-        copyAsset.copy("assets", new File(getCacheDir(), "deneme.pdf").getAbsolutePath());
-
-         pdfViewPager = new PDFViewPager(this, "deneme.pdf");
 
 
 
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ((PDFPagerAdapter)pdfViewPager.getAdapter()).close();
-    }
+
 
     private InterstitialAd newInterstitialAd() {
         InterstitialAd interstitialAd = new InterstitialAd(this);
