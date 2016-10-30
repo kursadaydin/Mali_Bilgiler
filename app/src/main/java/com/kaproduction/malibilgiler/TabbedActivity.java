@@ -1,11 +1,7 @@
-package com.kaproduction.deneme;
+package com.kaproduction.malibilgiler;
 
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -21,13 +17,11 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.kaproduction.deneme.Fragments.Tab1;
-import com.kaproduction.deneme.Fragments.Tab2;
-import com.kaproduction.deneme.Fragments.Tab3;
-import com.kaproduction.deneme.Fragments.Tab4;
-import com.kaproduction.deneme.Pojo.Info;
-
-import java.util.ArrayList;
+import com.kaproduction.malibilgiler.Fragments.Tab1;
+import com.kaproduction.malibilgiler.Fragments.Tab2;
+import com.kaproduction.malibilgiler.Fragments.Tab3;
+import com.kaproduction.malibilgiler.Fragments.Tab4;
+import com.kaproduction.malibilgiler.R;
 
 public class TabbedActivity extends AppCompatActivity  {
 

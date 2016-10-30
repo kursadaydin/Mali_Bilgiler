@@ -1,4 +1,4 @@
-package com.kaproduction.deneme.Fragments;
+package com.kaproduction.malibilgiler.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kaproduction.deneme.Pojo.Info;
-import com.kaproduction.deneme.Pojo.RecyclerAdapter;
-import com.kaproduction.deneme.R;
+import com.kaproduction.malibilgiler.Pojo.Info;
+import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
+import com.kaproduction.malibilgiler.R;
 
 import java.util.ArrayList;
 

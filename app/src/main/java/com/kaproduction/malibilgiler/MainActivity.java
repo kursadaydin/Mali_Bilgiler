@@ -1,4 +1,4 @@
-package com.kaproduction.deneme;
+package com.kaproduction.malibilgiler;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 
 import android.view.View;
@@ -23,8 +22,9 @@ import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 
-import com.kaproduction.deneme.Data.ExpandableListViewData;
-import com.kaproduction.deneme.Other.ExpandableListViewAdapter;
+import com.kaproduction.malibilgiler.Data.ExpandableListViewData;
+import com.kaproduction.malibilgiler.Other.ExpandableListViewAdapter;
+import com.kaproduction.malibilgiler.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

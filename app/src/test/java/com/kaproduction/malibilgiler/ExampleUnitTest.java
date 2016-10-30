@@ -1,4 +1,4 @@
-package com.kaproduction.deneme;
+package com.kaproduction.malibilgiler;
 
 import org.junit.Test;
 

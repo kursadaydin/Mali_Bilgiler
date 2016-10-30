@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.kaproduction.deneme.TabbedActivity">
+    tools:context="com.kaproduction.malibilgiler.com.kaproduction.malibilgiler.TabbedActivity">
     <item
         android:id="@+id/action_search"
         android:title="Arama"

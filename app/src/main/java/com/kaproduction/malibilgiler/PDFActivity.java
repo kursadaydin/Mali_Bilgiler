@@ -1,8 +1,9 @@
-package com.kaproduction.deneme;
+package com.kaproduction.malibilgiler;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.kaproduction.malibilgiler.R;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;

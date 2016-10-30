@@ -1,8 +1,7 @@
-package com.kaproduction.deneme.Pojo;
+package com.kaproduction.malibilgiler.Pojo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kaproduction.deneme.PDFActivity;
-import com.kaproduction.deneme.R;
+import com.kaproduction.malibilgiler.PDFActivity;
+import com.kaproduction.malibilgiler.R;
 
 import java.util.ArrayList;
 

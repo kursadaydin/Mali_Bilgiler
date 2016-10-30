@@ -1,4 +1,4 @@
-package com.kaproduction.deneme;
+package com.kaproduction.malibilgiler;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -9,10 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.kaproduction.malibilgiler.R;
 
 public class SplashActivity extends AppCompatActivity {
 

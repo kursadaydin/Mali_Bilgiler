@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.kaproduction.deneme.MainActivity"
+    tools:context="com.kaproduction.malibilgiler.com.kaproduction.malibilgiler.MainActivity"
     android:id="@+id/coordinatorLayoutMainActivity">
 
     <android.support.design.widget.AppBarLayout

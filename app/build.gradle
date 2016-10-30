@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.kaproduction.deneme"
+        applicationId "com.kaproduction.malibilgiler"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1

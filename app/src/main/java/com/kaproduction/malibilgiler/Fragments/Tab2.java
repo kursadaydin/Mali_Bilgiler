@@ -1,4 +1,4 @@
-package com.kaproduction.deneme.Fragments;
+package com.kaproduction.malibilgiler.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.kaproduction.deneme.Pojo.Info;
-import com.kaproduction.deneme.Pojo.RecyclerAdapter;
-import com.kaproduction.deneme.R;
+import com.kaproduction.malibilgiler.Pojo.Info;
+import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
+import com.kaproduction.malibilgiler.R;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by reis on 27/10/16.
  */
 
-public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
+public class Tab2 extends Fragment implements SearchView.OnQueryTextListener{
 
         TextView textView;
         private static final String ARG_PARAM1 = "param1";
@@ -52,8 +52,8 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
          * @return A new instance of fragment Tab1.
          */
         // TODO: Rename and change types and number of parameters
-        public static Tab3 newInstance(String param1, String param2) {
-            Tab3 fragment = new Tab3();
+        public static Tab2 newInstance(String param1, String param2) {
+            Tab2 fragment = new Tab2();
             Bundle args = new Bundle();
             args.putString(ARG_PARAM1, param1);
             args.putString(ARG_PARAM2, param2);
@@ -61,7 +61,7 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
             return fragment;
         }
 
-        public Tab3() {
+        public Tab2() {
             // Required empty public constructor
         }
 
@@ -79,7 +79,7 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            View layout = inflater.inflate(R.layout.fragment_tab3, container, false);
+            View layout = inflater.inflate(R.layout.fragment_tab2, container, false);
 
 
 
@@ -95,31 +95,24 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
         }
 
         public void generateComponents() {
-            recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerTab3);
+            recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerTab2);
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
             arrayList = new ArrayList<>();
-            Info i = new Info(" Harcamalar Yöntemiyle Gayri Safi Yurtiçi Hasıla (Cari Fiyatlarla) 1987-2006", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i2 = new Info("Harcamalar Yöntemiyle Sabit Fiyatlarla Gayri Safi Yurtiçi Hasıla (Yıllık) ", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i3 = new Info("Mevsim ve Takvim Etkisinden Arındırılmış Harcamalar Yöntemiyle Gayri Safi Yurtiçi Hasıla (1998 Sabit Fiyatlarıyla)", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i4 = new Info("Saatlik İşgücü Maliyeti Endeksi ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i5 = new Info("Saatlik Kazanç Endeksi ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i6 = new Info("Aylık Ortalama Brüt Ücret ve Yıllık Ortalama Brüt Kazanç",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i7 = new Info("İstihdam edilenlerin yıllara göre iktisadi faaliyet kolları ve dağılımı, NACE Rev.2",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i8 = new Info("Tüketici fiyat endeks rakamları (2003=100)",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i9 = new Info("Aylara göre dış ticaret, 1997-2016",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i10 = new Info("Konut Satış Sayıları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i11 = new Info("Sanayi Ciro Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i12 = new Info("Sanayi Üretim Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i13 = new Info("Ticaret ve Hizmet Endeksleri ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i14 = new Info("Tüketici Güven Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
+            Info i = new Info("Brüt Asgari Ücret Tutarları", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i2 = new Info("Asgari Ücret Maliyet Tablosu 2016", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i3 = new Info("SGK Tavan ve Taban Ücretleri", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i4 = new Info("İşsizlik Sigortası Oranları", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i5 = new Info("4B ye tabi olanların prim tutarları", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i6 = new Info("2016 yılı Asgari Geçim İndirim Tuarları", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i7 = new Info("Engellilik İndirim Tutarları", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i8 = new Info("2016 yılı Kapıcı Maaş Hesabı", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i9 = new Info("2016 yılı aile ve çocuk yardımı", R.mipmap.ic_action_action_assignment_turned_in);
+            Info i10 = new Info("Özürlü, hükümlü, terör mağduru zorunluluğu", R.mipmap.ic_action_action_assignment_turned_in);
 
-
-            arrayList.add(i);arrayList.add(i2);arrayList.add(i3);arrayList.add(i4);arrayList.add(i5);arrayList.add(i6);
-            arrayList.add(i7);arrayList.add(i8);arrayList.add(i9);arrayList.add(i10);arrayList.add(i11);arrayList.add(i12);
-            arrayList.add(i13);arrayList.add(i14);
-
+            arrayList.add(i);arrayList.add(i2);arrayList.add(i3);arrayList.add(i4);arrayList.add(i5);
+            arrayList.add(i6);arrayList.add(i7);arrayList.add(i8);arrayList.add(i9);arrayList.add(i10);
 
             recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());
             recyclerView.setAdapter(recyclerAdapter);

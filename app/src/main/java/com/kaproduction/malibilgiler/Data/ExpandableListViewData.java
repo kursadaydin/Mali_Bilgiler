@@ -1,4 +1,4 @@
-package com.kaproduction.deneme.Data;
+package com.kaproduction.malibilgiler.Data;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package com.kaproduction.deneme.Other;
+package com.kaproduction.malibilgiler.Other;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.kaproduction.deneme.R;
+import com.kaproduction.malibilgiler.R;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.kaproduction.deneme.Pojo;
+package com.kaproduction.malibilgiler.Pojo;
 
 /**
  * Created by reis on 29/10/16.
