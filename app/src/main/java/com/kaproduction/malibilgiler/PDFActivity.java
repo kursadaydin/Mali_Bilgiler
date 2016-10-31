@@ -59,7 +59,7 @@ public class PDFActivity extends AppCompatActivity  {
         setContentView(R.layout.app_bar_pdf);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarPDF);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
+        // getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
         coord = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutPDFActivity);
 
         mLevel = START_LEVEL;
@@ -73,7 +73,7 @@ public class PDFActivity extends AppCompatActivity  {
         // webView.loadData(url, "text/html; charset=UTF-8", null);
         // webView.loadUrl(url);
 
-        if (isOnline() && bundle.containsKey(("url"))) {
+        if (isOnline()) {
             bundle = getIntent().getExtras();
             String url = bundle.getString("url");
             setTitle(bundle.getString("parent"));
