@@ -20,8 +20,14 @@ public class Info {
     public Info(String parent, int icon) {
         this.parent = parent;
         this.icon = icon;
+
     }
 
+    public Info(String parent, int icon, String url) {
+        this.parent = parent;
+        this.icon = icon;
+        this.url = url;
+    }
 
 
     public String getParent() {

@@ -177,10 +177,10 @@ public class TabbedActivity extends AppCompatActivity  {
 
             switch (position) {
                 case TabbedActivity.TAB_1:
-                    return "Vergi Mevzuatına İlişkin";
+                    return "Vergi Mevzuatı";
 
                 case TabbedActivity.TAB_2:
-                    return "Sosyal Güvenlik Mevzuatına İlişkin";
+                    return "Sosyal Güvenlik Mevzuatı";
 
                 case TabbedActivity.TAB_3:
                     return "Bazı Temel Ekonomik Göstergeler ";

@@ -100,12 +100,12 @@ public class Tab4 extends Fragment implements SearchView.OnQueryTextListener{
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
             arrayList = new ArrayList<>();
-            Info i = new Info("deneme", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i2 = new Info("ankara", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i3 = new Info("istanbul", R.mipmap.ic_action_action_assignment_turned_in);
-            arrayList.add(i);
-            arrayList.add(i2);
-            arrayList.add(i3);
+            //Info i = new Info("deneme", R.mipmap.ic_action_action_assignment_turned_in);
+            //Info i2 = new Info("ankara", R.mipmap.ic_action_action_assignment_turned_in);
+            //Info i3 = new Info("istanbul", R.mipmap.ic_action_action_assignment_turned_in);
+            //arrayList.add(i);
+            //arrayList.add(i2);
+            //arrayList.add(i3);
 
             recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());
             recyclerView.setAdapter(recyclerAdapter);

@@ -1,14 +1,9 @@
 package com.kaproduction.malibilgiler.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by reis on 28/10/16.
- */
 
 public class ExpandableListViewData {
 
@@ -16,7 +11,7 @@ public class ExpandableListViewData {
     {
         HashMap<String, List<String>> infos = new HashMap<String, List<String>>();
 
-        List<String> asgariUcret = new ArrayList<String>();
+        List<String> asgariUcret = new ArrayList<>();
 
 
         asgariUcret.add("01.01.2011 -30.06.2011\t\t\t\t\t\t796,50TL");
@@ -32,7 +27,7 @@ public class ExpandableListViewData {
         asgariUcret.add("01.01.2016 -31.12.2016\t\t\t\t\t\t1,647,00TL");
         asgariUcret.add("01.01.2017 -31.12.2017  ........");
 
-        List<String> agiTutarlari = new ArrayList<String>();
+        List<String> agiTutarlari = new ArrayList<>();
 
         agiTutarlari.add("BEKAR 123,53 TL");
         agiTutarlari.add("EVLİ EŞİ ÇALIŞMAYAN 0 ÇOCUKLU 148,23 TL");
@@ -48,7 +43,7 @@ public class ExpandableListViewData {
         agiTutarlari.add("EVLİ EŞİ ÇALIŞAN 4 ÇOCUKLU 197,64 TL");
         agiTutarlari.add("EVLİ EŞİ ÇALIŞAN 5 ÇOCUKLU 209,99 TL");
 
-        List<String> ydo= new ArrayList<String>();
+        List<String> ydo = new ArrayList<>();
         ydo.add("2006 yılı yeniden değerleme oranı :%7,8");
         ydo.add("2007 yılı yeniden değerleme oranı :%7,2");
         ydo.add("2008 yılı yeniden değerleme oranı :%12");
@@ -61,7 +56,7 @@ public class ExpandableListViewData {
         ydo.add("2015 yılı yeniden değerleme oranı :%5,58");
         ydo.add("2016 yılı yeniden değerleme oranı :%7,7");
 
-        List<String> tecil_faizi= new ArrayList<String>();
+        List<String> tecil_faizi = new ArrayList<>();
         tecil_faizi.add("25.01.2000 - 20.12.2000 tarihleri arasında :%48");
         tecil_faizi.add("21.12.2000 - 30.03.2001 tarihleri arasında :%36");
         tecil_faizi.add("31.03.2001 - 01.02.2002 tarihleri arasında :%72");
@@ -72,21 +67,21 @@ public class ExpandableListViewData {
         tecil_faizi.add("21.11.2009 - 21.10.2010 tarihleri arasında   :%19");
         tecil_faizi.add("21.10.2010 tarihinden itibaren :%12");
 
-        List<String> arizi_kazanc_siniri = new ArrayList<String>();
+        List<String> arizi_kazanc_siniri = new ArrayList<>();
         arizi_kazanc_siniri.add("2012 yılı için :20 000 TL");
         arizi_kazanc_siniri.add("2013 yılı için :21 000 TL");
         arizi_kazanc_siniri.add("2014 yılı için :21 000 TL");
         arizi_kazanc_siniri.add("2015 yılı için :23 000 TL");
         arizi_kazanc_siniri.add("2016 yılı için :24 000 TL");
 
-        List<String> fatura_siniri = new ArrayList<String>();
+        List<String> fatura_siniri = new ArrayList<>();
         fatura_siniri.add("2012 yılı için :770 TL");
         fatura_siniri.add("2013 yılı için :800 TL");
         fatura_siniri.add("2014 yılı için :800 TL");
         fatura_siniri.add("2015 yılı için :880 TL");
         fatura_siniri.add("2016 yılı için :900 TL");
 
-        List<String> bankalar = new ArrayList<String>();
+        List<String> bankalar = new ArrayList<>();
         bankalar.add("AKBANK T.A.Ş.");
         bankalar.add("AKTİF YATIRIM BANKASI A.Ş.");
         bankalar.add("ALBARAKA TÜRK KATILIM BANKASI A.Ş.");

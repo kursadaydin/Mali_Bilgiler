@@ -100,25 +100,31 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
             arrayList = new ArrayList<>();
-            Info i = new Info(" Harcamalar Yöntemiyle Gayri Safi Yurtiçi Hasıla (Cari Fiyatlarla) 1987-2006", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i2 = new Info("Harcamalar Yöntemiyle Sabit Fiyatlarla Gayri Safi Yurtiçi Hasıla (Yıllık) ", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i3 = new Info("Mevsim ve Takvim Etkisinden Arındırılmış Harcamalar Yöntemiyle Gayri Safi Yurtiçi Hasıla (1998 Sabit Fiyatlarıyla)", R.mipmap.ic_action_action_assignment_turned_in);
-            Info i4 = new Info("Saatlik İşgücü Maliyeti Endeksi ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i5 = new Info("Saatlik Kazanç Endeksi ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i6 = new Info("Aylık Ortalama Brüt Ücret ve Yıllık Ortalama Brüt Kazanç",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i7 = new Info("İstihdam edilenlerin yıllara göre iktisadi faaliyet kolları ve dağılımı, NACE Rev.2",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i8 = new Info("Tüketici fiyat endeks rakamları (2003=100)",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i9 = new Info("Aylara göre dış ticaret, 1997-2016",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i10 = new Info("Konut Satış Sayıları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i11 = new Info("Sanayi Ciro Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i12 = new Info("Sanayi Üretim Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i13 = new Info("Ticaret ve Hizmet Endeksleri ve Değişim Oranları",R.mipmap.ic_action_action_assignment_turned_in);
-            Info i14 = new Info("Tüketici Güven Endeksi",R.mipmap.ic_action_action_assignment_turned_in);
+            Info i = new Info(" GSYH (Cari Fiyatlarla)", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/GSYH_cari.htm");
+            Info i2 = new Info("GSYH (Sabit Fiyatlarla)", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/GSYH_sabit.htm");
+            Info i3 = new Info("Mevsim ve Takvim Etkisinden Arındırılmış GSYH", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/GSYH_mevsim.htm");
+            Info i4 = new Info("Saatlik İşgücü Maliyeti Endeksi", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/isgucu_maliyet.htm");
+            Info i6 = new Info("Aylık Ortalama Brüt Ücret ve Yıllık Ortalama Brüt Kazanç", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/ortalama_kazanc.htm");
+            Info i7 = new Info("İstihdam Edilenlerin Yıllara Göre Dağılımı", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/istihdam.htm");
+            Info i8 = new Info("Tüketici Fiyat Endeks Rakamları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/TUFE.htm");
+            Info i9 = new Info("Üretici Fiyat Endeks Rakamları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/UFE.htm");
+            Info i10 = new Info("Dış Ticaret, 1997-2016", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/dis_ticaret.htm");
+            Info i11 = new Info("Konut Satış Sayıları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/konut_satis.htm");
+            Info i12 = new Info("Sanayi Ciro Endeksi", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/sanayi_ciro.htm");
+            Info i13 = new Info("Sanayi Üretim Endeksi", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/sanayi_uretim.htm");
+            Info i14 = new Info("Ticaret ve Hizmet Endeksleri", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/ticaret_hizmet.htm");
+            Info i15 = new Info("Tüketici Güven Endeksi", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/tuketici_guven.htm");
 
 
-            arrayList.add(i);arrayList.add(i2);arrayList.add(i3);arrayList.add(i4);arrayList.add(i5);arrayList.add(i6);
+            arrayList.add(i);
+            arrayList.add(i2);
+            arrayList.add(i3);
+            arrayList.add(i4);
+            arrayList.add(i6);
             arrayList.add(i7);arrayList.add(i8);arrayList.add(i9);arrayList.add(i10);arrayList.add(i11);arrayList.add(i12);
-            arrayList.add(i13);arrayList.add(i14);
+            arrayList.add(i13);
+            arrayList.add(i14);
+            arrayList.add(i15);
 
 
             recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());

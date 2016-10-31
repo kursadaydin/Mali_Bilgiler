@@ -91,11 +91,11 @@ public class Tab1 extends Fragment implements SearchView.OnQueryTextListener {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         arrayList = new ArrayList<>();
-        Info i1 = new Info("Amortismana Tabi İktisadi Kıymetler", R.mipmap.ic_action_action_assignment_turned_in);
+        Info i1 = new Info("Amortismana Tabi Kıymetler", R.mipmap.ic_action_action_assignment_turned_in);
         Info i2 = new Info("Amortisman Ayırmada Alt Sınır", R.mipmap.ic_action_action_assignment_turned_in);
         Info i3 = new Info("Anlaşmalı Bankalar ", R.mipmap.ic_action_action_assignment_turned_in);
         Info i4 = new Info("Arızi Kazançlara İlişkin İstisna Tutarı", R.mipmap.ic_action_action_assignment_turned_in);
-        Info i5 = new Info("Asgari Ücretten Yapılan Kesintileri", R.mipmap.ic_action_action_assignment_turned_in);
+        Info i5 = new Info("Asgari Ücretten Yapılan Kesintiler", R.mipmap.ic_action_action_assignment_turned_in);
         Info i6 = new Info("Ba ve Bs Formlarının Bildirimi", R.mipmap.ic_action_action_assignment_turned_in);
         Info i7 = new Info("Basit Usulde Vergilendirmeye İlişkin Had ve Tutarlar", R.mipmap.ic_action_action_assignment_turned_in);
         Info i8 = new Info("Beyanname Verme ve Ödeme Süreleri", R.mipmap.ic_action_action_assignment_turned_in);
@@ -103,8 +103,8 @@ public class Tab1 extends Fragment implements SearchView.OnQueryTextListener {
         Info i10 = new Info("Defter Tutma Hadleri", R.mipmap.ic_action_action_assignment_turned_in);
         Info i11 = new Info("Gecikme Zammı Oranı", R.mipmap.ic_action_action_assignment_turned_in);
         Info i12 = new Info("Gelir Vergisi Tarifesi", R.mipmap.ic_action_action_assignment_turned_in);
-        Info i13 = new Info("Gelir Vergisi Kanununun 94. Maddesinde Yer Alan Kesinti Oranları ", R.mipmap.ic_action_action_assignment_turned_in);
-        Info i14= new Info("Gelir Vergisi Kanunu Geçici 67. Madde Kapsamında Kesinti Oranları ", R.mipmap.ic_action_action_assignment_turned_in);
+        Info i13 = new Info("GVK 94. Maddesinde Yer Alan Kesinti Oranları ", R.mipmap.ic_action_action_assignment_turned_in);
+        Info i14 = new Info("GVK Geçici 67. Madde Kapsamında Kesinti Oranları ", R.mipmap.ic_action_action_assignment_turned_in);
         Info i15 = new Info("Harç Tutarları", R.mipmap.ic_action_action_assignment_turned_in);
         Info i16 = new Info("K.D.V. Oranları", R.mipmap.ic_action_action_assignment_turned_in);
         Info i17 = new Info("Mesken Kira Gelirinde İstisna Tutarları", R.mipmap.ic_action_action_assignment_turned_in);

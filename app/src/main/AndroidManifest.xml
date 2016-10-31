@@ -34,6 +34,7 @@
         <activity
             android:name="com.kaproduction.malibilgiler.PDFActivity"
             android:label="@string/title_activity_pdf"
+            android:theme="@style/AppTheme.NoActionBar"
             ></activity> <!-- Include the AdActivity configChanges and theme. -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"

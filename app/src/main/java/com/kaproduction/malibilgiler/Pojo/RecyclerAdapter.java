@@ -69,9 +69,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         public void onClick(View view) {
             int position = getAdapterPosition();
             Info i = this.infoArrayList.get(position);
-            Toast.makeText(ctx.getApplicationContext(),i.getParent().toString(),Toast.LENGTH_LONG).show();
             Intent intent = new Intent(ctx.getApplicationContext(), PDFActivity.class);
             intent.putExtra("parent", i.getParent().toString());
+            intent.putExtra("url", i.getUrl().toString());
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.ctx.getApplicationContext().startActivity(intent);
 
