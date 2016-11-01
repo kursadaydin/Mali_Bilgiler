@@ -18,6 +18,7 @@ import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -50,7 +51,7 @@ public class PDFActivity extends AppCompatActivity  {
     private Bundle bundle;
 
     private CoordinatorLayout coord;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,9 @@ public class PDFActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         // getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
         coord = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutPDFActivity);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_pdf_swipe_refresh_layout);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+
 
         mLevel = START_LEVEL;
 
@@ -75,48 +79,63 @@ public class PDFActivity extends AppCompatActivity  {
 
 
         if (isOnline()) {
-            bundle = getIntent().getExtras();
-            String url = bundle.getString("url");
-            setTitle(bundle.getString("parent"));
-            mwebView = (WebView) findViewById(R.id.webView);
-            WebSettings webSettings = mwebView.getSettings();
-            webSettings.setJavaScriptEnabled(true);
-            webSettings.setBuiltInZoomControls(true);
-            webSettings.setDisplayZoomControls(false);
-            //improve webView performance
-            mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-            mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-            mwebView.getSettings().setAppCacheEnabled(true);
-            mwebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-            webSettings.setDomStorageEnabled(true);
-            webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-            webSettings.setUseWideViewPort(true);
-            webSettings.setSavePassword(true);
-            webSettings.setSaveFormData(true);
-            webSettings.setEnableSmoothTransition(true);
 
-            String last3 = url.substring(url.length() - 3);
+            loadURL();
 
-            if (last3.equals("pdf")) {
-                String googleDocs = "https://docs.google.com/viewer?url=";
-                String pdf_url = url;
-
-                mwebView.loadUrl(googleDocs + pdf_url);
-
-            } else {
-
-                mwebView.loadUrl(url);
-                //force links open in webview only
-
-            }
-
-            mwebView.setWebViewClient(new MyWebviewClient());
         } else {
 
             Snackbar snackbar = Snackbar.make(coord, "Baglantiniz yok yada site cevap vermiyor", Snackbar.LENGTH_LONG);
             snackbar.show();
 
         }
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadURL();
+
+
+            }
+        });
+    }
+
+    private void loadURL() {
+        bundle = getIntent().getExtras();
+        String url = bundle.getString("url");
+        setTitle(bundle.getString("parent"));
+        mwebView = (WebView) findViewById(R.id.webView);
+        WebSettings webSettings = mwebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBuiltInZoomControls(true);
+        webSettings.setDisplayZoomControls(false);
+        //improve webView performance
+        mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+        mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        mwebView.getSettings().setAppCacheEnabled(true);
+        mwebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        webSettings.setUseWideViewPort(true);
+        webSettings.setSavePassword(true);
+        webSettings.setSaveFormData(true);
+        webSettings.setEnableSmoothTransition(true);
+
+        String last3 = url.substring(url.length() - 3);
+
+        if (last3.equals("pdf")) {
+            String googleDocs = "https://docs.google.com/viewer?url=";
+            String pdf_url = url;
+
+            mwebView.loadUrl(googleDocs + pdf_url);
+
+        } else {
+
+            mwebView.loadUrl(url);
+            //force links open in webview only
+
+        }
+
+        mwebView.setWebViewClient(new MyWebviewClient());
     }
 
 
