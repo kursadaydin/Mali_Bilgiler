@@ -73,6 +73,7 @@ public class PDFActivity extends AppCompatActivity  {
         // webView.loadData(url, "text/html; charset=UTF-8", null);
         // webView.loadUrl(url);
 
+
         if (isOnline()) {
             bundle = getIntent().getExtras();
             String url = bundle.getString("url");
@@ -80,6 +81,8 @@ public class PDFActivity extends AppCompatActivity  {
             mwebView = (WebView) findViewById(R.id.webView);
             WebSettings webSettings = mwebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
+            webSettings.setBuiltInZoomControls(true);
+            webSettings.setDisplayZoomControls(false);
             //improve webView performance
             mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
             mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
@@ -92,9 +95,21 @@ public class PDFActivity extends AppCompatActivity  {
             webSettings.setSaveFormData(true);
             webSettings.setEnableSmoothTransition(true);
 
+            String last3 = url.substring(url.length() - 3);
 
-            mwebView.loadUrl(url);
-            //force links open in webview only
+            if (last3.equals("pdf")) {
+                String googleDocs = "https://docs.google.com/viewer?url=";
+                String pdf_url = url;
+
+                mwebView.loadUrl(googleDocs + pdf_url);
+
+            } else {
+
+                mwebView.loadUrl(url);
+                //force links open in webview only
+
+            }
+
             mwebView.setWebViewClient(new MyWebviewClient());
         } else {
 
@@ -176,8 +191,8 @@ public class PDFActivity extends AppCompatActivity  {
         @Override
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             pd = new ProgressDialog(PDFActivity.this);
-            pd.setTitle("Please Wait..");
-            pd.setMessage("Website is Loading..");
+            pd.setTitle("Lütfen Bekleyin..");
+            pd.setMessage("Sayfa Yükleniyor..");
             pd.show();
             super.onPageStarted(view, url, favicon);
         }

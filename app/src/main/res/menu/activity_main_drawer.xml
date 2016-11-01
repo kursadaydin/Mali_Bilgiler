@@ -27,11 +27,16 @@
             <item
                 android:id="@+id/nav_paylas"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Paylaş" />
+                android:title="Uygulamayı Paylaş..." />
             <item
                 android:id="@+id/nav_eposta"
                 android:icon="@drawable/ic_menu_send"
-                android:title="E-posta Gönder" />
+                android:title="Uygulamayı E-posta Gönder..." />
+
+            <item
+                android:id="@+id/nav_rating"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Uygulamaya puan ver..." />
         </menu>
     </item>
 

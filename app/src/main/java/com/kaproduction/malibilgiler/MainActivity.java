@@ -1,6 +1,7 @@
 package com.kaproduction.malibilgiler;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -62,8 +63,9 @@ public class MainActivity extends AppCompatActivity
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int parent, int child, long l) {
-                String result = (String) adapter.getChild(parent,child);
-                alertDialog(result);
+                String heading = (String) adapter.getGroup(parent);
+                String message = (String) adapter.getChild(parent, child);
+                alertDialog(heading, message);
                // Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
                 return true;
             }
@@ -142,22 +144,22 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_detay) {
             // Handle the camera action
-            Intent i = new Intent(this,TabbedActivity.class);
-            i.putExtra("TAB_ID",0);
+            Intent i = new Intent(this, TabbedActivity.class);
+            i.putExtra("TAB_ID", 0);
             startActivity(i);
         } else if (id == R.id.nav_vergi) {
-            Intent i1 = new Intent(this,TabbedActivity.class);
-            i1.putExtra("TAB_ID",0);
+            Intent i1 = new Intent(this, TabbedActivity.class);
+            i1.putExtra("TAB_ID", 0);
             startActivity(i1);
 
         } else if (id == R.id.nav_sosyal) {
-            Intent i2 = new Intent(this,TabbedActivity.class);
-            i2.putExtra("TAB_ID",1);
+            Intent i2 = new Intent(this, TabbedActivity.class);
+            i2.putExtra("TAB_ID", 1);
             startActivity(i2);
 
         } else if (id == R.id.nav_makro) {
-            Intent i3 = new Intent(this,TabbedActivity.class);
-            i3.putExtra("TAB_ID",2);
+            Intent i3 = new Intent(this, TabbedActivity.class);
+            i3.putExtra("TAB_ID", 2);
             startActivity(i3);
 
         } else if (id == R.id.nav_paylas) {
@@ -166,7 +168,22 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_eposta) {
             mailIntent();
 
+        } else if (id == R.id.nav_rating) {
+            Uri uri = Uri.parse("market://details?id=" + MainActivity.this.getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            // To count with Play market backstack, After pressing back button,
+            // to taken back to our application, we need to add following flags to intent.
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            try {
+                startActivity(goToMarket);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=" + MainActivity.this.getPackageName())));
+            }
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -189,7 +206,8 @@ public class MainActivity extends AppCompatActivity
         startActivity(sendIntent);
     }
 
-    private void sendToDoc(String result) {
+    private void sendToDoc(String heading, String message) {
+        String result = heading + "\n" + message;
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, result);
@@ -197,13 +215,13 @@ public class MainActivity extends AppCompatActivity
         startActivity(sendIntent);
     }
 
-    private void alertDialog(final String rst){
+    private void alertDialog(final String heading, final String message) {
         new AlertDialog.Builder(this)
                 .setTitle("Paylaş")
                 .setMessage("Bilgiyi Paylaşmak İster Misiniz?")
                 .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        sendToDoc(rst);
+                        sendToDoc(heading, message);
                     }
                 })
                 .setNegativeButton("Hayır", new DialogInterface.OnClickListener() {

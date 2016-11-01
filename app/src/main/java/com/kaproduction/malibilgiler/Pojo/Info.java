@@ -1,10 +1,12 @@
 package com.kaproduction.malibilgiler.Pojo;
 
+import java.util.Comparator;
+
 /**
  * Created by reis on 29/10/16.
  */
 
-public class Info {
+public class Info implements Comparator<Info> {
 
     String parent;//ust baslik
     String child;//alt baslik
@@ -60,5 +62,11 @@ public class Info {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+
+    @Override
+    public int compare(Info info1, Info info2) {
+        return info1.getParent().compareTo(info2.getParent());
     }
 }
