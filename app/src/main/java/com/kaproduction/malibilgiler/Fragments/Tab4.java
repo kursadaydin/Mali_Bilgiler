@@ -15,11 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Info;
 import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
 import com.kaproduction.malibilgiler.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by reis on 27/10/16.
@@ -100,17 +103,16 @@ public class Tab4 extends Fragment implements SearchView.OnQueryTextListener{
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
             arrayList = new ArrayList<>();
-            //Info i = new Info("deneme", R.mipmap.ic_action_action_assignment_turned_in);
-            //Info i2 = new Info("ankara", R.mipmap.ic_action_action_assignment_turned_in);
-            //Info i3 = new Info("istanbul", R.mipmap.ic_action_action_assignment_turned_in);
-            //arrayList.add(i);
-            //arrayList.add(i2);
-            //arrayList.add(i3);
+            Info i = new Info();
+            arrayList = i.getTab4();
+            Collections.sort(arrayList, i);
 
             recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());
             recyclerView.setAdapter(recyclerAdapter);
 
-
+            AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab4);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
 
         }

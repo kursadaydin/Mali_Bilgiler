@@ -1,7 +1,6 @@
 package com.kaproduction.malibilgiler.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Info;
 import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
 import com.kaproduction.malibilgiler.R;
@@ -80,7 +81,7 @@ public class Tab1 extends Fragment implements SearchView.OnQueryTextListener {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         generateComponents();
     }
@@ -91,42 +92,15 @@ public class Tab1 extends Fragment implements SearchView.OnQueryTextListener {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         arrayList = new ArrayList<>();
-        Info i1 = new Info("Amortismana Tabi Kıymetler", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/amortisman_oranlari.pdf");
-        Info i2 = new Info("Amortisman Ayırmada Alt Sınır", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/amortisman_altsinir.htm");
-        Info i3 = new Info("Anlaşmalı Bankalar ", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/antlasmali_bankalar.htm");
-        Info i4 = new Info("Ba ve Bs Formlarının Bildirimi", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/ba-bsbildirimi.pdf");
-        Info i5 = new Info("Basit Usulde Vergilendirmeye İlişkin Had ve Tutarlar", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/basit_usul_had_tutar.pdf");
-        Info i6 = new Info("Beyanname Verme ve Ödeme Süreleri", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/beyannameverme_odeme.pdf");
-        Info i7 = new Info("Damga Vergisi Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/mevzuatek/488_I_sayili_tablo.pdf");
-        Info i8 = new Info("Defter Tutma Hadleri", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/defter_tutma_hadleri.htm");
-        Info i9 = new Info("Gecikme Zammı Oranı", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/gecikme_zammi.htm");
-        Info i10 = new Info("Gelir Vergisi Tarifesi", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/gelir_vergisi_tarife.htm");
-        Info i11 = new Info("GVK Geçici 67. Madde Kapsamında Kesinti Oranları ", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/gvk67_tevkifat.htm");
-        Info i12 = new Info("Harç Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/mevzuatek/492_tarifeler.pdf");
-        Info i13 = new Info("Mesken Kira Gelirinde İstisna Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/mesken_kira_istisna.htm");
-        Info i14 = new Info("MTV Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/mtv_tarife.htm");
-        Info i15 = new Info("Özel Tüketim Vergisi I sayılı liste", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/08092016.htm");
-        Info i16 = new Info("Özel Tüketim Vergisi II sayılı liste", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/05102016_II_sayili_liste.htm");
-        Info i17 = new Info("Özel Tüketim Vergisi III sayılı liste", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/otv_3_sayili-OpenPage.htm");
-        Info i18 = new Info("Özel Tüketim Vergisi VI sayılı liste", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/11_09_2014_IV_Sayili_Liste.htm");
-        Info i19 = new Info("Tecil Faizi Oranı", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/tecil_faizi.htm");
-        Info i20 = new Info("Veraset ve İntikal Vergisi Oranları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/veraset_intikal.htm");
-        Info i21 = new Info("Vergi Cezaları", R.mipmap.ic_action_action_assignment_turned_in, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/vergicezalari.pdf");
-        Info i22 = new Info("Vergi Takvimi ", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/vergi_takvimi.htm");
-        Info i23 = new Info("Vergi Türü Kodları  ", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/vergi_turu_kodlari.htm");
-        Info i24 = new Info("Yeniden Değerleme Oranları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/yeniden_degerleme_oranlari.htm");
 
-        arrayList.add(i1); arrayList.add(i2); arrayList.add(i3); arrayList.add(i4); arrayList.add(i5); arrayList.add(i6); arrayList.add(i7);arrayList.add(i8); arrayList.add(i9); arrayList.add(i10);
-        arrayList.add(i11); arrayList.add(i12); arrayList.add(i13); arrayList.add(i14); arrayList.add(i15); arrayList.add(i16); arrayList.add(i17);arrayList.add(i18); arrayList.add(i19); arrayList.add(i20);
-        arrayList.add(i21);
-        arrayList.add(i22);
-        arrayList.add(i23);
-        arrayList.add(i24);
-
-
+        Info i = new Info();
+        arrayList = i.getTab1();
         recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());
         recyclerView.setAdapter(recyclerAdapter);
 
+        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
     }

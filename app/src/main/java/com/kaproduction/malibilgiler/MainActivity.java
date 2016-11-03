@@ -21,6 +21,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Data.ExpandableListViewData;
 import com.kaproduction.malibilgiler.Other.ExpandableListViewAdapter;
 import java.util.ArrayList;
@@ -85,6 +88,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        AdView mAdView = (AdView) findViewById(R.id.adViewMainActivity);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
 
 
@@ -145,7 +152,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_detay) {
             // Handle the camera action
             Intent i = new Intent(this, TabbedActivity.class);
-            i.putExtra("TAB_ID", 0);
+            i.putExtra("TAB_ID", 3);
             startActivity(i);
         } else if (id == R.id.nav_vergi) {
             Intent i1 = new Intent(this, TabbedActivity.class);

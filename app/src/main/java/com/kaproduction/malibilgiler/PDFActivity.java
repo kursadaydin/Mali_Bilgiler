@@ -51,7 +51,7 @@ public class PDFActivity extends AppCompatActivity  {
     private Bundle bundle;
 
     private CoordinatorLayout coord;
-    private SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +62,6 @@ public class PDFActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         // getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
         coord = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutPDFActivity);
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.activity_pdf_swipe_refresh_layout);
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
 
 
         mLevel = START_LEVEL;
@@ -89,14 +87,30 @@ public class PDFActivity extends AppCompatActivity  {
 
         }
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                loadURL();
 
+    }
 
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_pd, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_refresh) {
+            loadURL();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadURL() {
@@ -104,6 +118,7 @@ public class PDFActivity extends AppCompatActivity  {
         String url = bundle.getString("url");
         setTitle(bundle.getString("parent"));
         mwebView = (WebView) findViewById(R.id.webView);
+        mwebView.setInitialScale(125);
         WebSettings webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);

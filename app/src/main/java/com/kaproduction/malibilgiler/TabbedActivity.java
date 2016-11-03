@@ -53,8 +53,8 @@ public class TabbedActivity extends AppCompatActivity  {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(mViewPager);
 
         bundle = getIntent().getExtras();
@@ -177,16 +177,16 @@ public class TabbedActivity extends AppCompatActivity  {
 
             switch (position) {
                 case TabbedActivity.TAB_1:
-                    return "Vergi Mevzuatı";
+                    return "Vergi";
 
                 case TabbedActivity.TAB_2:
-                    return "Sosyal Güvenlik Mevzuatı";
+                    return "Sosyal Güvenlik";
 
                 case TabbedActivity.TAB_3:
-                    return "Bazı Temel Ekonomik Göstergeler ";
+                    return "Temel Makro ";
 
                 case TabbedActivity.TAB_4:
-                    return "Diğer ";
+                    return "Hepsi ";
 
                 default:
                     break;

@@ -9,7 +9,7 @@ public class ExpandableListViewData {
 
     public static HashMap<String, List<String>> getInfo()
     {
-        HashMap<String, List<String>> infos = new HashMap<String, List<String>>();
+        HashMap<String, List<String>> infos = new HashMap<>();
 
         List<String> asgariUcret = new ArrayList<>();
 
@@ -67,12 +67,19 @@ public class ExpandableListViewData {
         tecil_faizi.add("21.11.2009 - 21.10.2010 tarihleri arasında   :%19");
         tecil_faizi.add("21.10.2010 tarihinden itibaren :%12");
 
-        List<String> arizi_kazanc_siniri = new ArrayList<>();
-        arizi_kazanc_siniri.add("2012 yılı için :20 000 TL");
-        arizi_kazanc_siniri.add("2013 yılı için :21 000 TL");
-        arizi_kazanc_siniri.add("2014 yılı için :21 000 TL");
-        arizi_kazanc_siniri.add("2015 yılı için :23 000 TL");
-        arizi_kazanc_siniri.add("2016 yılı için :24 000 TL");
+
+        List<String> gecikme_zammi = new ArrayList<>();
+        gecikme_zammi.add("20.01.2000 - 01.12.2000 tarihleri arasında :%6");
+        gecikme_zammi.add("02.12.2000 - 28.03.2001 tarihleri arasında :%5");
+        gecikme_zammi.add("29.03.2001 - 30.01.2002 tarihleri arasında :%10");
+        gecikme_zammi.add("31.01.2002 - 11.11.2003 tarihleri arasında :%7");
+        gecikme_zammi.add("12.11.2003 - 01.01.2004 tarihleri arasında :%4");
+        gecikme_zammi.add("02.01.2004 - 01.03.2005 tarihleri arasında :%4");
+        gecikme_zammi.add("02.03.2005 - 20.04.2006 tarihleri arasında :%3");
+        gecikme_zammi.add("21.04.2006 - 18.11.2009 tarihleri arasında :%2,5");
+        gecikme_zammi.add("19.11.2009 - 18.11.2010 tarihleri arasında :%1,95");
+        gecikme_zammi.add("19.10.2010 tarihinden itibaren :%1,44");
+
 
         List<String> fatura_siniri = new ArrayList<>();
         fatura_siniri.add("2012 yılı için :770 TL");
@@ -113,13 +120,13 @@ public class ExpandableListViewData {
         bankalar.add("YAPI VE KREDİ BANKASI A.Ş. ");
         bankalar.add("ZİRAAT KATILIM BANKASI A.Ş.");
 
-        infos.put("Arızi Kazançlara İlişkin İstisna Tutarı", arizi_kazanc_siniri);
-        infos.put("Asgari Geçim İndirimi Tutarları - 2016", agiTutarlari);
-        infos.put("Fatura Düzenleme Sınırı",fatura_siniri);
-        infos.put("Tecil Faizi", tecil_faizi);
-        infos.put("Vergi Tahsiline Yetkili Bankalar",bankalar);
-        infos.put("Yeniden Değerleme Oranları", ydo);
         infos.put("Yıllar İtibariyle Asgari Ücret Tutarları", asgariUcret);
+        infos.put("Asgari Geçim İndirimi Tutarları - 2016", agiTutarlari);
+        infos.put("Yeniden Değerleme Oranları", ydo);
+        infos.put("Yıllar İtibariyle Gecikme Zammı Oranları", gecikme_zammi);
+        infos.put("Fatura Düzenleme Sınırı", fatura_siniri);
+
+
 
 
         return infos;

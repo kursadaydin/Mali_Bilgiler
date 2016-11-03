@@ -22,13 +22,8 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/activity_pdf_swipe_refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
 
         <include layout="@layout/activity_pdf" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

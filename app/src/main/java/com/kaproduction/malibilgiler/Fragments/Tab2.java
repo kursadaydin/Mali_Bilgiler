@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Info;
 import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
 import com.kaproduction.malibilgiler.R;
@@ -100,22 +102,16 @@ public class Tab2 extends Fragment implements SearchView.OnQueryTextListener{
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setHasFixedSize(true);
             arrayList = new ArrayList<>();
-            Info i = new Info("4A ye tabi olanların prim tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/4A.htm");
-            Info i2 = new Info("4B ye tabi olanların prim tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/4B.htm");
-            Info i3 = new Info("Yıllar  İtibariyle Brüt Asgari Ücret Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/brut_asgari_ucret.htm");
-            Info i4 = new Info("2016 Yılı Asgari Ücret Maliyeti", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/asgari_ucret_maliyet.htm");
-            Info i5 = new Info("SGK Taban ve Tavan Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/sgk_tavan_taban.htm");
-            Info i6 = new Info("İşsizlik Sigortası Prim Oranları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/issizlik_oran.htm");
-            Info i7 = new Info("2016 yılı Asgari Geçim İndirimi Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/agi_2016.htm");
-            Info i8 = new Info("Engellilik İndirim Tutarları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/engellilik.htm");
-            Info i9 = new Info("2016 yılı Kapıcı Maaşları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/kapici.htm");
-            Info i10 = new Info("İsteğe Bağlı Prim Oranları", R.mipmap.ic_action_action_assignment_turned_in, "http://malibilgiler.hayatimizburada.com/istege_bagli.htm");
 
-            arrayList.add(i);arrayList.add(i2);arrayList.add(i3);arrayList.add(i4);arrayList.add(i5);
-            arrayList.add(i6);arrayList.add(i7);arrayList.add(i8);arrayList.add(i9);arrayList.add(i10);
+            Info i = new Info();
+            arrayList = i.getTab2();
 
             recyclerAdapter = new RecyclerAdapter(arrayList,getActivity());
             recyclerView.setAdapter(recyclerAdapter);
+
+            AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab2);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
 
         }
