@@ -1,6 +1,15 @@
 package com.kaproduction.malibilgiler.Pojo;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Months;
+
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Created by reis on 04/11/16.
@@ -8,10 +17,10 @@ import java.util.Date;
 
 public class Calculater {
 
-    public int year;
-    public double tutar;
-    public Date start;
-    public Date end;
+    private int year;
+    private double tutar;
+    private Date start;
+    private Date end;
 
 
     public Calculater() {
@@ -413,6 +422,32 @@ public class Calculater {
     public Double gecikmeFaizi(Date start, Date end, Double tutar) {
 
         return 0.0;
+    }
+
+    public Map getFarkTarih(Date start, Date end) {
+
+        int months, days = 0;
+        Map farkMap = null;
+        DateTime date1 = new DateTime(start);
+        DateTime date2 = new DateTime(end);
+
+        months = Months.monthsBetween(date1, date2).getMonths();
+        DateTime newEnd = date2.minusMonths(months);
+
+        days = Days.daysBetween(date1, newEnd).getDays();
+        farkMap = new HashMap();
+        farkMap.put("farkay", months);
+        farkMap.put("farkgun", days);
+
+
+        return farkMap;
+
+    }
+
+    public int getAydakiGunSayisi(int ay, int yil) {
+        Calendar cal = new GregorianCalendar(yil, ay - 1, 1);
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
     }
 
 }
