@@ -5,11 +5,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -30,7 +32,7 @@ public class Fragment2KarPayi extends Fragment {
     EditText editTextTutarKarPayi;
     TextView textViewSonucKarPayi;
     Button buttonHesaplaKarPayi;
-    int year;
+    String year;
     AdView adViewKarPayi;
 
     Calculater calculater;
@@ -75,6 +77,7 @@ public class Fragment2KarPayi extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        calculater = new Calculater();
         generateComponents();
     }
 
@@ -84,27 +87,39 @@ public class Fragment2KarPayi extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYillarKarPayi.setAdapter(adapter);
+        spinnerYillarKarPayi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                year = adapterView.getItemAtPosition(i).toString();
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         editTextTutarKarPayi = (EditText) getActivity().findViewById(R.id.editTextTutar);
         textViewSonucKarPayi = (TextView) getActivity().findViewById(R.id.textViewTutarKarPayi);
-        buttonHesaplaKarPayi = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesapla);
-        final Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
-
+        buttonHesaplaKarPayi = (Button) getActivity().findViewById(R.id.buttonKarPayiHesapla);
 
         buttonHesaplaKarPayi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-                sonuc = calculater.karPayi(hesaplanacakTutar, year);
-                textViewSonucKarPayi.setText("Brüt " + hesaplanacakTutar + " TL kar payının nihai hesaplanan vergisi " + sonuc + "TL'dir.");
-
+                if (editTextTutarKarPayi.getText().length() == 0) {
+                    Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
+                } else {
+                    Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
+                    sonuc = calculater.karPayi(hesaplanacakTutar, year);
+                    textViewSonucKarPayi.setText("Brüt " + hesaplanacakTutar + " TL kar payının nihai hesaplanan vergisi " + sonuc + "TL'dir.");
+                }
 
             }
         });
 
 
-        adViewKarPayi = (AdView) getActivity().findViewById(R.id.adViewTab1);
+        adViewKarPayi = (AdView) getActivity().findViewById(R.id.adViewKarPayi);
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewKarPayi.loadAd(adRequest);
 

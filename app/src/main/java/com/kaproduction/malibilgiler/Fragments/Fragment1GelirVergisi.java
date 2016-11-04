@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * Created by reis on 04/11/16.
  */
 
-public class Fragment1GelirVergisi extends Fragment implements AdapterView.OnItemSelectedListener {
+public class Fragment1GelirVergisi extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -41,7 +41,7 @@ public class Fragment1GelirVergisi extends Fragment implements AdapterView.OnIte
     EditText editTextTutar;
     TextView textViewSonuc;
     Button buttonHesapla;
-    int year;
+    String year;
     AdView adViewGelirVergisi;
 
     Calculater calculater;
@@ -93,14 +93,25 @@ public class Fragment1GelirVergisi extends Fragment implements AdapterView.OnIte
     public void generateComponents() {
 
         spinnerYillar = (Spinner) getActivity().findViewById(R.id.spinnerYillarGelirVergisi);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYillar.setAdapter(adapter);
+        spinnerYillar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                year = adapterView.getItemAtPosition(i).toString();
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         editTextTutar = (EditText) getActivity().findViewById(R.id.editTextTutar);
         textViewSonuc = (TextView) getActivity().findViewById(R.id.textViewSonucGelirVergisi);
         buttonHesapla = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesapla);
-        final Double hesaplanacakTutar = Double.valueOf(editTextTutar.getText().toString());
+
 
 
         buttonHesapla.setOnClickListener(new View.OnClickListener() {
@@ -108,10 +119,16 @@ public class Fragment1GelirVergisi extends Fragment implements AdapterView.OnIte
             public void onClick(View view) {
 
 
-                sonuc = calculater.hesaplananVergiUcret(year, hesaplanacakTutar);
-                textViewSonuc.setText(year + " yılı için hesaplanan gelir vergisi " + sonuc + " TL dir.");
+                if (editTextTutar.getText().length() == 0) {
+                    Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
+                } else {
 
 
+                    final Double hesaplanacakTutar = Double.valueOf(editTextTutar.getText().toString());
+                    sonuc = calculater.hesaplananVergiUcret(year, hesaplanacakTutar);
+                    textViewSonuc.setText(year + " yılı için hesaplanan gelir vergisi " + sonuc + " TL dir.");
+
+                }
             }
         });
 
@@ -123,14 +140,4 @@ public class Fragment1GelirVergisi extends Fragment implements AdapterView.OnIte
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        year = (int) adapterView.getItemAtPosition(i);
-        Toast.makeText(getActivity(), year, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 }
