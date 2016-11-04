@@ -5,9 +5,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
 /**
@@ -19,6 +25,20 @@ public class Fragment2KarPayi extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+
+    Spinner spinnerYillarKarPayi;
+    EditText editTextTutarKarPayi;
+    TextView textViewSonucKarPayi;
+    Button buttonHesaplaKarPayi;
+    int year;
+    AdView adViewKarPayi;
+
+    Calculater calculater;
+
+    Double sonuc;
+
+
+
 
     public static Fragment2KarPayi newInstance(String param1, String param2) {
         Fragment2KarPayi fragment = new Fragment2KarPayi();
@@ -60,10 +80,33 @@ public class Fragment2KarPayi extends Fragment {
 
     public void generateComponents() {
 
+        spinnerYillarKarPayi = (Spinner) getActivity().findViewById(R.id.spinnerYillarKarPayi);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerYillarKarPayi.setAdapter(adapter);
 
-        //   AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
-        //   AdRequest adRequest = new AdRequest.Builder().build();
-        //   mAdView.loadAd(adRequest);
+        editTextTutarKarPayi = (EditText) getActivity().findViewById(R.id.editTextTutar);
+        textViewSonucKarPayi = (TextView) getActivity().findViewById(R.id.textViewTutarKarPayi);
+        buttonHesaplaKarPayi = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesapla);
+        final Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
+
+
+        buttonHesaplaKarPayi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                sonuc = calculater.karPayi(hesaplanacakTutar, year);
+                textViewSonucKarPayi.setText("Brüt " + hesaplanacakTutar + " TL kar payının nihai hesaplanan vergisi " + sonuc + "TL'dir.");
+
+
+            }
+        });
+
+
+        adViewKarPayi = (AdView) getActivity().findViewById(R.id.adViewTab1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adViewKarPayi.loadAd(adRequest);
 
 
     }

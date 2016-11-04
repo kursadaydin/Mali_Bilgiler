@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewGelirVergisi"
+        android:text="Gelir Vergisi Hesaplama"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Yıl Seçimi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/textView2"
+        android:layout_alignTop="@+id/spinnerYillarGelirVergisi"
+        android:layout_alignStart="@+id/textViewGelirVergisi"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/spinnerYillarGelirVergisi"
+        android:layout_below="@+id/textViewGelirVergisi"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_marginStart="54dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:id="@+id/editTextTutar"
+        android:layout_below="@+id/spinnerYillarGelirVergisi"
+        android:layout_alignEnd="@+id/textViewGelirVergisi"
+        android:layout_alignStart="@+id/spinnerYillarGelirVergisi" />
+
+    <TextView
+        android:text="Tutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/textViewTutar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        android:text="Hesapla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonGelirVergisiHesapla"
+        android:layout_below="@+id/editTextTutar"
+        android:layout_alignStart="@+id/textViewTutar"
+        android:layout_alignEnd="@+id/editTextTutar" />
+
+    <TextView
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="Fargment1" />
+        android:id="@+id/textViewSonucGelirVergisi"
+        android:layout_alignStart="@+id/buttonGelirVergisiHesapla"
+        android:layout_alignEnd="@+id/buttonGelirVergisiHesapla"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+    <com.google.android.gms.ads.AdView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="28dp"
+        android:id="@+id/adViewGelirVergisiHesapla"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
