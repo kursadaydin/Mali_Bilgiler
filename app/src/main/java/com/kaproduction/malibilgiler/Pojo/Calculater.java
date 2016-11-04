@@ -23,6 +23,7 @@ public class Calculater {
     private Date end;
 
 
+
     public Calculater() {
     }
 
@@ -415,13 +416,28 @@ public class Calculater {
     }
 
     public Double gecikmeZammi(Date start, Date end, Double tutar) {
-
-        return 0.0;
+        Double toplamGecikmeZammiOrani = 0.0;
+        Map tarihler = new HashMap();
+        tarihler = getFarkTarih(start, end);
+        int ay = (int) tarihler.get("farkay");
+        int gun = (int) tarihler.get("farkgun");
+        //Gecikme zammi aylik olarak hesaplanir ayrica ay kesirleri icin gunluk hesaplama yapilir.....
+        double gunlukGecikmeZammiOrani = 1.4 / 30;
+        toplamGecikmeZammiOrani = gunlukGecikmeZammiOrani * gun;
+        return tutar * toplamGecikmeZammiOrani;
     }
 
     public Double gecikmeFaizi(Date start, Date end, Double tutar) {
+        Double toplamGecikmeFaiziOrani = 0.0;
+        Map tarihler = new HashMap();
+        tarihler = getFarkTarih(start, end);
+        int ay = (int) tarihler.get("farkay");
+        int gun = (int) tarihler.get("farkgun");
+        //Gecikme faizi aylik olarak hesaplanir ay kesirleri dikkate alinmaz.....
+        double gecikmeZammiOrani = 1.4;
+        toplamGecikmeFaiziOrani = gecikmeZammiOrani * ay;
+        return tutar * toplamGecikmeFaiziOrani;
 
-        return 0.0;
     }
 
     public Map getFarkTarih(Date start, Date end) {
