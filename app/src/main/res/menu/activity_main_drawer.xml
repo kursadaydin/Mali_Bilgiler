@@ -21,6 +21,42 @@
             android:title="Temel Makro Ekonomi" />
     </group>
 
+    <item
+        android:title="Hesaplama"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button">
+        <menu>
+            <item
+                android:id="@+id/nav_gelir"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Gelir Vergisi Hesapla..." />
+            <item
+                android:id="@+id/nav_karPayi"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Kar Payi Hesapla..." />
+
+            <item
+                android:id="@+id/nav_tahvil"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Tahvil Hesapla..." />
+            <item
+                android:id="@+id/nav_asgariUcret"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Net Asgari Ücret Hesapla..." />
+            <item
+                android:id="@+id/nav_kapiciUcret"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Net Kapıcı Ücretini Hesapla..." />
+            <item
+                android:id="@+id/nav_gecikmeFaizi"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Gecikme Faizini Hesapla..." />
+            <item
+                android:id="@+id/nav_gecikmeZammi"
+                android:icon="@mipmap/ic_action_action_assignment_turned_in"
+                android:title="Gecikme Zammını Hesapla..." />
+        </menu>
+    </item>
+
     <item android:title="İletişim"
           android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button">
         <menu>

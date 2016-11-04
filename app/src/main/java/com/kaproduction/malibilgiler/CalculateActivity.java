@@ -1,35 +1,43 @@
 package com.kaproduction.malibilgiler;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
 
+import com.kaproduction.malibilgiler.Fragments.Fragment1GelirVergisi;
+import com.kaproduction.malibilgiler.Fragments.Fragment2KarPayi;
+import com.kaproduction.malibilgiler.Fragments.Fragment3Tahvil;
+import com.kaproduction.malibilgiler.Fragments.Fragment4AsgariUcret;
+import com.kaproduction.malibilgiler.Fragments.Fragment5KapiciUcret;
+import com.kaproduction.malibilgiler.Fragments.Fragment6GecikmeFaizi;
+import com.kaproduction.malibilgiler.Fragments.Fragment7GecikmeZammi;
 import com.kaproduction.malibilgiler.Fragments.Tab1;
 import com.kaproduction.malibilgiler.Fragments.Tab2;
 import com.kaproduction.malibilgiler.Fragments.Tab3;
 import com.kaproduction.malibilgiler.Fragments.Tab4;
-import com.kaproduction.malibilgiler.R;
 
-public class TabbedActivity extends AppCompatActivity  {
+public class CalculateActivity extends AppCompatActivity {
 
-    private static final int TAB_1 = 0;
-    private static final int TAB_2 = 1;
-    private static final int TAB_3 = 2;
-    private static final int TAB_4 = 3;
-   /* -------------------------------------*/
+    private static final int TAB_5 = 0;
+    private static final int TAB_6 = 1;
+    private static final int TAB_7 = 2;
+    private static final int TAB_8 = 3;
+    private static final int TAB_9 = 4;
+    private static final int TAB_10 = 5;
+    private static final int TAB_11 = 6;
+
+    /* -------------------------------------*/
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
@@ -38,9 +46,9 @@ public class TabbedActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabbed);
+        setContentView(R.layout.activity_calculate);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarCalculate);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -49,27 +57,27 @@ public class TabbedActivity extends AppCompatActivity  {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.containerTabbedActivity);
+        mViewPager = (ViewPager) findViewById(R.id.containerCalculateActivity);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabsCalculate);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(mViewPager);
 
         bundle = getIntent().getExtras();
-        if(bundle!=null){
+        if (bundle != null) {
             int TAB_ID = bundle.getInt("TAB_ID");
             TabLayout.Tab tab = tabLayout.getTabAt(TAB_ID);
             tab.select();
         }
- }
+    }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-       //getMenuInflater().inflate(R.menu.menu_tabbed, menu);
+        //getMenuInflater().inflate(R.menu.menu_tabbed, menu);
 
         return true;
     }
@@ -81,19 +89,12 @@ public class TabbedActivity extends AppCompatActivity  {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         if (id == android.R.id.home) {
             finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
     /**
@@ -124,7 +125,7 @@ public class TabbedActivity extends AppCompatActivity  {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_tabbed, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_0calculate, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -147,17 +148,26 @@ public class TabbedActivity extends AppCompatActivity  {
             Fragment fragment = null;
 
             switch (position) {
-                case TabbedActivity.TAB_1:
-                    fragment = Tab1.newInstance("", "");
+                case CalculateActivity.TAB_5:
+                    fragment = Fragment1GelirVergisi.newInstance("", "");
                     break;
-                case TabbedActivity.TAB_2:
-                    fragment = Tab2.newInstance("", "");
+                case CalculateActivity.TAB_6:
+                    fragment = Fragment2KarPayi.newInstance("", "");
                     break;
-                case TabbedActivity.TAB_3:
-                    fragment = Tab3.newInstance("", "");
+                case CalculateActivity.TAB_7:
+                    fragment = Fragment3Tahvil.newInstance("", "");
                     break;
-                case TabbedActivity.TAB_4:
-                    fragment = Tab4.newInstance("", "");
+                case CalculateActivity.TAB_8:
+                    fragment = Fragment4AsgariUcret.newInstance("", "");
+                    break;
+                case CalculateActivity.TAB_9:
+                    fragment = Fragment5KapiciUcret.newInstance("", "");
+                    break;
+                case CalculateActivity.TAB_10:
+                    fragment = Fragment6GecikmeFaizi.newInstance("", "");
+                    break;
+                case CalculateActivity.TAB_11:
+                    fragment = Fragment7GecikmeZammi.newInstance("", "");
                     break;
                 default:
                     break;
@@ -169,24 +179,33 @@ public class TabbedActivity extends AppCompatActivity  {
 
         @Override
         public int getCount() {
-            return 4;
+            return 7;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
 
             switch (position) {
-                case TabbedActivity.TAB_1:
-                    return "Vergi";
+                case CalculateActivity.TAB_5:
+                    return "Gelir Vergisi";
 
-                case TabbedActivity.TAB_2:
-                    return "Sosyal Güvenlik";
+                case CalculateActivity.TAB_6:
+                    return "Kar Payı";
 
-                case TabbedActivity.TAB_3:
-                    return "Temel Makro ";
+                case CalculateActivity.TAB_7:
+                    return "Tahvil ";
 
-                case TabbedActivity.TAB_4:
-                    return "Hepsi ";
+                case CalculateActivity.TAB_8:
+                    return "Asgari Ücret ";
+
+                case CalculateActivity.TAB_9:
+                    return "Kapıcı Ücreti ";
+
+                case CalculateActivity.TAB_10:
+                    return "Gecikme Faizi";
+
+                case CalculateActivity.TAB_11:
+                    return "Gecikme Zammı";
 
                 default:
                     break;

@@ -169,6 +169,41 @@ public class MainActivity extends AppCompatActivity
             i3.putExtra("TAB_ID", 2);
             startActivity(i3);
 
+        } else if (id == R.id.nav_gelir) {
+            Intent i4 = new Intent(this, CalculateActivity.class);
+            i4.putExtra("TAB_ID", 0);
+            startActivity(i4);
+
+        } else if (id == R.id.nav_karPayi) {
+            Intent i5 = new Intent(this, CalculateActivity.class);
+            i5.putExtra("TAB_ID", 1);
+            startActivity(i5);
+
+        } else if (id == R.id.nav_tahvil) {
+            Intent i6 = new Intent(this, CalculateActivity.class);
+            i6.putExtra("TAB_ID", 2);
+            startActivity(i6);
+
+        } else if (id == R.id.nav_asgariUcret) {
+            Intent i6 = new Intent(this, CalculateActivity.class);
+            i6.putExtra("TAB_ID", 3);
+            startActivity(i6);
+
+        } else if (id == R.id.nav_kapiciUcret) {
+            Intent i7 = new Intent(this, CalculateActivity.class);
+            i7.putExtra("TAB_ID", 4);
+            startActivity(i7);
+
+        } else if (id == R.id.nav_gecikmeFaizi) {
+            Intent i8 = new Intent(this, CalculateActivity.class);
+            i8.putExtra("TAB_ID", 5);
+            startActivity(i8);
+
+        } else if (id == R.id.nav_gecikmeZammi) {
+            Intent i9 = new Intent(this, CalculateActivity.class);
+            i9.putExtra("TAB_ID", 6);
+            startActivity(i9);
+
         } else if (id == R.id.nav_paylas) {
             sendIntent();
 
