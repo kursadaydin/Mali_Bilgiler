@@ -50,11 +50,10 @@
         android:inputType="number|numberDecimal"
         android:imeOptions="actionDone"
         android:textColor="@color/colorWhite"
-        android:layout_marginTop="17dp"
         android:id="@+id/editTextTutar"
-        android:layout_below="@+id/spinnerYillarGelirVergisi"
         android:layout_alignEnd="@+id/textViewGelirVergisi"
-        android:layout_alignStart="@+id/spinnerYillarGelirVergisi" />
+        android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
+        android:layout_below="@+id/textView2" />
 
     <TextView
         android:text="Tutar"
@@ -68,19 +67,53 @@
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />
 
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:gravity="right|center"
+        android:layout_below="@+id/textViewTutar"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/ll"
+        android:layout_alignEnd="@+id/ll">
+
+
+        <RadioButton
+            android:id="@+id/radio_ucret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ücret"
+            android:textColor="@color/colorWhite"
+            android:buttonTint="@color/colorWhite"
+            android:checked="true"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radio_ucretdisi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ücret Dışı"
+            android:textColor="@color/colorWhite"
+            android:buttonTint="@color/colorWhite" />
+    </RadioGroup>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll"
-        android:layout_below="@+id/editTextTutar"
-        android:layout_alignStart="@+id/textViewTutar"
-        android:layout_alignEnd="@+id/editTextTutar">
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignStart="@+id/textViewGelirVergisi"
+        android:layout_alignEnd="@+id/textViewGelirVergisi">
 
         <Button
-        android:text="Hesapla"
+            android:text="Hesapla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonGelirVergisiHesapla"
+            android:id="@+id/buttonGelirVergisiHesapla"
             android:layout_weight="10" />
 
         <Button
@@ -97,13 +130,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
-        android:layout_centerVertical="true"
         android:gravity="center"
+        android:maxLines="2"
+        android:lines="2"
         android:id="@+id/textViewSonucGelirVergisi"
-        android:layout_alignStart="@+id/ll"
-        android:layout_alignEnd="@+id/ll"
+        android:layout_below="@+id/ll"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/ll"
+        android:layout_alignEnd="@+id/ll" />
 
 
     <com.google.android.gms.ads.AdView
@@ -113,7 +149,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+        ads:adUnitId="@string/banner_ad_unit_id"
+
+        ></com.google.android.gms.ads.AdView>
 
 
 </RelativeLayout>
