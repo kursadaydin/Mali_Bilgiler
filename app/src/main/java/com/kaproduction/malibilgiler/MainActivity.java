@@ -33,8 +33,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ExpandableListView expandableListView;
-    HashMap<String, List<String>> Movies_category;
-    List<String> Movies_list;
+    HashMap<String, List<String>> mCategory;
+    List<String> mlist;
     ExpandableListViewAdapter adapter;
 
     CoordinatorLayout coordinatorLayoutMainActivity;
@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         expandableListView = (ExpandableListView) findViewById(R.id.exp_list);
-        Movies_category = ExpandableListViewData.getInfo();
-        Movies_list = new ArrayList<String>(Movies_category.keySet());
-        adapter = new ExpandableListViewAdapter(this, Movies_category, Movies_list);
+        mCategory = ExpandableListViewData.getInfo();
+        mlist = new ArrayList<String>(mCategory.keySet());
+        adapter = new ExpandableListViewAdapter(this, mCategory, mlist);
         expandableListView.setAdapter(adapter);
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override

@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#757575"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.kaproduction.malibilgiler.MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -19,11 +20,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/headline"
         android:layout_centerHorizontal="true"
-        android:text="Pratik Bilgiler "
+        android:text="Pratik Bilgiler"
         android:textSize="30dp"
         android:typeface="sans"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         />
 
     <ExpandableListView
@@ -32,8 +33,9 @@
         android:layout_width="match_parent"
         android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
         android:layout_below="@+id/headline"
-        android:divider="#A4C739"
-        android:dividerHeight="0.5dp"
+        android:divider="@color/colorWhite"
+        android:childDivider="@color/colorWhite"
+        android:dividerHeight="1dp"
         android:layout_marginTop="15dp"
         android:layout_above="@+id/adViewMainActivity"></ExpandableListView>
 

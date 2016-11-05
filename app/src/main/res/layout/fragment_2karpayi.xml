@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/fragments_background"
+    android:id="@+id/relativeLayoutKarpayi">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textViewKarPayi"
         android:text="Kar Payı Vergilemesi"
+        android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        tools:textSize="30sp" />
 
     <TextView
         android:text="Yıl Seçimi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:gravity="left|center_vertical"
         android:padding="10dp"
         android:id="@+id/textView2"
         android:layout_alignTop="@+id/spinnerYillarKarPayi"
@@ -30,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:theme="@android:style/ThemeOverlay.Material.Dark"
         android:id="@+id/spinnerYillarKarPayi"
         android:layout_below="@+id/textViewKarPayi"
         android:layout_toEndOf="@+id/textView2"
@@ -39,9 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number|numberDecimal"
+        android:imeOptions="actionDone"
+        android:textColor="@color/colorWhite"
         android:layout_marginTop="17dp"
-        android:id="@+id/editTextTutar"
-        android:layout_below="@+id/spinnerYillarKarPayi"
+        android:id="@+id/editTextTutarKarPayi"
         android:layout_alignEnd="@+id/textViewKarPayi"
         android:layout_alignStart="@+id/spinnerYillarKarPayi"
         android:layout_alignBottom="@+id/textViewTutarKarPayi" />
@@ -50,29 +59,51 @@
         android:text="Tutar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:gravity="left|center_vertical"
         android:padding="10dp"
         android:id="@+id/textViewTutarKarPayi"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />
 
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll2"
+        android:layout_below="@+id/editTextTutarKarPayi"
+        android:layout_alignStart="@+id/textViewTutarKarPayi"
+        android:layout_alignEnd="@+id/editTextTutarKarPayi">
+
+        <Button
         android:text="Hesapla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonKarPayiHesapla"
-        android:layout_below="@+id/editTextTutar"
-        android:layout_alignEnd="@+id/editTextTutar"
-        android:layout_alignStart="@+id/textView2" />
+            android:layout_weight="10" />
+
+        <Button
+            android:text="Temizle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonKarPayiTemizle"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
 
     <TextView
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
         android:layout_centerVertical="true"
+        android:gravity="center"
         android:id="@+id/textViewSonucKarPayi"
+        android:layout_alignStart="@+id/ll2"
+        android:layout_alignEnd="@+id/ll2"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:layout_margin="25dp" />
+        android:textSize="14sp" />
 
 
     <com.google.android.gms.ads.AdView

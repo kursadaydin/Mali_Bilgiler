@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Months;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -128,7 +129,7 @@ public class Calculater {
                 } else if (income < 60000 && income >= 27000) {
                     vergi = 4850 + (income - 27000) * 0.27;
                 } else if (income >= 60000.0) {
-                    vergi = 23750 + (income - 97000) * 0.35;
+                    vergi = 23750 + ((income - 60000) * 0.35);
                 }
                 break;
 
@@ -140,7 +141,7 @@ public class Calculater {
                 } else if (income < 66000 && income >= 29000) {
                     vergi = 5200 + (income - 29000) * 0.27;
                 } else if (income >= 66000.0) {
-                    vergi = 25990 + (income - 66000) * 0.35;
+                    vergi = 25990 + ((income - 66000) * 0.35);
                 }
                 break;
 
@@ -171,11 +172,12 @@ public class Calculater {
         Double vergi = 0.0;
         Double stopajTutari = brutTutar * 0.15;
         Double stopajSonrasi = brutTutar - stopajTutari;
+        Double istisnaSonrasi = stopajSonrasi - (stopajSonrasi / 2);
 
         switch (year) {
             case "2014":
-                if (stopajSonrasi >= 27000) {
-                    vergi = hesaplananVergiUcretDisi("2014", stopajSonrasi) - stopajTutari;
+                if (istisnaSonrasi >= 27000) {
+                    vergi = hesaplananVergiUcretDisi("2014", istisnaSonrasi) - stopajTutari;
                 } else {
                     vergi = stopajTutari;
                 }
@@ -183,8 +185,8 @@ public class Calculater {
                 break;
 
             case "2015":
-                if (stopajSonrasi >= 29000) {
-                    vergi = hesaplananVergiUcretDisi("2015", stopajSonrasi) - stopajTutari;
+                if (istisnaSonrasi >= 29000) {
+                    vergi = hesaplananVergiUcretDisi("2015", istisnaSonrasi) - stopajTutari;
                 } else {
                     vergi = stopajTutari;
                 }
@@ -193,8 +195,8 @@ public class Calculater {
 
 
             case "2016":
-                if (stopajSonrasi >= 30000) {
-                    vergi = hesaplananVergiUcretDisi("2016", stopajSonrasi) - stopajTutari;
+                if (istisnaSonrasi >= 30000) {
+                    vergi = hesaplananVergiUcretDisi("2016", istisnaSonrasi) - stopajTutari;
                 } else {
                     vergi = stopajTutari;
                 }
@@ -204,6 +206,9 @@ public class Calculater {
 
         }
 
+        Map<String, Double> map = new HashMap<>();
+        map.put("stopaj_tutari", stopajTutari);
+        map.put("nihai_vergi", vergi);
 
         return vergi;
 

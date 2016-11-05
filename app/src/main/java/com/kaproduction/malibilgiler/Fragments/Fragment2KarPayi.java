@@ -1,20 +1,26 @@
 package com.kaproduction.malibilgiler.Fragments;
 
+import android.app.Service;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
@@ -31,7 +37,7 @@ public class Fragment2KarPayi extends Fragment {
     Spinner spinnerYillarKarPayi;
     EditText editTextTutarKarPayi;
     TextView textViewSonucKarPayi;
-    Button buttonHesaplaKarPayi;
+    Button buttonHesaplaKarPayi, buttonTemizleKarPayi;
     String year;
     AdView adViewKarPayi;
 
@@ -82,6 +88,39 @@ public class Fragment2KarPayi extends Fragment {
     }
 
     public void generateComponents() {
+        RelativeLayout mainLayout = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutKarpayi);
+        InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
+
+        SoftKeyboard softKeyboard;
+        softKeyboard = new SoftKeyboard(mainLayout, im);
+        softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
+
+            @Override
+            public void onSoftKeyboardHide() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Code here will run in UI thread
+                    }
+                });
+            }
+
+            @Override
+            public void onSoftKeyboardShow() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Code here will run in UI thread
+                        editTextTutarKarPayi.setText("");
+                        textViewSonucKarPayi.setText("");
+                    }
+                });
+            }
+        });
+
+
+
+
 
         spinnerYillarKarPayi = (Spinner) getActivity().findViewById(R.id.spinnerYillarKarPayi);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
@@ -99,9 +138,19 @@ public class Fragment2KarPayi extends Fragment {
 
             }
         });
-        editTextTutarKarPayi = (EditText) getActivity().findViewById(R.id.editTextTutar);
-        textViewSonucKarPayi = (TextView) getActivity().findViewById(R.id.textViewTutarKarPayi);
+        editTextTutarKarPayi = (EditText) getActivity().findViewById(R.id.editTextTutarKarPayi);
+        textViewSonucKarPayi = (TextView) getActivity().findViewById(R.id.textViewSonucKarPayi);
         buttonHesaplaKarPayi = (Button) getActivity().findViewById(R.id.buttonKarPayiHesapla);
+        buttonTemizleKarPayi = (Button) getActivity().findViewById(R.id.buttonKarPayiTemizle);
+
+
+        buttonTemizleKarPayi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editTextTutarKarPayi.setText("");
+                textViewSonucKarPayi.setText("");
+            }
+        });
 
         buttonHesaplaKarPayi.setOnClickListener(new View.OnClickListener() {
             @Override

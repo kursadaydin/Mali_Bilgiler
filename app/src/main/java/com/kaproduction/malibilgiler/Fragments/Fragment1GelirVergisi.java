@@ -1,22 +1,31 @@
 package com.kaproduction.malibilgiler.Fragments;
 
+import android.app.Service;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.Pojo.Info;
 import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
@@ -40,13 +49,15 @@ public class Fragment1GelirVergisi extends Fragment {
     Spinner spinnerYillar;
     EditText editTextTutar;
     TextView textViewSonuc;
-    Button buttonHesapla;
+    Button buttonHesapla, buttonTemizle;
     String year;
     AdView adViewGelirVergisi;
 
     Calculater calculater;
 
     Double sonuc;
+
+    RelativeLayout relativeLayout;
 
 
 
@@ -92,10 +103,43 @@ public class Fragment1GelirVergisi extends Fragment {
 
     public void generateComponents() {
 
+        RelativeLayout mainLayout = (RelativeLayout) getActivity().findViewById(R.id.relativeLayout); // You must use the layout root
+        InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
+
+        SoftKeyboard softKeyboard;
+        softKeyboard = new SoftKeyboard(mainLayout, im);
+        softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
+
+            @Override
+            public void onSoftKeyboardHide() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Code here will run in UI thread
+                    }
+                });
+            }
+
+            @Override
+            public void onSoftKeyboardShow() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Code here will run in UI thread
+                        editTextTutar.setText("");
+                        textViewSonuc.setText("");
+                    }
+                });
+            }
+        });
+
+
+
         spinnerYillar = (Spinner) getActivity().findViewById(R.id.spinnerYillarGelirVergisi);
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYillar.setAdapter(adapter);
+
         spinnerYillar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -111,6 +155,8 @@ public class Fragment1GelirVergisi extends Fragment {
         editTextTutar = (EditText) getActivity().findViewById(R.id.editTextTutar);
         textViewSonuc = (TextView) getActivity().findViewById(R.id.textViewSonucGelirVergisi);
         buttonHesapla = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesapla);
+        buttonTemizle = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesaplaTemizle);
+
 
 
 
@@ -123,12 +169,20 @@ public class Fragment1GelirVergisi extends Fragment {
                     Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
                 } else {
 
-
+                    textViewSonuc.setText("");
                     final Double hesaplanacakTutar = Double.valueOf(editTextTutar.getText().toString());
-                    sonuc = calculater.hesaplananVergiUcret(year, hesaplanacakTutar);
+                    sonuc = calculater.hesaplananVergiUcretDisi(year, hesaplanacakTutar);
                     textViewSonuc.setText(year + " yılı için hesaplanan gelir vergisi " + sonuc + " TL dir.");
 
                 }
+            }
+        });
+
+        buttonTemizle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editTextTutar.setText("");
+                textViewSonuc.setText("");
             }
         });
 

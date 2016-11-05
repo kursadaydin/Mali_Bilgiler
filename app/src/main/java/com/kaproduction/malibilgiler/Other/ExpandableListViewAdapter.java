@@ -1,6 +1,7 @@
 package com.kaproduction.malibilgiler.Other;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,6 +72,7 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
         }
         TextView parent_textview = (TextView) convertview.findViewById(R.id.parent_txt);
         parent_textview.setTypeface(null, Typeface.BOLD);
+        parent_textview.setTextColor(Color.WHITE);
         parent_textview.setText(group_title);
         return convertview;
     }
@@ -85,9 +87,10 @@ public class ExpandableListViewAdapter extends BaseExpandableListAdapter {
             convertview = inflator.inflate(R.layout.expandable_child_layout, parentview,false);
         }
         ImageView imageView = (ImageView) convertview.findViewById(R.id.imageChild);
-        imageView.setImageResource(R.mipmap.ic_action_action_assignment_turned_in);
+        imageView.setImageResource(R.drawable.ic_action_ok);
 
         TextView child_textview = (TextView) convertview.findViewById(R.id.child_txt);
+        child_textview.setTextColor(Color.WHITE);
         child_textview.setText(child_title);
 
 

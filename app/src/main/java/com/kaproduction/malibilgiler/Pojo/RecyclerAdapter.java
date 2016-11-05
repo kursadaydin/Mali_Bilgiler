@@ -2,6 +2,7 @@ package com.kaproduction.malibilgiler.Pojo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(R.mipmap.ic_action_action_assignment_turned_in);
+        holder.imageView.setImageResource(R.drawable.ic_action_ok);
         holder.textView.setText(arrayList.get(position).getParent());
 
     }
@@ -72,6 +73,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             itemView.setOnClickListener(this);
             imageView = (ImageView) itemView.findViewById(R.id.recyler_image);
             textView = (TextView) itemView.findViewById(R.id.recylerText);
+            textView.setTextColor(Color.WHITE);
 
 
         }

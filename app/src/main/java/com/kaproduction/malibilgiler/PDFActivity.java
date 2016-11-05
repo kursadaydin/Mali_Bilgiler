@@ -118,7 +118,7 @@ public class PDFActivity extends AppCompatActivity  {
         String url = bundle.getString("url");
         setTitle(bundle.getString("parent"));
         mwebView = (WebView) findViewById(R.id.webView);
-        mwebView.setInitialScale(125);
+        mwebView.setInitialScale(200);
         WebSettings webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);

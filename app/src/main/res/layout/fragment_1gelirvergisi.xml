@@ -3,24 +3,31 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fragments_background"
+    android:id="@+id/relativeLayout">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textViewGelirVergisi"
         android:text="Gelir Vergisi Hesaplama"
+        android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        tools:textSize="30sp" />
 
     <TextView
         android:text="Yıl Seçimi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:gravity="left|center_vertical"
         android:padding="10dp"
         android:id="@+id/textView2"
         android:layout_alignTop="@+id/spinnerYillarGelirVergisi"
@@ -31,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:theme="@android:style/ThemeOverlay.Material.Dark"
         android:id="@+id/spinnerYillarGelirVergisi"
         android:layout_below="@+id/textViewGelirVergisi"
         android:layout_toEndOf="@+id/textView2"
@@ -40,6 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number|numberDecimal"
+        android:imeOptions="actionDone"
+        android:textColor="@color/colorWhite"
         android:layout_marginTop="17dp"
         android:id="@+id/editTextTutar"
         android:layout_below="@+id/spinnerYillarGelirVergisi"
@@ -50,30 +60,50 @@
         android:text="Tutar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
         android:padding="10dp"
+        android:gravity="left|center_vertical"
         android:id="@+id/textViewTutar"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/textView2" />
 
-    <Button
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll"
+        android:layout_below="@+id/editTextTutar"
+        android:layout_alignStart="@+id/textViewTutar"
+        android:layout_alignEnd="@+id/editTextTutar">
+
+        <Button
         android:text="Hesapla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonGelirVergisiHesapla"
-        android:layout_below="@+id/editTextTutar"
-        android:layout_alignStart="@+id/textViewTutar"
-        android:layout_alignEnd="@+id/editTextTutar" />
+            android:layout_weight="10" />
+
+        <Button
+            android:text="Temizle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonGelirVergisiHesaplaTemizle"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
     <TextView
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
         android:layout_centerVertical="true"
+        android:gravity="center"
         android:id="@+id/textViewSonucGelirVergisi"
-        android:layout_alignStart="@+id/buttonGelirVergisiHesapla"
-        android:layout_alignEnd="@+id/buttonGelirVergisiHesapla"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        android:layout_alignStart="@+id/ll"
+        android:layout_alignEnd="@+id/ll"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="14sp" />
 
 
     <com.google.android.gms.ads.AdView
