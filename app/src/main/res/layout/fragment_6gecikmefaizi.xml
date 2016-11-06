@@ -1,14 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fragments_background"
+    android:id="@+id/relativeLayoutGecikmeFaizi">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/textViewKapiciUcret"
+        android:text="Gecikme Faizi"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="Fargment6" />
+        android:textSize="24sp"
+        tools:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout1"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textViewKapiciUcret"
+        android:layout_alignStart="@+id/textViewKapiciUcret"
+        android:layout_alignEnd="@+id/textViewKapiciUcret">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewTarihSecimiGecikmeFaiziBaslangic"
+                android:gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:text="Başlangıç Tarihini Seçiniz :"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/baslangicTarihiGecikmeFaizi"
+                android:gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:textColor="@color/colorWhite"
+                android:enabled="false"
+
+                ></EditText>
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_datepicker"
+            android:background="@null"
+            android:id="@+id/imageButtonBaslangicTarihiGecikmeFaizi"
+            android:layout_marginLeft="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout2"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/linearlayout1"
+        android:layout_alignStart="@+id/textViewKapiciUcret"
+        android:layout_alignEnd="@+id/textViewKapiciUcret">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewTarihSecimiGecikmeFaiziOdeme"
+                android:gravity="left|center_vertical"
+                android:layout_weight="1"
+                android:text="Ödeme Tarihini Seçiniz :"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/odemeTarihiGecikmeFaizi"
+                android:gravity="center|center_horizontal"
+                android:layout_weight="1"
+                android:textColor="@color/colorWhite"
+                android:enabled="false"
+
+                ></EditText>
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_datepicker"
+            android:background="@null"
+            android:id="@+id/imageButtonOdemeTarihiGecikmeFaizi"
+            android:layout_marginLeft="50dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/linearlayout2"
+        android:layout_alignStart="@+id/textViewKapiciUcret"
+        android:layout_alignEnd="@+id/textViewKapiciUcret">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonGecikmeFaiziHesapla"
+            android:text="Hesapla" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tarihleriGosterGecikmeFaizi"
+            android:gravity="center|center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:enabled="false"
+
+            ></EditText>
+
+
+    </LinearLayout>
 
 </RelativeLayout>
