@@ -32,17 +32,16 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     private String mParam2;
 
 
-    static int gun;
-    static int ay;
-    static int yil = 0;
 
     ImageButton imageButtonBaslangicTarihiGecikmeFaizi, imageButtonOdemeTarihiGecikmeFaizi;
     Button buttonGecikmeFaiziHesapla;
 
-    static TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
-    static EditText baslangicTarihiGecikmeFaizi, odemeTarihiGecikmeFaizi;
+    TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
 
-    DatePickerDialog.OnDateSetListener datePickerFragment;
+    EditText baslangicTarihiGecikmeFaizi, odemeTarihiGecikmeFaizi;
+
+    static int ay, gun, yil;
+
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
         Fragment6GecikmeFaizi fragment = new Fragment6GecikmeFaizi();
@@ -115,12 +114,14 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                 DialogFragment baslangicTarihi = new DatePickerFragment();
                 baslangicTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
 
+                baslangicTarihiGecikmeFaizi.setText(gun + "/" + ay + "/" + yil);
                 break;
 
             case R.id.imageButtonOdemeTarihiGecikmeFaizi:
                 DialogFragment odemeTarihi = new DatePickerFragment();
                 odemeTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
 
+                odemeTarihiGecikmeFaizi.setText(gun + "/" + ay + "/" + yil);
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
@@ -143,29 +144,22 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
-            // Create a new instance of DatePickerDialog and return it
+
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
 
-            month = month + 1;
+            //Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
 
             gun = day;
-            ay = month;
+            ay = month + 1;
             yil = year;
 
 
-            baslangicTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
-            odemeTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
-
-
-            Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
         }
 
 
 
     }
-
 }
