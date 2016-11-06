@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     Button buttonGecikmeFaiziHesapla;
 
     static TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
+    static EditText baslangicTarihiGecikmeFaizi, odemeTarihiGecikmeFaizi;
 
     DatePickerDialog.OnDateSetListener datePickerFragment;
 
@@ -92,6 +94,9 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         textViewTarihSecimiGecikmeFaiziBaslangic = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziBaslangic);
         textViewTarihSecimiGecikmeFaiziOdeme = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziOdeme);
+
+        baslangicTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.baslangicTarihiGecikmeFaizi);
+        odemeTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.odemeTarihiGecikmeFaizi);
 
 
         // AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
@@ -151,18 +156,15 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             ay = month;
             yil = year;
 
-            textViewTarihSecimiGecikmeFaiziBaslangic.setText(day + "/" + month + "/" + year);
-            textViewTarihSecimiGecikmeFaiziOdeme.setText(day + "/" + month + "/" + year);
+
+            baslangicTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
+            odemeTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
 
 
             Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
         }
 
 
-        public void ekranaYaz(TextView v, int year, int month, int day) {
-            v.setText("Seçilen Tarih : " + day + "/" + month + "/" + year);
-
-        }
 
     }
 
