@@ -38,6 +38,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
 
+    DatePickerDialog.OnDateSetListener datePickerFragment;
+
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
         Fragment6GecikmeFaizi fragment = new Fragment6GecikmeFaizi();
         Bundle args = new Bundle();
@@ -141,7 +143,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             month = month + 1;
 
 
-            // Toast.makeText(getActivity().getApplicationContext(),day+"/"+month+"/"+year,Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
         }
 
 
