@@ -31,12 +31,14 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     private String mParam2;
 
 
-    int gun, ay, yil = 0;
+    static int gun;
+    static int ay;
+    static int yil = 0;
 
     ImageButton imageButtonBaslangicTarihiGecikmeFaizi, imageButtonOdemeTarihiGecikmeFaizi;
     Button buttonGecikmeFaiziHesapla;
 
-    TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
+    static TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
 
     DatePickerDialog.OnDateSetListener datePickerFragment;
 
@@ -99,6 +101,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View view) {
 
@@ -106,11 +109,13 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             case R.id.imageButtonBaslangicTarihiGecikmeFaizi:
                 DialogFragment baslangicTarihi = new DatePickerFragment();
                 baslangicTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
+
                 break;
 
             case R.id.imageButtonOdemeTarihiGecikmeFaizi:
                 DialogFragment odemeTarihi = new DatePickerFragment();
                 odemeTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
+
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
@@ -141,6 +146,13 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             // Do something with the date chosen by the user
 
             month = month + 1;
+
+            gun = day;
+            ay = month;
+            yil = year;
+
+            textViewTarihSecimiGecikmeFaiziBaslangic.setText(day + "/" + month + "/" + year);
+            textViewTarihSecimiGecikmeFaiziOdeme.setText(day + "/" + month + "/" + year);
 
 
             Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
