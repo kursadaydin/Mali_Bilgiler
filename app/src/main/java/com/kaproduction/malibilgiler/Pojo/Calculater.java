@@ -118,6 +118,38 @@ public class Calculater {
         return vergi;
     }
 
+    public int birOncekiAy(int kacinciAydayiz) {
+        int birOncekiAy = 0;
+        if (kacinciAydayiz >= 1) {
+            birOncekiAy = kacinciAydayiz - 1;
+            return birOncekiAy;
+        }
+        return 0;
+    }
+
+
+    public Double aylikHesaplananGelirVergisiUcret(String year, int kacinciAy, Double matrah) {
+
+        Double cariAy = 0.0;
+        Double birOncekiAy = 0.0;
+        Double sonuc = 0.0;
+        int i = birOncekiAy(kacinciAy);
+
+        if (i > 0) {
+            birOncekiAy = hesaplananVergiUcret(year, matrah);
+            cariAy = hesaplananVergiUcret(year, matrah);
+            sonuc = cariAy - birOncekiAy;
+            return sonuc;
+        } else {
+            cariAy = hesaplananVergiUcret(year, matrah);
+            return cariAy;
+        }
+
+
+    }
+
+
+
     public Double hesaplananVergiUcretDisi(String year, double income) {
         Double vergi = 0.0;
         switch (year) {
@@ -230,7 +262,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2014 - sgkIsci - issizlikIsci;
                 hesaplananGV = hesaplananVergiUcret("2014", gelirVergisiMatrahi);
                 damgaVergisi = asgariUcret2014 * (0.00759);
-                agi = asgariGecimIndirimiTutarlari(2014, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2014", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
                 break;
 
@@ -240,7 +272,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2015 - sgkIsci - issizlikIsci;
                 hesaplananGV = hesaplananVergiUcret("2015", gelirVergisiMatrahi);
                 damgaVergisi = asgariUcret2015 * (0.00759);
-                agi = asgariGecimIndirimiTutarlari(2015, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2015", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
 
                 break;
@@ -253,7 +285,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2016 - sgkIsci - issizlikIsci;
                 hesaplananGV = hesaplananVergiUcret("2015", gelirVergisiMatrahi);
                 damgaVergisi = asgariUcret2016 * (0.00759);
-                agi = asgariGecimIndirimiTutarlari(2016, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2016", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
 
                 break;
@@ -266,11 +298,11 @@ public class Calculater {
 
     }
 
-    private Double asgariGecimIndirimiTutarlari(int year, String medeniDurum) {
+    public Double asgariGecimIndirimiTutarlari(String year, String medeniDurum) {
         Double agiTutari = 0.0;
 
         switch (year) {
-            case 2014:
+            case "2014":
                 if (medeniDurum == "bekar") {
                     agiTutari = 80.33;
                 } else if (medeniDurum == "evli_es_calismayan_0_cocuk") {
@@ -298,10 +330,10 @@ public class Calculater {
                 } else if (medeniDurum == "evli_es_calisan_5_cocuk") {
                     agiTutari = 128.52;
                 }
+                return agiTutari;
 
-                break;
 
-            case 2015:
+            case "2015":
                 if (medeniDurum == "bekar") {
                     agiTutari = 90.11;
                 } else if (medeniDurum == "evli_es_calismayan_0_cocuk") {
@@ -330,9 +362,9 @@ public class Calculater {
                     agiTutari = 153.19;
                 }
 
-                break;
+                return agiTutari;
 
-            case 2016:
+            case "2016":
                 if (medeniDurum == "bekar") {
                     agiTutari = 123.53;
                 } else if (medeniDurum == "evli_es_calismayan_0_cocuk") {
@@ -361,7 +393,7 @@ public class Calculater {
                     agiTutari = 209.99;
                 }
 
-                break;
+                return agiTutari;
 
 
         }
@@ -385,7 +417,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2014 - sgkIsci - issizlikIsci;
                 hesaplananGV = 0.0;
                 damgaVergisi = 0.0;
-                agi = asgariGecimIndirimiTutarlari(2014, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2014", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
                 break;
 
@@ -395,7 +427,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2015 - sgkIsci - issizlikIsci;
                 hesaplananGV = 0.0;
                 damgaVergisi = 0.0;
-                agi = asgariGecimIndirimiTutarlari(2015, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2015", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
 
                 break;
@@ -408,7 +440,7 @@ public class Calculater {
                 gelirVergisiMatrahi = asgariUcret2016 - sgkIsci - issizlikIsci;
                 hesaplananGV = 0.0;
                 damgaVergisi = 0.0;
-                agi = asgariGecimIndirimiTutarlari(2016, "bekar");
+                agi = asgariGecimIndirimiTutarlari("2016", "bekar");
                 netUcret = gelirVergisiMatrahi - hesaplananGV - damgaVergisi + agi;
 
                 break;

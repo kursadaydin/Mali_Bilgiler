@@ -1,14 +1,342 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fragments_background"
+    android:id="@+id/relativeLayoutAsgariUcret">
 
-    <TextView
+    <ScrollView
+        android:id="@+id/svScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/containerLL"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAsgariUcret"
+                android:text="Asgari Ücret - 2016"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="24sp"
+                tools:textSize="30sp" />
+
+            <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="Fargment4" />
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout11"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/textViewAsgariUcret"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewSpinnerAy"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Ay Seçimi"
+                    android:textColor="@color/colorWhite" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerAySecimi"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:theme="@android:style/ThemeOverlay.Material.Dark"></Spinner>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout2"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/linearlayout11"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewAsgariUcretTuta"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Brüt Asgari Ücret"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextAsgariUcretTuta"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout3"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/linearlayout2"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewSigortaPrimi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Sigorta Primi (İşçi)"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextSigortaPrimi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout4"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/linearlayout3"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewIssizlikPrimi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="İşsizlik Primi (İşçi)"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextIssizlikPrimi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout5"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout4"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewGelirVergisiMatrahi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Aylık Matrah"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextGelirVergisiMatrahi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout6"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout5"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewGelirVergisiKumulatifMatrahi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Kümülatif Matrah"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextGelirVergisiKumulatifMatrahi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout7"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout6"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewHesaplananGelirVergisi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Hesaplanan Gelir Vergisi"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextHesaplanangelirVergisi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout8"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout7"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewHesaplananDamgaVergisi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Damga Vergisi"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextHesaplananDamgaVergisi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout9"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout8"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewAsgariGecimIndirimi"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Asgari Geçim İndirimi"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextAsgariGecimIndirimi"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearlayout10"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/linearlayout9"
+                android:layout_alignStart="@+id/textViewAsgariUcret"
+                android:layout_alignEnd="@+id/textViewAsgariUcret">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewNetOdenen"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1"
+                    android:text="Net Ödenen"
+                    android:textColor="@color/colorWhite" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextNetOdenen"
+                    android:gravity="center|center_horizontal"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:enabled="false"></EditText>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

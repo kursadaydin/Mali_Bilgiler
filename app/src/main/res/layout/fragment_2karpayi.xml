@@ -56,7 +56,7 @@
         android:layout_alignBottom="@+id/textViewTutarKarPayi" />
 
     <TextView
-        android:text="Tutar"
+        android:text="Brüt Kar Payı Tutarı"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"

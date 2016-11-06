@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,6 +59,8 @@ public class Fragment1GelirVergisi extends Fragment {
     Double sonuc;
 
     RelativeLayout relativeLayout;
+    RadioGroup radioGroup;
+    boolean booleanUcret = true;
 
 
 
@@ -133,6 +136,17 @@ public class Fragment1GelirVergisi extends Fragment {
             }
         });
 
+        radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if (checkedId == R.id.radio_ucret) {
+                    booleanUcret = true;
+                } else if (checkedId == R.id.radio_ucretdisi) {
+                    booleanUcret = false;
+                }
+            }
+        });
 
 
         spinnerYillar = (Spinner) getActivity().findViewById(R.id.spinnerYillarGelirVergisi);
@@ -171,9 +185,12 @@ public class Fragment1GelirVergisi extends Fragment {
 
                     textViewSonuc.setText("");
                     final Double hesaplanacakTutar = Double.valueOf(editTextTutar.getText().toString());
-                    sonuc = calculater.hesaplananVergiUcretDisi(year, hesaplanacakTutar);
+                    if (booleanUcret) {
+                        sonuc = calculater.hesaplananVergiUcret(year, hesaplanacakTutar);
+                    } else {
+                        sonuc = calculater.hesaplananVergiUcretDisi(year, hesaplanacakTutar);
+                    }
                     textViewSonuc.setText(year + " yılı için hesaplanan gelir vergisi " + sonuc + " TL dir.");
-
                 }
             }
         });
@@ -190,6 +207,17 @@ public class Fragment1GelirVergisi extends Fragment {
         adViewGelirVergisi = (AdView) getActivity().findViewById(R.id.adViewGelirVergisiHesapla);
         AdRequest adRequest = new AdRequest.Builder().build();
         adViewGelirVergisi.loadAd(adRequest);
+
+
+    }
+
+    public void gelirVergisiHesapla() {
+        if (booleanUcret) {
+
+        } else {
+
+        }
+
 
 
     }
