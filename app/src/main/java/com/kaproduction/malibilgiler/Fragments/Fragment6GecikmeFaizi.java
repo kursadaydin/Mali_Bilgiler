@@ -15,11 +15,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+
 import com.kaproduction.malibilgiler.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+
 
 /**
  * Created by reis on 04/11/16.
@@ -31,16 +32,15 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     private String mParam1;
     private String mParam2;
 
-
-
     ImageButton imageButtonBaslangicTarihiGecikmeFaizi, imageButtonOdemeTarihiGecikmeFaizi;
     Button buttonGecikmeFaiziHesapla;
 
     TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
 
-    EditText baslangicTarihiGecikmeFaizi, odemeTarihiGecikmeFaizi;
+    static EditText baslangicTarihiGecikmeFaizi;
+    static EditText odemeTarihiGecikmeFaizi;
 
-    static int ay, gun, yil;
+    ArrayList<Integer> listOfDateBaslangic, listOfDateOdeme;
 
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
@@ -54,16 +54,6 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     public Fragment6GecikmeFaizi() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -97,13 +87,36 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         baslangicTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.baslangicTarihiGecikmeFaizi);
         odemeTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.odemeTarihiGecikmeFaizi);
 
+        listOfDateBaslangic = new ArrayList<>();
+        listOfDateOdeme = new ArrayList<>();
+
+
+     /*   DatePickerFragment fragment = new DatePickerFragment();
+
+            if(imageButtonOdemeTarihiGecikmeFaizi.isPressed()){
+                listOfDateOdeme.addAll(fragment.getDate());
+                odemeTarihiGecikmeFaizi.setText(listOfDateOdeme.get(0)+"/"+listOfDateOdeme.get(1)+"/"+listOfDateOdeme.get(2));
+            }else if(imageButtonBaslangicTarihiGecikmeFaizi.isPressed()){
+                listOfDateBaslangic.addAll(fragment.getDate());
+                baslangicTarihiGecikmeFaizi.setText(listOfDateBaslangic.get(0)+"/"+listOfDateBaslangic.get(1)+"/"+listOfDateBaslangic.get(2));
+            }
+        if(imageButtonOdemeTarihiGecikmeFaizi.isPressed()){
+            DatePickerBaslangicFragment fragment1 = new DatePickerBaslangicFragment();
+            listOfDateOdeme.addAll(fragment1.getDate());
+            odemeTarihiGecikmeFaizi.setText(listOfDateOdeme.get(0)+"/"+listOfDateOdeme.get(1)+"/"+listOfDateOdeme.get(2));
+        }else if(imageButtonBaslangicTarihiGecikmeFaizi.isPressed()){
+            DatePickerBaslangicFragment fragment2 = new DatePickerBaslangicFragment();
+            listOfDateBaslangic.addAll(fragment2.getDate());
+            baslangicTarihiGecikmeFaizi.setText(listOfDateBaslangic.get(0)+"/"+listOfDateBaslangic.get(1)+"/"+listOfDateBaslangic.get(2));
+        }*/
+
+
+    }
+
 
         // AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
         // AdRequest adRequest = new AdRequest.Builder().build();
         // mAdView.loadAd(adRequest);
-
-
-    }
 
 
     @Override
@@ -111,21 +124,23 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.imageButtonBaslangicTarihiGecikmeFaizi:
-                DialogFragment baslangicTarihi = new DatePickerFragment();
-                baslangicTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
+                DialogFragment newFragment = new DatePickerBaslangicFragment();
+                newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
 
-                baslangicTarihiGecikmeFaizi.setText(gun + "/" + ay + "/" + yil);
+                //listOfDate = fragment.getDate();
+                //Toast.makeText(getActivity().getApplicationContext(),listOfDate.get(0)+"/"+listOfDate.get(1)+"/"+listOfDate.get(2),Toast.LENGTH_SHORT).show();
+
                 break;
 
             case R.id.imageButtonOdemeTarihiGecikmeFaizi:
-                DialogFragment odemeTarihi = new DatePickerFragment();
-                odemeTarihi.show(getActivity().getSupportFragmentManager(), "datePicker");
+                DialogFragment newFragment2 = new DatePickerOdemeFragment();
+                newFragment2.show(getActivity().getSupportFragmentManager(), "datePicker");
 
-                odemeTarihiGecikmeFaizi.setText(gun + "/" + ay + "/" + yil);
+                //listOfDate = fragment2.getDate();
+                //Toast.makeText(getActivity().getApplicationContext(),listOfDate.get(0)+"/"+listOfDate.get(1)+"/"+listOfDate.get(2),Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
-                Toast.makeText(getActivity().getApplicationContext(), "Hesapla", Toast.LENGTH_SHORT).show();
                 break;
 
 
@@ -133,8 +148,10 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     }
 
-    public static class DatePickerFragment extends DialogFragment
+
+    public static class DatePickerBaslangicFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
+        ArrayList<Integer> list;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -144,22 +161,82 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
+            list = new ArrayList<>();
 
+            // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-
-            //Toast.makeText(getActivity().getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-
-            gun = day;
-            ay = month + 1;
-            yil = year;
+            // Do something with the date chosen by the user
+            setDate(year, month + 1, day);
+            month = month + 1;
+            baslangicTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
 
 
         }
 
+        public ArrayList<Integer> setDate(int year, int month, int day) {
+
+            list.add(day);
+            list.add(month);
+            list.add(year);
+
+            return list;
+        }
+
+        public ArrayList<Integer> getDate() {
+
+            return list;
+        }
 
 
     }
+
+    public static class DatePickerOdemeFragment extends DialogFragment
+            implements DatePickerDialog.OnDateSetListener {
+        ArrayList<Integer> list;
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            list = new ArrayList<>();
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
+        }
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // Do something with the date chosen by the user
+            setDate(year, month + 1, day);
+            month = month + 1;
+
+            odemeTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
+
+
+        }
+
+        public ArrayList<Integer> setDate(int year, int month, int day) {
+
+            list.add(day);
+            list.add(month);
+            list.add(year);
+
+            return list;
+        }
+
+        public ArrayList<Integer> getDate() {
+
+            return list;
+        }
+
+
+    }
+
+
 }

@@ -18,15 +18,11 @@ import android.widget.TextView;
 
 import com.kaproduction.malibilgiler.Fragments.Fragment1GelirVergisi;
 import com.kaproduction.malibilgiler.Fragments.Fragment2KarPayi;
-import com.kaproduction.malibilgiler.Fragments.Fragment3Tahvil;
+import com.kaproduction.malibilgiler.Fragments.Fragment3Agi;
 import com.kaproduction.malibilgiler.Fragments.Fragment4AsgariUcret;
 import com.kaproduction.malibilgiler.Fragments.Fragment5KapiciUcret;
 import com.kaproduction.malibilgiler.Fragments.Fragment6GecikmeFaizi;
 import com.kaproduction.malibilgiler.Fragments.Fragment7GecikmeZammi;
-import com.kaproduction.malibilgiler.Fragments.Tab1;
-import com.kaproduction.malibilgiler.Fragments.Tab2;
-import com.kaproduction.malibilgiler.Fragments.Tab3;
-import com.kaproduction.malibilgiler.Fragments.Tab4;
 
 public class CalculateActivity extends AppCompatActivity {
 
@@ -43,6 +39,7 @@ public class CalculateActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     Bundle bundle;
+    long mDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +94,6 @@ public class CalculateActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * A placeholder fragment containing a simple view.
@@ -157,7 +153,7 @@ public class CalculateActivity extends AppCompatActivity {
                     fragment = Fragment2KarPayi.newInstance("", "");
                     break;
                 case CalculateActivity.TAB_7:
-                    fragment = Fragment3Tahvil.newInstance("", "");
+                    fragment = Fragment3Agi.newInstance("", "");
                     break;
                 case CalculateActivity.TAB_8:
                     fragment = Fragment4AsgariUcret.newInstance("", "");
@@ -195,7 +191,7 @@ public class CalculateActivity extends AppCompatActivity {
                     return "Kar Payı";
 
                 case CalculateActivity.TAB_7:
-                    return "Tahvil ";
+                    return "Asgari Geçim İndirimi ";
 
                 case CalculateActivity.TAB_8:
                     return "Asgari Ücret ";
