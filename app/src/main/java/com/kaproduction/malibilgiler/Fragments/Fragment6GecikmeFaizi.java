@@ -42,6 +42,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     ArrayList<Integer> listOfDateBaslangic, listOfDateOdeme;
 
+    Verilerim verilerim;
+
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
         Fragment6GecikmeFaizi fragment = new Fragment6GecikmeFaizi();
@@ -89,6 +91,12 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         listOfDateBaslangic = new ArrayList<>();
         listOfDateOdeme = new ArrayList<>();
+
+        verilerim = new DatePickerOdemeFragment();
+
+
+
+
 
 
      /*   DatePickerFragment fragment = new DatePickerFragment();
@@ -141,6 +149,11 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
+                // verilerim = new DatePickerOdemeFragment();
+                //  verilerim = (Verilerim) getActivity().getFragmentManager();
+                int i = verilerim.veriler().get(0);
+                Toast.makeText(getActivity().getApplicationContext(), i, Toast.LENGTH_LONG).show();
+
                 break;
 
 
@@ -194,7 +207,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     }
 
     public static class DatePickerOdemeFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
+            implements DatePickerDialog.OnDateSetListener, Verilerim {
         ArrayList<Integer> list;
 
         @Override
@@ -205,7 +218,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
-            list = new ArrayList<>();
+
 
             // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
@@ -213,30 +226,34 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            setDate(year, month + 1, day);
+
+
             month = month + 1;
+
+
+            list = new ArrayList<>();
+            list.add(day);
+            list.add(month);
+            list.add(year);
+            veriler();
 
             odemeTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
 
 
         }
 
-        public ArrayList<Integer> setDate(int year, int month, int day) {
 
-            list.add(day);
-            list.add(month);
-            list.add(year);
-
+        @Override
+        public ArrayList<Integer> veriler() {
             return list;
         }
-
-        public ArrayList<Integer> getDate() {
-
-            return list;
-        }
-
-
     }
 
+
+}
+
+interface Verilerim {
+
+    public ArrayList<Integer> veriler();
 
 }

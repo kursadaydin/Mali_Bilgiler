@@ -28,32 +28,32 @@
             <item
                 android:id="@+id/nav_gelir"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Gelir Vergisi Hesapla..." />
+                android:title="Gelir Vergisi" />
             <item
                 android:id="@+id/nav_karPayi"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Kar Payi Hesapla..." />
+                android:title="Kar Payı" />
 
             <item
                 android:id="@+id/nav_tahvil"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Tahvil Hesapla..." />
+                android:title="Asgari Geçim İndirimi" />
             <item
                 android:id="@+id/nav_asgariUcret"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Net Asgari Ücret Hesapla..." />
+                android:title="Net Asgari Ücret " />
             <item
                 android:id="@+id/nav_kapiciUcret"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Net Kapıcı Ücretini Hesapla..." />
+                android:title="Net Kapıcı Ücreti" />
             <item
                 android:id="@+id/nav_gecikmeFaizi"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Gecikme Faizini Hesapla..." />
+                android:title="Gecikme Faizi" />
             <item
                 android:id="@+id/nav_gecikmeZammi"
                 android:icon="@mipmap/ic_action_action_assignment_turned_in"
-                android:title="Gecikme Zammını Hesapla..." />
+                android:title="Gecikme Zammı" />
         </menu>
     </item>
 

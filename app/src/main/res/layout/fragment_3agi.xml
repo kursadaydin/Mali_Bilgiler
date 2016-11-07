@@ -1,14 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fragments_background"
+    android:id="@+id/relativeLayoutAgi">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/textViewAgi"
+        android:text="Asgari Geçim İndirimi"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:text="Fargment3" />
+        android:textSize="24sp"
+        tools:textSize="30sp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewMedeniDurum"
+        android:text="Medeni Durum"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_below="@+id/textViewAgi"
+        android:layout_alignStart="@+id/linearlayout111"
+        android:layout_alignEnd="@+id/linearlayout111"
+        android:textSize="20sp"
+        tools:textSize="22sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupMedeniDurum"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/textViewMedeniDurum"
+        android:layout_alignStart="@+id/textViewAgi"
+        android:layout_alignEnd="@+id/textViewAgi">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonBekar"
+            android:text="Bekar"
+
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonEvli"
+            android:text="Evli"
+            android:checked="true" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewEscalismaDurumu"
+        android:text="Eş Çalışma Durumu"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_below="@+id/radioGroupMedeniDurum"
+        android:layout_alignStart="@+id/linearlayout111"
+        android:layout_alignEnd="@+id/linearlayout111"
+        android:textSize="20sp"
+        tools:textSize="22sp" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupEsCalismaDurumu"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/textViewEscalismaDurumu"
+        android:layout_alignStart="@+id/textViewAgi"
+        android:layout_alignEnd="@+id/textViewAgi">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonEsCalismaEvet"
+            android:text="Evet"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonEsCalismaHayir"
+            android:text="Hayır" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewCocukSayisi"
+        android:text="Çocuk Sayısı"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:layout_below="@+id/radioGroupEsCalismaDurumu"
+        android:layout_alignStart="@+id/linearlayout111"
+        android:layout_alignEnd="@+id/linearlayout111"
+        android:textSize="20sp"
+        tools:textSize="22sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupCocukSayisi"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/textViewCocukSayisi"
+        android:layout_alignStart="@+id/textViewAgi"
+        android:layout_alignEnd="@+id/textViewAgi">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton0cocuk"
+            android:checked="true"
+            android:text="0" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton1cocuk"
+            android:text="1" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton2cocuk"
+            android:text="2" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton3cocuk"
+            android:text="3" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton4cocuk"
+            android:text="4" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton5cocuk"
+            android:text="5" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonAgiHesapla"
+        android:text="Göster"
+        android:layout_alignStart="@+id/textViewAgi"
+        android:layout_alignEnd="@+id/textViewAgi"
+        android:layout_below="@+id/radioGroupCocukSayisi" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAgiGoster"
+        android:layout_alignStart="@+id/textViewAgi"
+        android:layout_alignEnd="@+id/textViewAgi"
+        android:layout_below="@+id/buttonAgiHesapla"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
 
 </RelativeLayout>
