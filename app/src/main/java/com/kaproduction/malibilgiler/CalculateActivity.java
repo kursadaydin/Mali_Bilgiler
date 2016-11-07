@@ -22,7 +22,6 @@ import com.kaproduction.malibilgiler.Fragments.Fragment3Agi;
 import com.kaproduction.malibilgiler.Fragments.Fragment4AsgariUcret;
 import com.kaproduction.malibilgiler.Fragments.Fragment5KapiciUcret;
 import com.kaproduction.malibilgiler.Fragments.Fragment6GecikmeFaizi;
-import com.kaproduction.malibilgiler.Fragments.Fragment7GecikmeZammi;
 
 public class CalculateActivity extends AppCompatActivity {
 
@@ -32,7 +31,6 @@ public class CalculateActivity extends AppCompatActivity {
     private static final int TAB_8 = 3;
     private static final int TAB_9 = 4;
     private static final int TAB_10 = 5;
-    private static final int TAB_11 = 6;
 
     /* -------------------------------------*/
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -164,9 +162,6 @@ public class CalculateActivity extends AppCompatActivity {
                 case CalculateActivity.TAB_10:
                     fragment = Fragment6GecikmeFaizi.newInstance("", "");
                     break;
-                case CalculateActivity.TAB_11:
-                    fragment = Fragment7GecikmeZammi.newInstance("", "");
-                    break;
                 default:
                     break;
             }
@@ -177,7 +172,7 @@ public class CalculateActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 7;
+            return 6;
         }
 
         @Override
@@ -202,8 +197,6 @@ public class CalculateActivity extends AppCompatActivity {
                 case CalculateActivity.TAB_10:
                     return "Gecikme Faizi";
 
-                case CalculateActivity.TAB_11:
-                    return "Gecikme Zammı";
 
                 default:
                     break;

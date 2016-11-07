@@ -96,11 +96,9 @@ public class Fragment4AsgariUcret extends Fragment implements AdapterView.OnItem
         spinnerAySecimi.setOnItemSelectedListener(this);
 
 
-
-
-        //  AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
-        //  AdRequest adRequest = new AdRequest.Builder().build();
-        //  mAdView.loadAd(adRequest);
+        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewAsgariUcret);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
     }

@@ -78,7 +78,7 @@ public class ExpandableListViewData {
         gecikme_zammi.add("02.03.2005 - 20.04.2006 tarihleri arasında :%3");
         gecikme_zammi.add("21.04.2006 - 18.11.2009 tarihleri arasında :%2,5");
         gecikme_zammi.add("19.11.2009 - 18.11.2010 tarihleri arasında :%1,95");
-        gecikme_zammi.add("19.10.2010 tarihinden itibaren :%1,44");
+        gecikme_zammi.add("19.10.2010 tarihinden itibaren :%1,40");
 
 
         List<String> fatura_siniri = new ArrayList<>();

@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity
             i5.putExtra("TAB_ID", 1);
             startActivity(i5);
 
-        } else if (id == R.id.nav_tahvil) {
+        } else if (id == R.id.nav_agi) {
             Intent i6 = new Intent(this, CalculateActivity.class);
             i6.putExtra("TAB_ID", 2);
             startActivity(i6);
@@ -198,11 +198,6 @@ public class MainActivity extends AppCompatActivity
             Intent i8 = new Intent(this, CalculateActivity.class);
             i8.putExtra("TAB_ID", 5);
             startActivity(i8);
-
-        } else if (id == R.id.nav_gecikmeZammi) {
-            Intent i9 = new Intent(this, CalculateActivity.class);
-            i9.putExtra("TAB_ID", 6);
-            startActivity(i9);
 
         } else if (id == R.id.nav_paylas) {
             sendIntent();

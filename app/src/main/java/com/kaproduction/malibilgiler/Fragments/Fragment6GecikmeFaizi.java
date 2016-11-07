@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
@@ -42,7 +44,10 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     ImageButton imageButtonBaslangicTarihiGecikmeFaizi, imageButtonOdemeTarihiGecikmeFaizi;
     Button buttonGecikmeFaiziHesapla;
 
-    TextView textViewTarihSecimiGecikmeFaiziBaslangic, textViewTarihSecimiGecikmeFaiziOdeme;
+    static TextView textViewTarihSecimiGecikmeFaiziBaslangic;
+    static TextView textViewTarihSecimiGecikmeFaiziOdeme;
+    TextView textViewAyGunGoster, textViewOranGoster, textViewTutarGoster;
+    EditText editTextGecikmeFaizi;
 
     static EditText baslangicTarihiGecikmeFaizi;
     static EditText odemeTarihiGecikmeFaizi;
@@ -59,6 +64,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
     Date start, end;
     Map<String, Integer> fark;
+    int ayFarki, gunFarki;
 
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
@@ -102,18 +108,26 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         textViewTarihSecimiGecikmeFaiziBaslangic = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziBaslangic);
         textViewTarihSecimiGecikmeFaiziOdeme = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziOdeme);
 
+        textViewAyGunGoster = (TextView) getActivity().findViewById(R.id.textViewAyGunGoster);
+        textViewOranGoster = (TextView) getActivity().findViewById(R.id.textViewOranGoster);
+        textViewTutarGoster = (TextView) getActivity().findViewById(R.id.textViewTutarGoster);
+
+
+        editTextGecikmeFaizi = (EditText) getActivity().findViewById(R.id.editTextGecikmeFaizi);
 
         calculater = new Calculater();
 
         fark = new HashMap<>();
 
 
+        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewGecikmeZammi);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
 
 
-        // AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
-        // AdRequest adRequest = new AdRequest.Builder().build();
-        // mAdView.loadAd(adRequest);
+
 
 
     @Override
@@ -135,34 +149,53 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
             case R.id.buttonGecikmeFaiziHesapla:
 
-                String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
-                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    start = formatter.parse(baslangic);
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                if (editTextGecikmeFaizi.getText().length() == 0) {
+                    Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
+                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        start = formatter.parse(baslangic);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    String odeme = odeme_gun + "/" + odeme_ay + "/" + odeme_yil;
+                    DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                    try {
+                        end = format.parse(odeme);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    fark = calculater.getFarkTarih(start, end);
+
+                    // Toast.makeText(getActivity().getApplicationContext(), "2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ", Toast.LENGTH_LONG).show();
+
+                    ayFarki = fark.get("farkay");
+                    gunFarki = fark.get("farkgun");
+
+                    textViewAyGunGoster.setText("2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ");
+                    textViewOranGoster.setText("Toplam Oran :" + Math.round(ayFarki * 1.4));
+                    long result = toplamTutarHesapla(editTextGecikmeFaizi.getText().toString(), 1.4);
+
+                    textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + result);
+
                 }
-
-                String odeme = odeme_gun + "/" + odeme_ay + "/" + odeme_yil;
-                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    end = format.parse(odeme);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                fark = calculater.getFarkTarih(start, end);
-
-                Toast.makeText(getActivity().getApplicationContext(), "2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ", Toast.LENGTH_LONG).show();
-
-
 
 
                 break;
-
-
         }
+    }
 
+    public long toplamTutarHesapla(String tutar, Double oran) {
+        long result = 0;
+        Double rate = oran / 100;
+        result = Math.round(Long.parseLong(tutar) * ((1 + rate)));
+
+
+        return result;
     }
 
 
@@ -194,7 +227,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             baslangic_yil = year;
 
             // Toast.makeText(getActivity().getApplicationContext(),"Vade tarihi : "+baslangic_gun+"/"+baslangic_ay+"/"+baslangic_yil+" olarak seçildi",Toast.LENGTH_SHORT).show();
-            // baslangicTarihiGecikmeFaizi.setText("Vade tarihi : "+baslangic_gun+"/"+baslangic_ay+"/"+baslangic_yil+" olarak seçildi");
+            textViewTarihSecimiGecikmeFaiziBaslangic.setText("Vade tarihi : " + baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil + " olarak seçildi");
 
 
         }
@@ -232,7 +265,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             odeme_gun = day;
             odeme_ay = month;
             odeme_yil = year;
-            // odemeTarihiGecikmeFaizi.setText("Ödeme tarihi : "+odeme_gun+"/"+odeme_ay+"/"+odeme_yil+" olarak seçildi");
+            textViewTarihSecimiGecikmeFaiziOdeme.setText("Ödeme tarihi : " + odeme_gun + "/" + odeme_ay + "/" + odeme_yil + " olarak seçildi");
             //Toast.makeText(getActivity().getApplicationContext(),"Ödeme tarihi : "+odeme_gun+"/"+odeme_ay+"/"+odeme_yil+" olarak seçildi",Toast.LENGTH_SHORT).show();
 
         }

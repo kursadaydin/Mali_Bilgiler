@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.R;
 
@@ -167,14 +169,9 @@ public class Fragment3Agi extends Fragment {
         });
 
 
-
-
-
-
-
-        //   AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewTab1);
-        //   AdRequest adRequest = new AdRequest.Builder().build();
-        //   mAdView.loadAd(adRequest);
+        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewAgiHesapla);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
     }
