@@ -16,10 +16,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -40,9 +47,18 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     static EditText baslangicTarihiGecikmeFaizi;
     static EditText odemeTarihiGecikmeFaizi;
 
-    ArrayList<Integer> listOfDateBaslangic, listOfDateOdeme;
+    Calculater calculater;
 
-    Verilerim verilerim;
+    public static int baslangic_gun = 0;
+    public static int baslangic_ay = 0;
+    public static int baslangic_yil = 0;
+
+    public static int odeme_gun = 0;
+    public static int odeme_ay = 0;
+    public static int odeme_yil = 0;
+
+    Date start, end;
+    Map<String, Integer> fark;
 
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
@@ -86,37 +102,10 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         textViewTarihSecimiGecikmeFaiziBaslangic = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziBaslangic);
         textViewTarihSecimiGecikmeFaiziOdeme = (TextView) getActivity().findViewById(R.id.textViewTarihSecimiGecikmeFaiziOdeme);
 
-        baslangicTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.baslangicTarihiGecikmeFaizi);
-        odemeTarihiGecikmeFaizi = (EditText) getActivity().findViewById(R.id.odemeTarihiGecikmeFaizi);
 
-        listOfDateBaslangic = new ArrayList<>();
-        listOfDateOdeme = new ArrayList<>();
+        calculater = new Calculater();
 
-        verilerim = new DatePickerOdemeFragment();
-
-
-
-
-
-
-     /*   DatePickerFragment fragment = new DatePickerFragment();
-
-            if(imageButtonOdemeTarihiGecikmeFaizi.isPressed()){
-                listOfDateOdeme.addAll(fragment.getDate());
-                odemeTarihiGecikmeFaizi.setText(listOfDateOdeme.get(0)+"/"+listOfDateOdeme.get(1)+"/"+listOfDateOdeme.get(2));
-            }else if(imageButtonBaslangicTarihiGecikmeFaizi.isPressed()){
-                listOfDateBaslangic.addAll(fragment.getDate());
-                baslangicTarihiGecikmeFaizi.setText(listOfDateBaslangic.get(0)+"/"+listOfDateBaslangic.get(1)+"/"+listOfDateBaslangic.get(2));
-            }
-        if(imageButtonOdemeTarihiGecikmeFaizi.isPressed()){
-            DatePickerBaslangicFragment fragment1 = new DatePickerBaslangicFragment();
-            listOfDateOdeme.addAll(fragment1.getDate());
-            odemeTarihiGecikmeFaizi.setText(listOfDateOdeme.get(0)+"/"+listOfDateOdeme.get(1)+"/"+listOfDateOdeme.get(2));
-        }else if(imageButtonBaslangicTarihiGecikmeFaizi.isPressed()){
-            DatePickerBaslangicFragment fragment2 = new DatePickerBaslangicFragment();
-            listOfDateBaslangic.addAll(fragment2.getDate());
-            baslangicTarihiGecikmeFaizi.setText(listOfDateBaslangic.get(0)+"/"+listOfDateBaslangic.get(1)+"/"+listOfDateBaslangic.get(2));
-        }*/
+        fark = new HashMap<>();
 
 
     }
@@ -135,8 +124,6 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                 DialogFragment newFragment = new DatePickerBaslangicFragment();
                 newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
 
-                //listOfDate = fragment.getDate();
-                //Toast.makeText(getActivity().getApplicationContext(),listOfDate.get(0)+"/"+listOfDate.get(1)+"/"+listOfDate.get(2),Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -144,15 +131,32 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                 DialogFragment newFragment2 = new DatePickerOdemeFragment();
                 newFragment2.show(getActivity().getSupportFragmentManager(), "datePicker");
 
-                //listOfDate = fragment2.getDate();
-                //Toast.makeText(getActivity().getApplicationContext(),listOfDate.get(0)+"/"+listOfDate.get(1)+"/"+listOfDate.get(2),Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
-                // verilerim = new DatePickerOdemeFragment();
-                //  verilerim = (Verilerim) getActivity().getFragmentManager();
-                int i = verilerim.veriler().get(0);
-                Toast.makeText(getActivity().getApplicationContext(), i, Toast.LENGTH_LONG).show();
+
+                String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    start = formatter.parse(baslangic);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                String odeme = odeme_gun + "/" + odeme_ay + "/" + odeme_yil;
+                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    end = format.parse(odeme);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                fark = calculater.getFarkTarih(start, end);
+
+                Toast.makeText(getActivity().getApplicationContext(), "2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ", Toast.LENGTH_LONG).show();
+
+
+
 
                 break;
 
@@ -182,32 +186,26 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
-            setDate(year, month + 1, day);
+
             month = month + 1;
-            baslangicTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
+
+            baslangic_gun = day;
+            baslangic_ay = month;
+            baslangic_yil = year;
+
+            // Toast.makeText(getActivity().getApplicationContext(),"Vade tarihi : "+baslangic_gun+"/"+baslangic_ay+"/"+baslangic_yil+" olarak seçildi",Toast.LENGTH_SHORT).show();
+            // baslangicTarihiGecikmeFaizi.setText("Vade tarihi : "+baslangic_gun+"/"+baslangic_ay+"/"+baslangic_yil+" olarak seçildi");
 
 
         }
 
-        public ArrayList<Integer> setDate(int year, int month, int day) {
 
-            list.add(day);
-            list.add(month);
-            list.add(year);
-
-            return list;
-        }
-
-        public ArrayList<Integer> getDate() {
-
-            return list;
-        }
 
 
     }
 
     public static class DatePickerOdemeFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener, Verilerim {
+            implements DatePickerDialog.OnDateSetListener {
         ArrayList<Integer> list;
 
         @Override
@@ -231,29 +229,17 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
             month = month + 1;
 
 
-            list = new ArrayList<>();
-            list.add(day);
-            list.add(month);
-            list.add(year);
-            veriler();
-
-            odemeTarihiGecikmeFaizi.setText(day + "/" + month + "/" + year);
-
+            odeme_gun = day;
+            odeme_ay = month;
+            odeme_yil = year;
+            // odemeTarihiGecikmeFaizi.setText("Ödeme tarihi : "+odeme_gun+"/"+odeme_ay+"/"+odeme_yil+" olarak seçildi");
+            //Toast.makeText(getActivity().getApplicationContext(),"Ödeme tarihi : "+odeme_gun+"/"+odeme_ay+"/"+odeme_yil+" olarak seçildi",Toast.LENGTH_SHORT).show();
 
         }
 
 
-        @Override
-        public ArrayList<Integer> veriler() {
-            return list;
-        }
     }
 
 
 }
 
-interface Verilerim {
-
-    public ArrayList<Integer> veriler();
-
-}
