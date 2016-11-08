@@ -88,9 +88,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        AdView mAdView = (AdView) findViewById(R.id.adViewMainActivity);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
     }
 

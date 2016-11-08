@@ -174,10 +174,6 @@ public class Fragment3Agi extends Fragment {
         });
 
 
-        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewAgiHesapla);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
 
     }
 

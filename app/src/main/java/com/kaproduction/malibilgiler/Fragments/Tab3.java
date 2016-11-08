@@ -88,13 +88,16 @@ public class Tab3 extends Fragment implements SearchView.OnQueryTextListener{
             AdView mAdView = new AdView(getActivity());
             mAdView.setAdUnitId("ca-app-pub-5654718909401990/5816354664");
             mAdView.setAdSize(AdSize.BANNER);
-            RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.content_main);
+            RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.content_main_tab3);
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+            lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            mAdView.setLayoutParams(lp);
             rr.addView(mAdView);
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
-
-
-
 
             return layout;
         }

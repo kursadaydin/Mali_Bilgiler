@@ -93,12 +93,10 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
         spinnerYilSecimi.setOnItemSelectedListener(this);
 
 
-        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewKapiciUcret);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
 
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

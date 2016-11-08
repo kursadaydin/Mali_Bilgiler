@@ -90,13 +90,16 @@ public class Tab2 extends Fragment implements SearchView.OnQueryTextListener{
             AdView mAdView = new AdView(getActivity());
             mAdView.setAdUnitId("ca-app-pub-5654718909401990/4339621469");
             mAdView.setAdSize(AdSize.BANNER);
-            LinearLayout llAdMobTab2 = (LinearLayout) layout.findViewById(R.id.llAdMobTab2);
-            llAdMobTab2.addView(mAdView);
+            RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.content_main_tab2);
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                    RelativeLayout.LayoutParams.WRAP_CONTENT,
+                    RelativeLayout.LayoutParams.WRAP_CONTENT);
+            lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            mAdView.setLayoutParams(lp);
+            rr.addView(mAdView);
             AdRequest adRequest = new AdRequest.Builder().build();
             mAdView.loadAd(adRequest);
-
-
-
 
             return layout;
         }

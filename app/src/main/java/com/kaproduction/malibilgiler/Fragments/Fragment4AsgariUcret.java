@@ -17,6 +17,7 @@ import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
@@ -259,17 +260,26 @@ public class Fragment4AsgariUcret extends Fragment implements AdapterView.OnItem
 
     public void getSonuclar(String year, long i) {
         editTextAsgariUcretTutar.setText(getBrutAsgariUcret(year).toString());
-        editTextSigortaPrimi.setText(Math.round(getSGKPrim(year)) + " TL");
-        editTextIssizlikPrimi.setText(Math.round((getIssizlikSigortasi(year))) + " TL");
-        editTextGelirVergisiMatrahi.setText(Math.round(getGelirVergisiMatrahi(year)) + " TL");
-        editTextGelirVergisiKumulatifMatrahi.setText(Math.round(getKumulatifMatrah(year, i)) + " TL");
-        editTextHesaplanangelirVergisi.setText(Math.round(getHesaplananGelirVergisi(year, i)) + " TL");
-        editTextHesaplananDamgaVergisi.setText(Math.round(getDamgaVergisi(year)) + " TL");
-        editTextAsgariGecimIndirimi.setText(Math.round(getAsgariGecimIndirimi(year, "bekar")) + " TL");
-        editTextNetOdenen.setText(Math.round(getNetOdenen(year, "bekar", i)) + " TL");
+        editTextSigortaPrimi.setText(get2digit(getSGKPrim(year)) + " TL");
+        editTextIssizlikPrimi.setText(get2digit((getIssizlikSigortasi(year))) + " TL");
+        editTextGelirVergisiMatrahi.setText(get2digit(getGelirVergisiMatrahi(year)) + " TL");
+        editTextGelirVergisiKumulatifMatrahi.setText(get2digit(getKumulatifMatrah(year, i)) + " TL");
+        editTextHesaplanangelirVergisi.setText(get2digit(getHesaplananGelirVergisi(year, i)) + " TL");
+        editTextHesaplananDamgaVergisi.setText(get2digit(getDamgaVergisi(year)) + " TL");
+        editTextAsgariGecimIndirimi.setText(get2digit(getAsgariGecimIndirimi(year, "bekar")) + " TL");
+        editTextNetOdenen.setText(get2digit(getNetOdenen(year, "bekar", i)) + " TL");
 
 
     }
+
+    public Double get2digit(Double result) {
+        Double sonuc = 0.0;
+        BigDecimal bd = new BigDecimal(result);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        sonuc = bd.doubleValue();
+        return sonuc;
+    }
+
 
 
     @Override

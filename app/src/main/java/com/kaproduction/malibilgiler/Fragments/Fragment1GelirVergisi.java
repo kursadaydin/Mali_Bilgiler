@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
@@ -93,6 +95,21 @@ public class Fragment1GelirVergisi extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_1gelirvergisi, container, false);
+
+        AdView mAdView = new AdView(getActivity());
+        mAdView.setAdUnitId("ca-app-pub-5654718909401990/7585635869");
+        mAdView.setAdSize(AdSize.BANNER);
+        RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayout);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mAdView.setLayoutParams(lp);
+        rr.addView(mAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         return layout;
     }
@@ -204,9 +221,6 @@ public class Fragment1GelirVergisi extends Fragment {
         });
 
 
-        adViewGelirVergisi = (AdView) getActivity().findViewById(R.id.adViewGelirVergisiHesapla);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adViewGelirVergisi.loadAd(adRequest);
 
 
     }

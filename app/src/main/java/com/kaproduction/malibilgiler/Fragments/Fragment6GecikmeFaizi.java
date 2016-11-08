@@ -145,14 +145,6 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         });
 
 
-
-
-
-
-        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewGecikmeZammi);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
     }
 
 

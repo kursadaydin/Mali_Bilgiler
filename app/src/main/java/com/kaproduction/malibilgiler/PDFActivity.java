@@ -53,6 +53,7 @@ public class PDFActivity extends AppCompatActivity  {
     private CoordinatorLayout coord;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,19 @@ public class PDFActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         // getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
         coord = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutPDFActivity);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-5654718909401990/9642621862");
+
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                requestNewInterstitial();
+            }
+        });
+
+
 
 
         mLevel = START_LEVEL;
@@ -90,6 +104,15 @@ public class PDFActivity extends AppCompatActivity  {
 
     }
 
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -111,6 +134,16 @@ public class PDFActivity extends AppCompatActivity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+
+            super.onBackPressed();
+        }
     }
 
     private void loadURL() {
