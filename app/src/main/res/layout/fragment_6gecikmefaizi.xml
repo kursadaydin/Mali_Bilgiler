@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linearlayoutGecikmeFaizi3"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/linearlayoutGecikmeFaizi2"
         android:layout_alignStart="@+id/textViewGecikmeFaizi"
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
@@ -131,7 +131,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/linearlayoutGecikmeFaizi4"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/linearlayoutGecikmeFaizi3"
         android:layout_alignStart="@+id/textViewGecikmeFaizi"
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
@@ -146,17 +146,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewAyGunGoster" />
+            android:id="@+id/textViewAyGunGoster"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewOranGoster" />
+            android:id="@+id/textViewOranGoster"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewTutarGoster" />
+            android:id="@+id/textViewTutarGoster"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center" />
 
 
     </LinearLayout>
