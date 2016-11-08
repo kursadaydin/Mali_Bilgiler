@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.R;
@@ -77,6 +78,21 @@ public class Fragment3Agi extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_3agi, container, false);
+        AdView mAdView = new AdView(getActivity());
+        mAdView.setAdUnitId("ca-app-pub-5654718909401990/7328283860");
+        mAdView.setAdSize(AdSize.BANNER);
+        RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutAgi);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mAdView.setLayoutParams(lp);
+        rr.addView(mAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 
         return layout;
     }

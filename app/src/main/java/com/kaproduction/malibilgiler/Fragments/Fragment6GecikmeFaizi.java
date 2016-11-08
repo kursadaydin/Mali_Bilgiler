@@ -14,11 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
@@ -94,6 +96,22 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_6gecikmefaizi, container, false);
+
+        AdView mAdView = new AdView(getActivity());
+        mAdView.setAdUnitId("ca-app-pub-5654718909401990/2758483468");
+        mAdView.setAdSize(AdSize.BANNER);
+        RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutGecikmeFaizi);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        mAdView.setLayoutParams(lp);
+        rr.addView(mAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 
         return layout;
     }
