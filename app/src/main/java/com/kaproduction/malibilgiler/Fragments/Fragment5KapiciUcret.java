@@ -15,6 +15,8 @@ import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
+import java.math.BigDecimal;
+
 /**
  * Created by reis on 04/11/16.
  */
@@ -240,12 +242,22 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
     }
 
     public void getSonuclar(String year, long i) {
-        editTextKapiciUcretTutar.setText(getBrutAsgariUcret(year).toString());
-        editTextSigortaPrimiKapici.setText(Math.round(getSGKPrim(year)) + " TL");
-        editTextIssizlikPrimiKapici.setText(Math.round((getIssizlikSigortasi(year))) + " TL");
-        editTextNetOdenenKapici.setText(Math.round(getNetOdenen(year, i)) + " TL");
+
+        editTextKapiciUcretTutar.setText(get2digit(getBrutAsgariUcret(year)).toString());
+        editTextSigortaPrimiKapici.setText(get2digit(getSGKPrim(year)) + " TL");
+        editTextIssizlikPrimiKapici.setText(get2digit((getIssizlikSigortasi(year))) + " TL");
+        editTextNetOdenenKapici.setText(get2digit(getNetOdenen(year, i)) + " TL");
 
 
     }
+
+    public Double get2digit(Double result) {
+        Double sonuc = 0.0;
+        BigDecimal bd = new BigDecimal(result);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        sonuc = bd.doubleValue();
+        return sonuc;
+    }
+
 
 }

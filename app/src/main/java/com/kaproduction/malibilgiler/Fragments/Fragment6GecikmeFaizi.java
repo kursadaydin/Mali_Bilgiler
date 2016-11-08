@@ -21,6 +21,7 @@ import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -177,10 +178,10 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                     gunFarki = fark.get("farkgun");
 
                     textViewAyGunGoster.setText("2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ");
-                    textViewOranGoster.setText("Toplam Oran :" + Math.round(ayFarki * 1.4));
-                    long result = toplamTutarHesapla(editTextGecikmeFaizi.getText().toString(), 1.4);
+                    textViewOranGoster.setText("Toplam Oran :" + get2digit(ayFarki * 1.4));
+                    Double result = toplamTutarHesapla(Double.parseDouble(editTextGecikmeFaizi.getText().toString()), 1.4);
 
-                    textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + result);
+                    textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + get2digit((double) result));
 
                 }
 
@@ -189,13 +190,24 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         }
     }
 
-    public long toplamTutarHesapla(String tutar, Double oran) {
-        long result = 0;
+    public Double toplamTutarHesapla(Double tutar, Double oran) {
+        Double result = 0.0;
         Double rate = oran / 100;
-        result = Math.round(Long.parseLong(tutar) * ((1 + rate)));
+        rate = rate + 1;
+        result = rate * tutar;
+
+        result = get2digit(result);
 
 
         return result;
+    }
+
+    public Double get2digit(Double result) {
+        Double sonuc = 0.0;
+        BigDecimal bd = new BigDecimal(result);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        sonuc = bd.doubleValue();
+        return sonuc;
     }
 
 

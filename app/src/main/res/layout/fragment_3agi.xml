@@ -18,11 +18,12 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp"
-        tools:textSize="30sp" />
+        android:textSize="22sp"
+        tools:textSize="28sp"
+        android:textStyle="normal|bold" />
 
 
     <TextView
@@ -31,7 +32,7 @@
         android:id="@+id/textViewMedeniDurum"
         android:text="Medeni Durum"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/textViewAgi"
@@ -73,7 +74,7 @@
         android:id="@+id/textViewEscalismaDurumu"
         android:text="Eş Çalışma Durumu"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/radioGroupMedeniDurum"
@@ -114,7 +115,7 @@
         android:id="@+id/textViewCocukSayisi"
         android:text="Çocuk Sayısı"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/radioGroupEsCalismaDurumu"
@@ -191,9 +192,9 @@
         android:layout_below="@+id/buttonAgiHesapla"
         android:gravity="center"
         android:textColor="@color/colorWhite"
-        android:textSize="20dp"
         android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textSize="25dp" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewAgiHesapla"

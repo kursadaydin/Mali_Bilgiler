@@ -20,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
-        tools:textSize="30sp" />
+        tools:textSize="30sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="Yıl Seçimi"
@@ -45,6 +46,7 @@
         android:layout_marginStart="54dp" />
 
     <EditText
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number|numberDecimal"
@@ -53,10 +55,14 @@
         android:id="@+id/editTextTutar"
         android:layout_alignEnd="@+id/textViewGelirVergisi"
         android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
-        android:layout_below="@+id/textView2" />
+        android:layout_below="@+id/textView2"
+        style="@android:style/Widget.Material.EditText">
+
+        <requestFocus />
+    </EditText>
 
     <TextView
-        android:text="Tutar"
+        android:text="Matrah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"

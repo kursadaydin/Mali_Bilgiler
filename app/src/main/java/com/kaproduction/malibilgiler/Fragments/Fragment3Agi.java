@@ -23,6 +23,9 @@ import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.R;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 /**
  * Created by reis on 04/11/16.
  */
@@ -94,7 +97,9 @@ public class Fragment3Agi extends Fragment {
             @Override
             public void onClick(View view) {
                 Double result = hesapla(asgariUcret, medeniDurumEvli, esCalismaDurumu, cocukSayisi);
-                textViewAgiGoster.setText("Asgari Geçim Tutarınız :" + Math.round(result) + " TL");
+                BigDecimal bd = new BigDecimal(result);
+                bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+                textViewAgiGoster.setText("Asgari Geçim Tutarınız :" + bd.doubleValue() + " TL");
 
             }
         });

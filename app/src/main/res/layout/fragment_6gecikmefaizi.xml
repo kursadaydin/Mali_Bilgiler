@@ -21,7 +21,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
-        tools:textSize="30sp" />
+        tools:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +118,10 @@
             android:maxLines="1"
             android:imeOptions="actionDone"
             android:inputType="number|numberDecimal"
-            android:ellipsize="none" />
+            android:textAppearance="@android:style/TextAppearance.Material.Medium">
+
+            <requestFocus />
+        </EditText>
 
 
     </LinearLayout>

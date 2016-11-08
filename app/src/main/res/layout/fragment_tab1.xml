@@ -20,6 +20,7 @@
        android:layout_above="@+id/adViewTab1">
    </android.support.v7.widget.RecyclerView>
 
+
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewTab1"
         android:layout_width="wrap_content"

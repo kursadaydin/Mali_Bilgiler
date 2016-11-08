@@ -4,6 +4,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Months;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,7 +117,9 @@ public class Calculater {
         }
 
 
-        return vergi;
+        BigDecimal bd = new BigDecimal(vergi);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd.doubleValue();
     }
 
     public int birOncekiAy(int kacinciAydayiz) {
@@ -194,9 +198,9 @@ public class Calculater {
         }
 
 
-        return vergi;
-
-
+        BigDecimal bd = new BigDecimal(vergi);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd.doubleValue();
     }
 
     public Double karPayi(Double brutTutar, String year) {
@@ -242,7 +246,9 @@ public class Calculater {
         map.put("stopaj_tutari", stopajTutari);
         map.put("nihai_vergi", vergi);
 
-        return vergi;
+        BigDecimal bd = new BigDecimal(vergi);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd.doubleValue();
 
 
     }

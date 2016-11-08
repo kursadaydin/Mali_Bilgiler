@@ -19,7 +19,8 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        tools:textSize="30sp" />
+        tools:textSize="30sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:text="Yıl Seçimi"
@@ -53,7 +54,10 @@
         android:id="@+id/editTextTutarKarPayi"
         android:layout_alignEnd="@+id/textViewKarPayi"
         android:layout_alignStart="@+id/spinnerYillarKarPayi"
-        android:layout_alignBottom="@+id/textViewTutarKarPayi" />
+        android:layout_alignBottom="@+id/textViewTutarKarPayi">
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:text="Brüt Kar Payı Tutarı"
@@ -80,14 +84,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonKarPayiHesapla"
-            android:layout_weight="10" />
+            android:layout_weight="10"
+            android:elevation="24dp" />
 
         <Button
             android:text="Temizle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonKarPayiTemizle"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:elevation="24dp" />
 
 
     </LinearLayout>
