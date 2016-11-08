@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linearlayoutGecikmeFaizi1"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/textViewGecikmeFaizi"
         android:layout_alignStart="@+id/textViewGecikmeFaizi"
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linearlayoutGecikmeFaizi2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/linearlayoutGecikmeFaizi1"
         android:layout_alignStart="@+id/textViewGecikmeFaizi"
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
@@ -126,13 +126,48 @@
 
     </LinearLayout>
 
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupGecikme"
+        android:orientation="horizontal"
+        android:gravity="right|center"
+        android:layout_below="@+id/linearlayoutGecikmeFaizi3"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@+id/textViewGecikmeFaizi"
+        android:layout_alignEnd="@+id/textViewGecikmeFaizi">
+
+
+        <RadioButton
+            android:id="@+id/radio_gecikmeFaizi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gecikme Faizi"
+            android:textColor="@color/colorWhite"
+            android:buttonTint="@color/colorWhite"
+            android:checked="true"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radio_gecikmeZammi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gecikme Zammı"
+            android:textColor="@color/colorWhite"
+            android:buttonTint="@color/colorWhite" />
+    </RadioGroup>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/linearlayoutGecikmeFaizi4"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/linearlayoutGecikmeFaizi3"
+        android:layout_below="@+id/radioGroupGecikme"
         android:layout_alignStart="@+id/textViewGecikmeFaizi"
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
 

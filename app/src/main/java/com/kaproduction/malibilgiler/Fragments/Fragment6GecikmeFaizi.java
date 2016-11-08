@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.kaproduction.malibilgiler.R.id.radioGroupEsCalismaDurumu;
+import static com.kaproduction.malibilgiler.R.id.textViewAgiGoster;
 
 
 /**
@@ -50,10 +55,11 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     TextView textViewAyGunGoster, textViewOranGoster, textViewTutarGoster;
     EditText editTextGecikmeFaizi;
 
-    static EditText baslangicTarihiGecikmeFaizi;
-    static EditText odemeTarihiGecikmeFaizi;
 
     Calculater calculater;
+
+    RadioGroup radio_gecikme;
+    RadioButton radioButtonGecikmeFaizi;
 
     public static int baslangic_gun = 0;
     public static int baslangic_ay = 0;
@@ -67,6 +73,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     Map<String, Integer> fark;
     int ayFarki, gunFarki;
 
+    Double tutar;
+    boolean gecikmeFaizDogru = true;
 
     public static Fragment6GecikmeFaizi newInstance(String param1, String param2) {
         Fragment6GecikmeFaizi fragment = new Fragment6GecikmeFaizi();
@@ -120,6 +128,26 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
         fark = new HashMap<>();
 
+        radio_gecikme = (RadioGroup) getActivity().findViewById(R.id.radioGroupGecikme);
+
+
+        radio_gecikme.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if (checkedId == R.id.radio_gecikmeFaizi) {
+                    gecikmeFaizDogru = true;
+
+                } else if (checkedId == R.id.radio_gecikmeZammi) {
+                    gecikmeFaizDogru = false;
+
+                }
+            }
+        });
+
+
+
+
+
 
         AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewGecikmeZammi);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -150,62 +178,98 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
             case R.id.buttonGecikmeFaiziHesapla:
 
-                if (editTextGecikmeFaizi.getText().length() == 0) {
-                    Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
-                } else {
-
-                    String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
-                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        start = formatter.parse(baslangic);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    String odeme = odeme_gun + "/" + odeme_ay + "/" + odeme_yil;
-                    DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                    try {
-                        end = format.parse(odeme);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
-                    fark = calculater.getFarkTarih(start, end);
-
-                    // Toast.makeText(getActivity().getApplicationContext(), "2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ", Toast.LENGTH_LONG).show();
-
-                    ayFarki = fark.get("farkay");
-                    gunFarki = fark.get("farkgun");
-
-                    textViewAyGunGoster.setText("2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ");
-                    textViewOranGoster.setText("Toplam Oran :" + get2digit(ayFarki * 1.4));
-                    Double result = toplamTutarHesapla(Double.parseDouble(editTextGecikmeFaizi.getText().toString()), 1.4);
-
-                    textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + get2digit((double) result));
-
+                String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    start = formatter.parse(baslangic);
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
+                String odeme = odeme_gun + "/" + odeme_ay + "/" + odeme_yil;
+                DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    end = format.parse(odeme);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                break;
+                fark = calculater.getFarkTarih(start, end);
+
+                ayFarki = fark.get("farkay");
+                gunFarki = fark.get("farkgun");
+
+
+                if (ayFarki < 0 || gunFarki < 0) {
+                    Toast.makeText(getActivity(), "Ödeme tarihi vade tarihinden küçük olamaz...", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+
+                    if (editTextGecikmeFaizi.getText().length() == 0) {
+                        Toast.makeText(getActivity(), "Tutar Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
+                    } else {
+                        tutar = Double.parseDouble(editTextGecikmeFaizi.getText().toString());
+                        if (gecikmeFaizDogru) {
+                            textViewAyGunGoster.setText("2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ");
+                            textViewOranGoster.setText("Toplam Oran :" + getdigit(ayFarki * 1.4, 2));
+                            Double result = toplamTutarHesaplaGecikmeFaizi(tutar, ayFarki);
+                            textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + getdigit(result, 4));
+                        } else {
+
+                            textViewAyGunGoster.setText("2 tarih arasinda " + fark.get("farkay") + " ay ve " + fark.get("farkgun") + " gun vardir. ");
+                            textViewOranGoster.setText("Toplam Oran :" + getdigit(((ayFarki * 1.4) + (gunFarki * 1.4 / 30)), 4));
+                            Double result = toplamTutarHesaplaGecikmeZammi(tutar, ayFarki, gunFarki);
+                            textViewTutarGoster.setText("Toplam ödenmesi gereken tutar : " + getdigit(result, 4));
+
+                        }
+
+
+                    }
+                    break;
+                }
         }
     }
 
-    public Double toplamTutarHesapla(Double tutar, Double oran) {
-        Double result = 0.0;
-        Double rate = oran / 100;
-        rate = rate + 1;
-        result = rate * tutar;
 
-        result = get2digit(result);
+    public Double toplamTutarHesaplaGecikmeZammi(Double tutar, int ay, int gun) {
+        Double result = 0.0;
+        int month = ay;
+        int day = gun;
+        Double yasalOran = 1.4;
+
+        Double rateGunluk = yasalOran * day / 30;
+        Double rateAylik = yasalOran * month;
+        Double nihaiOran = (rateAylik + rateGunluk) / 100;
+
+        result = (1 + nihaiOran) * tutar;
+
+
 
 
         return result;
     }
 
-    public Double get2digit(Double result) {
+    public Double toplamTutarHesaplaGecikmeFaizi(Double tutar, int ay) {
+        Double result = 0.0;
+        int month = ay;
+
+        Double yasalOran = 1.4;
+
+        Double rateAylik = yasalOran * month;
+        Double nihaiOran = (rateAylik) / 100;
+
+        result = (1 + nihaiOran) * tutar;
+
+
+        return result;
+    }
+
+
+    public Double getdigit(Double result, int basamak) {
         Double sonuc = 0.0;
         BigDecimal bd = new BigDecimal(result);
-        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        bd = bd.setScale(basamak, BigDecimal.ROUND_HALF_UP);
         sonuc = bd.doubleValue();
         return sonuc;
     }

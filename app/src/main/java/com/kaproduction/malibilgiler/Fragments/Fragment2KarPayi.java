@@ -44,6 +44,7 @@ public class Fragment2KarPayi extends Fragment {
     Calculater calculater;
 
     Double sonuc;
+    SoftKeyboard softKeyboard;
 
 
 
@@ -91,7 +92,7 @@ public class Fragment2KarPayi extends Fragment {
         RelativeLayout mainLayout = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutKarpayi);
         InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
 
-        SoftKeyboard softKeyboard;
+
         softKeyboard = new SoftKeyboard(mainLayout, im);
         softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
 
@@ -159,6 +160,7 @@ public class Fragment2KarPayi extends Fragment {
                 if (editTextTutarKarPayi.getText().length() == 0) {
                     Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
                 } else {
+                    softKeyboard.closeSoftKeyboard();
                     Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
                     sonuc = calculater.karPayi(hesaplanacakTutar, year);
                     textViewSonucKarPayi.setText("Brüt " + hesaplanacakTutar + " TL kar payının nihai hesaplanan vergisi " + sonuc + "TL'dir.");

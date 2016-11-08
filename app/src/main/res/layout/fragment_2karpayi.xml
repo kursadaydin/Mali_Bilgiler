@@ -44,23 +44,37 @@
         android:layout_toEndOf="@+id/textView2"
         android:layout_marginStart="54dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewKarPayi"
+        android:layout_alignStart="@+id/spinnerYillarKarPayi"
+        android:layout_alignBottom="@+id/textViewTutarKarPayi"
+        android:id="@+id/textviewLayout">
+
+
+        <EditText
+            android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number|numberDecimal"
         android:imeOptions="actionDone"
         android:textColor="@color/colorWhite"
         android:layout_marginTop="17dp"
+            android:hint="Kar Payınız"
+            android:textColorHint="@color/colorWhite"
         android:id="@+id/editTextTutarKarPayi"
         android:layout_alignEnd="@+id/textViewKarPayi"
         android:layout_alignStart="@+id/spinnerYillarKarPayi"
         android:layout_alignBottom="@+id/textViewTutarKarPayi">
 
-        <requestFocus />
+
     </EditText>
 
+    </android.support.design.widget.TextInputLayout>
+
     <TextView
-        android:text="Brüt Kar Payı Tutarı"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
@@ -75,9 +89,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll2"
-        android:layout_below="@+id/editTextTutarKarPayi"
+        android:layout_below="@+id/textviewLayout"
         android:layout_alignStart="@+id/textViewTutarKarPayi"
-        android:layout_alignEnd="@+id/editTextTutarKarPayi">
+        android:layout_alignEnd="@+id/textviewLayout">
 
         <Button
         android:text="Hesapla"
