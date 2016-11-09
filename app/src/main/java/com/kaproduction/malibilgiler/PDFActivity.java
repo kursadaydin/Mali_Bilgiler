@@ -21,9 +21,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
@@ -47,9 +49,9 @@ public class PDFActivity extends AppCompatActivity  {
     private static final int START_LEVEL = 1;
     private int mLevel;
     private InterstitialAd mInterstitialAd;
+    private AdRequest adRequest;
     private WebView mwebView;
     private Bundle bundle;
-
     private CoordinatorLayout coord;
 
 
@@ -66,6 +68,8 @@ public class PDFActivity extends AppCompatActivity  {
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-5654718909401990/9642621862");
+        adRequest = new AdRequest.Builder()
+                .build();
 
 
         mInterstitialAd.setAdListener(new AdListener() {
@@ -101,17 +105,46 @@ public class PDFActivity extends AppCompatActivity  {
 
         }
 
+        final GestureDetector[] gs = {null};
+
+        View.OnTouchListener onTouch = new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (gs[0] == null) {
+                    gs[0] = new GestureDetector(
+                            new GestureDetector.SimpleOnGestureListener() {
+                                @Override
+                                public boolean onDoubleTapEvent(MotionEvent e) {
+
+                                    //Double Tap
+                                    mwebView.setInitialScale(300);
+                                    return true;
+                                }
+
+                                @Override
+                                public boolean onSingleTapConfirmed(MotionEvent e) {
+
+                                    //Single Tab
+
+                                    return false;
+                                }
+
+                                ;
+                            });
+                }
+
+                gs[0].onTouchEvent(event);
+
+                return false;
+            }
+        };
+
+        mwebView.setOnTouchListener(onTouch);
 
     }
 
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,11 +171,19 @@ public class PDFActivity extends AppCompatActivity  {
 
     @Override
     public void onBackPressed() {
+        mInterstitialAd.loadAd(adRequest);
+
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
 
             super.onBackPressed();
+        }
+    }
+
+    private void requestNewInterstitial() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
         }
     }
 
@@ -184,57 +225,11 @@ public class PDFActivity extends AppCompatActivity  {
         }
 
         mwebView.setWebViewClient(new MyWebviewClient());
+
+
     }
 
 
-    private InterstitialAd newInterstitialAd() {
-        InterstitialAd interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-               // mNextLevelButton.setEnabled(true);
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-
-                //mNextLevelButton.setEnabled(true);
-            }
-
-            @Override
-            public void onAdClosed() {
-                // Proceed to the next level.
-                goToNextLevel();
-            }
-        });
-        return interstitialAd;
-    }
-
-    private void showInterstitial() {
-        // Show the ad if it's ready. Otherwise toast and reload the ad.
-        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
-            goToNextLevel();
-        }
-    }
-
-    private void loadInterstitial() {
-        // Disable the next level button and load the ad.
-       // mNextLevelButton.setEnabled(false);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
-        mInterstitialAd.loadAd(adRequest);
-    }
-
-    private void goToNextLevel() {
-        // Show the next level and reload the ad to prepare for the level after.
-       // mLevelTextView.setText("Level " + (++mLevel));
-        mInterstitialAd = newInterstitialAd();
-        loadInterstitial();
-    }
 
 
     private class MyWebviewClient extends WebViewClient {

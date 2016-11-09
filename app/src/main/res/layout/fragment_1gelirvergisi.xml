@@ -48,9 +48,11 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/colorWhite"
         android:layout_alignEnd="@+id/textViewGelirVergisi"
-        android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
-        android:layout_below="@+id/textView2">
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/textViewGelirVergisi"
+        android:id="@+id/textInputLayout">
 
     <EditText
 
@@ -58,9 +60,9 @@
         android:layout_height="wrap_content"
         android:inputType="number|numberDecimal"
         android:imeOptions="actionDone"
-        android:hint="Matrah"
-        android:textColorHint="@color/colorWhite"
+        android:hint="Matrah Tutarı"
         android:textColor="@color/colorWhite"
+        android:gravity="center"
         android:id="@+id/editTextTutar"
         android:layout_alignEnd="@+id/textViewGelirVergisi"
         android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
@@ -69,17 +71,6 @@
 
     </EditText>
     </android.support.design.widget.TextInputLayout>
-    <TextView
-        android:text="Matrah"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:padding="10dp"
-        android:gravity="left|center_vertical"
-        android:id="@+id/textViewTutar"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
 
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -88,7 +79,7 @@
         android:id="@+id/radioGroup"
         android:orientation="horizontal"
         android:gravity="right|center"
-        android:layout_below="@+id/textViewTutar"
+        android:layout_below="@+id/textInputLayout"
         android:layout_marginTop="20dp"
         android:layout_alignStart="@+id/ll"
         android:layout_alignEnd="@+id/ll">
