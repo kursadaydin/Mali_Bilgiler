@@ -48,10 +48,6 @@ public class Fragment2KarPayi extends Fragment {
     Double sonuc;
     SoftKeyboard softKeyboard;
 
-    TextInputLayout textViewTutarKarPayi;
-
-
-
 
     public static Fragment2KarPayi newInstance(String param1, String param2) {
         Fragment2KarPayi fragment = new Fragment2KarPayi();
@@ -188,8 +184,6 @@ public class Fragment2KarPayi extends Fragment {
             }
         });
 
-
-        textViewTutarKarPayi = (TextInputLayout) getActivity().findViewById(R.id.textViewTutarKarPayi);
 
     }
 }
