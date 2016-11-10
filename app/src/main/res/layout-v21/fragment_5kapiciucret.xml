@@ -73,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/spinnerYilSecimi"
                     android:gravity="center"
-                    android:layout_weight="1"></Spinner>
+                    android:layout_weight="1"
+                    android:theme="@android:style/ThemeOverlay.Material.Dark"></Spinner>
 
             </LinearLayout>
 
