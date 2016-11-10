@@ -4,6 +4,7 @@ import android.app.Service;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,8 @@ public class Fragment2KarPayi extends Fragment {
 
     Double sonuc;
     SoftKeyboard softKeyboard;
+
+    TextInputLayout textViewTutarKarPayi;
 
 
 
@@ -186,6 +189,7 @@ public class Fragment2KarPayi extends Fragment {
         });
 
 
+        textViewTutarKarPayi = (TextInputLayout) getActivity().findViewById(R.id.textViewTutarKarPayi);
 
     }
 }

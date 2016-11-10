@@ -93,7 +93,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_alignBottom="@+id/textViewTutarKarPayi"
         android:textColorHint="@color/colorWhite"
         android:id="@+id/textviewLayoutGecikme"
         android:layout_gravity="center"

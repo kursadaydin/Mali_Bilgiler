@@ -27,8 +27,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+
 import com.kaproduction.malibilgiler.Data.ExpandableListViewData;
 import com.kaproduction.malibilgiler.Other.ExpandableListViewAdapter;
 import java.util.ArrayList;

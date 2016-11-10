@@ -36,8 +36,6 @@
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/textViewAgi"
-        android:layout_alignStart="@+id/linearlayout111"
-        android:layout_alignEnd="@+id/linearlayout111"
         android:textSize="20sp"
         tools:textSize="22sp" />
 
@@ -78,8 +76,6 @@
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/radioGroupMedeniDurum"
-        android:layout_alignStart="@+id/linearlayout111"
-        android:layout_alignEnd="@+id/linearlayout111"
         android:textSize="20sp"
         tools:textSize="22sp" />
 
@@ -119,8 +115,6 @@
         android:textColor="@color/colorWhite"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:layout_below="@+id/radioGroupEsCalismaDurumu"
-        android:layout_alignStart="@+id/linearlayout111"
-        android:layout_alignEnd="@+id/linearlayout111"
         android:textSize="20sp"
         tools:textSize="22sp" />
 

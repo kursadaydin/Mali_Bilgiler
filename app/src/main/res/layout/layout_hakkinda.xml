@@ -31,9 +31,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollViewHakkinda"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/textViewHakkindaBaslik"
-        android:layout_alignStart="@+id/buttonHakkindaOK"
-        android:layout_alignEnd="@+id/buttonHakkindaOK">
+        android:layout_below="@+id/textViewHakkindaBaslik">
 
         <LinearLayout
             android:layout_width="match_parent"
