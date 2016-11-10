@@ -1,6 +1,7 @@
 package com.kaproduction.malibilgiler;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 
+import android.text.Html;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,7 +22,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -88,7 +93,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
     }
 
 
@@ -116,6 +120,22 @@ public class MainActivity extends AppCompatActivity
 
             // super.onBackPressed();
         }
+
+
+        int count = expandableListView.getChildCount();
+        for (int i = 0; i < count; i++)
+            expandableListView.collapseGroup(i);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int count = expandableListView.getChildCount();
+        for (int i = 0; i < count; i++)
+            expandableListView.collapseGroup(i);
+
     }
 
     @Override
@@ -199,9 +219,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_paylas) {
             sendIntent();
 
-        } else if (id == R.id.nav_eposta) {
-            mailIntent();
-
         } else if (id == R.id.nav_rating) {
             Uri uri = Uri.parse("market://details?id=" + MainActivity.this.getPackageName());
             Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
@@ -216,6 +233,9 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(Intent.ACTION_VIEW,
                         Uri.parse("http://play.google.com/store/apps/details?id=" + MainActivity.this.getPackageName())));
             }
+        } else if (id == R.id.nav_hakkinda) {
+
+            showHakkindaDialog();
         }
 
 
@@ -224,20 +244,14 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void mailIntent() {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto","", null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mali Bilgiler Android Uygulaması");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Mali hayattaki en güncel pratik bilgileri takip etmek için lütfen uygulamayı kullanınız....");
-        startActivity(Intent.createChooser(emailIntent, "E-posta Gönder..."));
-    }
 
     private void sendIntent() {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Mali Bilgiler Android Uygulaması Yayınlandı.....");
         sendIntent.setType("text/plain");
-        startActivity(sendIntent);
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Uygulamayı İndir");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "http://play.google.com/store/apps/details?id=" + MainActivity.this.getPackageName());
+        startActivity(Intent.createChooser(sendIntent, "Uygulamayı İndir"));
     }
 
     private void sendToDoc(String heading, String message) {
@@ -301,5 +315,40 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+
+    private void showHakkindaDialog() {
+
+        final Dialog hakkindaDialog = new Dialog(this);
+        hakkindaDialog.setContentView(R.layout.layout_hakkinda);
+
+        TextView openSourceMetin = (TextView) hakkindaDialog.findViewById(R.id.textViewHakkindaOpenSource);
+        openSourceMetin.setText("Açık Kaynak Kütüphaneler :\nJoda Time:\njodatime:joda-time:2.9.5\nJoda-Time is licensed under the business-friendly Apache 2.0 license.");
+
+        TextView hakkindaMetin = (TextView) hakkindaDialog.findViewById(R.id.textViewHakkindaMetin);
+        hakkindaMetin.setText("Genel Açıklama :\nKullanmış olduğunuz bu uygulamanın içeriği " +
+                "kullanıcıyı bilgilendirmek amacıyla düzennmiş olup, site içerisinde yer alan hiçbir bilgi " +
+                "ziyaretçiler tarafından tavsiye olarak değerlendirilip hiçbir karar veya eyleme neden olamaz.  " +
+                "Uygulama içeriği Gelir İdaresi Başkanlığı, Sosyal Güvenlik Kurumu ve Türkiye " +
+                "İstatistik Kurumu gibi çeşitli kurum ve kuruluşlardan edinilen " +
+                "verilerden yararlanılarak hazırlanmıştır. " +
+                "Uygulamanın içeriği ile ilgili olarak söz konusu kurumlar ile farklılıklar " +
+                "bulunması halinde söz konusu kurumların verilerinin esas alınması gerekmektedir." +
+                "Uygulamanın içeriğinden kaynaklanan hatalardan dolayı uygulama sorumlu tutulamaz, " +
+                "hiçbir hukuki veya cezai sorumluluk kabul edilmez.  ");
+
+        Button buttonTamam = (Button) hakkindaDialog.findViewById(R.id.buttonHakkindaOK);
+        buttonTamam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hakkindaDialog.dismiss();
+            }
+        });
+
+        hakkindaDialog.show();
+
+
+    }
+
+
 
 }

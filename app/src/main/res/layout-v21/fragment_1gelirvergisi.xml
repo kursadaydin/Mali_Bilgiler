@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
+        android:theme="@android:style/ThemeOverlay.Material.Dark"
         android:id="@+id/spinnerYillarGelirVergisi"
         android:layout_below="@+id/textViewGelirVergisi"
         android:layout_toEndOf="@+id/textView2"
@@ -54,22 +55,22 @@
         android:layout_alignStart="@+id/textViewGelirVergisi"
         android:id="@+id/textInputLayout">
 
-    <EditText
+        <EditText
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number|numberDecimal"
-        android:imeOptions="actionDone"
-        android:hint="Matrah Tutarı"
-        android:textColor="@color/colorWhite"
-        android:gravity="center"
-        android:id="@+id/editTextTutar"
-        android:layout_alignEnd="@+id/textViewGelirVergisi"
-        android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
-        android:layout_below="@+id/textView2"
-        style="@android:style/Widget.Material.EditText">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number|numberDecimal"
+            android:imeOptions="actionDone"
+            android:hint="Matrah Tutarı"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:id="@+id/editTextTutar"
+            android:layout_alignEnd="@+id/textViewGelirVergisi"
+            android:layout_alignStart="@+id/spinnerYillarGelirVergisi"
+            android:layout_below="@+id/textView2"
+            style="@android:style/Widget.Material.EditText">
 
-    </EditText>
+        </EditText>
     </android.support.design.widget.TextInputLayout>
 
 
@@ -116,8 +117,8 @@
 
         <Button
             android:text="Hesapla"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/buttonGelirVergisiHesapla"
             android:layout_weight="10" />
 

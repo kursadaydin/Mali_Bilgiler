@@ -32,27 +32,28 @@
         android:layout_alignStart="@+id/textViewKarPayi"
         android:layout_alignEnd="@+id/textViewKarPayi">
 
-    <TextView
-        android:text="Yıl Seçimi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:gravity="left|center_vertical"
-        android:padding="10dp"
-        android:id="@+id/textView2"
-        android:layout_alignTop="@+id/spinnerYillarKarPayi"
-        android:layout_alignStart="@+id/textViewKarPayi"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        <TextView
+            android:text="Yıl Seçimi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:gravity="left|center_vertical"
+            android:padding="10dp"
+            android:id="@+id/textView2"
+            android:layout_alignTop="@+id/spinnerYillarKarPayi"
+            android:layout_alignStart="@+id/textViewKarPayi"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/spinnerYillarKarPayi"
-        android:layout_below="@+id/textViewKarPayi"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_marginStart="54dp"
-        android:gravity="center" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:theme="@android:style/ThemeOverlay.Material.Dark"
+            android:id="@+id/spinnerYillarKarPayi"
+            android:layout_below="@+id/textViewKarPayi"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_marginStart="54dp"
+            android:gravity="center" />
     </LinearLayout>
 
 
@@ -95,10 +96,10 @@
         android:layout_alignStart="@+id/llkarpayiSpinner">
 
         <Button
-        android:text="Hesapla"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonKarPayiHesapla"
+            android:text="Hesapla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonKarPayiHesapla"
             android:layout_weight="10"
             android:elevation="24dp" />
 

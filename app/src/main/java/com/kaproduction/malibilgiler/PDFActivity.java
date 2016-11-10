@@ -51,6 +51,7 @@ public class PDFActivity extends AppCompatActivity  {
     private InterstitialAd mInterstitialAd;
     private AdRequest adRequest;
     private WebView mwebView;
+    private WebSettings webSettings;
     private Bundle bundle;
     private CoordinatorLayout coord;
 
@@ -98,6 +99,46 @@ public class PDFActivity extends AppCompatActivity  {
 
             loadURL();
 
+            final GestureDetector[] gs = {null};
+
+            View.OnTouchListener onTouch = new View.OnTouchListener() {
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    if (gs[0] == null) {
+                        gs[0] = new GestureDetector(
+                                new GestureDetector.SimpleOnGestureListener() {
+                                    @Override
+                                    public boolean onDoubleTapEvent(MotionEvent e) {
+
+                                        //Double Tap
+                                        mwebView.setInitialScale(400);
+
+                                        return true;
+                                    }
+
+                                    @Override
+                                    public boolean onSingleTapConfirmed(MotionEvent e) {
+
+                                        //Single Tab
+
+                                        return false;
+                                    }
+
+                                    ;
+                                });
+                    }
+
+                    gs[0].onTouchEvent(event);
+
+                    return false;
+                }
+            };
+
+            mwebView.setOnTouchListener(onTouch);
+
+
         } else {
 
             Snackbar snackbar = Snackbar.make(coord, "Baglantiniz yok yada site cevap vermiyor", Snackbar.LENGTH_LONG);
@@ -105,43 +146,6 @@ public class PDFActivity extends AppCompatActivity  {
 
         }
 
-        final GestureDetector[] gs = {null};
-
-        View.OnTouchListener onTouch = new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (gs[0] == null) {
-                    gs[0] = new GestureDetector(
-                            new GestureDetector.SimpleOnGestureListener() {
-                                @Override
-                                public boolean onDoubleTapEvent(MotionEvent e) {
-
-                                    //Double Tap
-                                    mwebView.setInitialScale(300);
-                                    return true;
-                                }
-
-                                @Override
-                                public boolean onSingleTapConfirmed(MotionEvent e) {
-
-                                    //Single Tab
-
-                                    return false;
-                                }
-
-                                ;
-                            });
-                }
-
-                gs[0].onTouchEvent(event);
-
-                return false;
-            }
-        };
-
-        mwebView.setOnTouchListener(onTouch);
 
     }
 
@@ -193,7 +197,7 @@ public class PDFActivity extends AppCompatActivity  {
         setTitle(bundle.getString("parent"));
         mwebView = (WebView) findViewById(R.id.webView);
         mwebView.setInitialScale(200);
-        WebSettings webSettings = mwebView.getSettings();
+        webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);

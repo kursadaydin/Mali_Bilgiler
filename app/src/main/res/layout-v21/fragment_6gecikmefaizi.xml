@@ -37,18 +37,18 @@
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewTarihSecimiGecikmeFaiziBaslangic"
-                android:gravity="left|center_vertical"
-                android:layout_weight="1"
-                android:text="Başlangıç Tarihini Seçiniz :"
-                android:textColor="@color/colorWhite" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTarihSecimiGecikmeFaiziBaslangic"
+            android:gravity="left|center_vertical"
+            android:layout_weight="1"
+            android:text="Başlangıç Tarihini Seçiniz :"
+            android:textColor="@color/colorWhite" />
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_action_datepicker"
             android:background="@null"
             android:id="@+id/imageButtonBaslangicTarihiGecikmeFaizi"
@@ -68,19 +68,19 @@
         android:layout_alignEnd="@+id/textViewGecikmeFaizi">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewTarihSecimiGecikmeFaiziOdeme"
-                android:gravity="left|center_vertical"
-                android:layout_weight="1"
-                android:text="Ödeme Tarihini Seçiniz :"
-                android:textColor="@color/colorWhite" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewTarihSecimiGecikmeFaiziOdeme"
+            android:gravity="left|center_vertical"
+            android:layout_weight="1"
+            android:text="Ödeme Tarihini Seçiniz :"
+            android:textColor="@color/colorWhite" />
 
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_action_datepicker"
             android:background="@null"
             android:id="@+id/imageButtonOdemeTarihiGecikmeFaizi"
@@ -90,8 +90,8 @@
 
 
     <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_alignBottom="@+id/textViewTutarKarPayi"
         android:textColorHint="@color/colorWhite"
@@ -110,12 +110,12 @@
             android:maxLines="1"
             android:imeOptions="actionDone"
             android:inputType="number|numberDecimal"
-            android:gravity="center">
+            android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium">
 
         </EditText>
 
     </android.support.design.widget.TextInputLayout>
-
 
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"

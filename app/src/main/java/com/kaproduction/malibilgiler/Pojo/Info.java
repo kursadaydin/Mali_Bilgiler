@@ -145,7 +145,7 @@ public class Info implements Comparator<Info> {
         Info i2 = new Info("4B ye tabi olanların prim tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/4B.htm");
         Info i3 = new Info("Yıllar  İtibariyle Brüt Asgari Ücret Tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/brut_asgari_ucret.htm");
         Info i4 = new Info("2016 Yılı Asgari Ücret Maliyeti", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/asgari_ucret_maliyet.htm");
-        Info i5 = new Info("SGK Taban ve Tavan Tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/sgk_tavan_taban.htm");
+        Info i5 = new Info("SGK Taban ve Tavan Tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/sgk_taban_tavan.htm");
         Info i6 = new Info("İşsizlik Sigortası Prim Oranları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/issizlik_oran.htm");
         Info i7 = new Info("2016 yılı Asgari Geçim İndirimi Tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/agi_2016.htm");
         Info i8 = new Info("Engellilik İndirim Tutarları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/engellilik.htm");
@@ -179,7 +179,7 @@ public class Info implements Comparator<Info> {
         Info i7 = new Info("İstihdam Edilenlerin Yıllara Göre Dağılımı", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/istihdam.htm");
         Info i8 = new Info("Tüketici Fiyat Endeks Rakamları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/TUFE.htm");
         Info i9 = new Info("Üretici Fiyat Endeks Rakamları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/UFE.htm");
-        Info i10 = new Info("Dış Ticaret, 1997-2016", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/dis_ticaret.htm");
+        Info i10 = new Info("Dış Ticaret, 2014-2016", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/dis_ticaret.htm");
         Info i11 = new Info("Konut Satış Sayıları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/konut_satis.htm");
         Info i12 = new Info("Sanayi Ciro Endeksi", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/sanayi_ciro.htm");
         Info i13 = new Info("Sanayi Üretim Endeksi", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/sanayi_uretim.htm");

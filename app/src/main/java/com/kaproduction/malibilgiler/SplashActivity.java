@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 intent = new Intent(SplashActivity.this, MainActivity.class);
-               showAnimation(relativeLayout);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    showAnimation(relativeLayout);
+                }
                 startActivity(intent);
                 finish();
             }
@@ -50,7 +53,9 @@ public class SplashActivity extends AppCompatActivity {
         int cy= v.getTop()+(4*v.getBottom()/5);
         int radius = Math.max(v.getWidth(),v.getHeight());
 
-        animator = ViewAnimationUtils.createCircularReveal(v,cx,cy,radius,0);
+
+        animator = ViewAnimationUtils.createCircularReveal(v, cx, cy, radius, 0);
+
 
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
