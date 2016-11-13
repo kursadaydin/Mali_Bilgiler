@@ -8,6 +8,7 @@ import com.kaproduction.malibilgiler.R;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.pdf.PdfRenderer;
 import android.net.ConnectivityManager;
@@ -46,10 +47,7 @@ import java.io.IOException;
 public class PDFActivity extends AppCompatActivity  {
     // Remove the below line after defining your own ad unit ID.
 
-    private static final int START_LEVEL = 1;
-    private int mLevel;
-    private InterstitialAd mInterstitialAd;
-    private AdRequest adRequest;
+
     private WebView mwebView;
     private WebSettings webSettings;
     private Bundle bundle;
@@ -66,34 +64,6 @@ public class PDFActivity extends AppCompatActivity  {
         setSupportActionBar(toolbar);
         // getSupportActionBar().setIcon(R.mipmap.ic_launcher1);
         coord = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutPDFActivity);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-5654718909401990/9642621862");
-        adRequest = new AdRequest.Builder()
-                .build();
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                requestNewInterstitial();
-            }
-        });
-
-
-
-
-        mLevel = START_LEVEL;
-
-        // webView = (WebView) findViewById(R.id.webView);
-        // webView.getSettings().setJavaScriptEnabled(true);
-        // webView.setVerticalScrollBarEnabled(true);
-        // webView.setHorizontalScrollBarEnabled(true);
-        // WebSettings webSettings = webView.getSettings();
-        // webSettings.setDefaultTextEncodingName("UTF-8");
-        // webView.loadData(url, "text/html; charset=UTF-8", null);
-        // webView.loadUrl(url);
-
 
         if (isOnline()) {
 
@@ -141,8 +111,18 @@ public class PDFActivity extends AppCompatActivity  {
 
         } else {
 
-            Snackbar snackbar = Snackbar.make(coord, "Baglantiniz yok yada site cevap vermiyor", Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(coord, "Mevcut bir internet bağlantınız bulunmamaktadır.\nAna sayfaya yönlendiriliyorsunuz", Snackbar.LENGTH_LONG);
             snackbar.show();
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+
+                }
+            }, 2000);
+
 
         }
 
@@ -166,29 +146,27 @@ public class PDFActivity extends AppCompatActivity  {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_refresh) {
-            loadURL();
+            if (isOnline()) {
+                loadURL();
+            } else {
+                Snackbar snackbar = Snackbar.make(coord, "Mevcut bir internet bağlantınız bulunmamaktadır.\nAna sayfaya yönlendiriliyorsunuz", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+
+                    }
+                }, 2000);
+
+
+            }
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        mInterstitialAd.loadAd(adRequest);
-
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-
-            super.onBackPressed();
-        }
-    }
-
-    private void requestNewInterstitial() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
     }
 
     private void loadURL() {

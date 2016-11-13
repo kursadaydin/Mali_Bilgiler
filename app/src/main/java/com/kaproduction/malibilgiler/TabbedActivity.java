@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.kaproduction.malibilgiler.Fragments.Tab1;
 import com.kaproduction.malibilgiler.Fragments.Tab2;
 import com.kaproduction.malibilgiler.Fragments.Tab3;
@@ -34,6 +37,9 @@ public class TabbedActivity extends AppCompatActivity  {
     private ViewPager mViewPager;
 
     Bundle bundle;
+
+    InterstitialAd interstitialAd;
+    private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,39 @@ public class TabbedActivity extends AppCompatActivity  {
             TabLayout.Tab tab = tabLayout.getTabAt(TAB_ID);
             tab.select();
         }
- }
+
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-5654718909401990/9642621862");
+        adRequest = new AdRequest.Builder()
+                .build();
+
+
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                requestNewInterstitial();
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        interstitialAd.loadAd(adRequest);
+
+        if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        } else {
+
+            super.onBackPressed();
+        }
+    }
+
+    private void requestNewInterstitial() {
+        if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        }
+    }
 
 
     @Override
