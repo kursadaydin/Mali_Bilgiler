@@ -44,17 +44,17 @@ public class ExpandableListViewData {
         agiTutarlari.add("EVLİ EŞİ ÇALIŞAN 5 ÇOCUKLU 209,99 TL");
 
         List<String> ydo = new ArrayList<>();
-        ydo.add("2006 yılı yeniden değerleme oranı :%7,8");
-        ydo.add("2007 yılı yeniden değerleme oranı :%7,2");
-        ydo.add("2008 yılı yeniden değerleme oranı :%12");
-        ydo.add("2009 yılı yeniden değerleme oranı :%2,2");
-        ydo.add("2010 yılı yeniden değerleme oranı :%7,7");
-        ydo.add("2011 yılı yeniden değerleme oranı :%10,26");
-        ydo.add("2012 yılı yeniden değerleme oranı :%7,80");
-        ydo.add("2013 yılı yeniden değerleme oranı :%3,93");
-        ydo.add("2014 yılı yeniden değerleme oranı :%10,11");
-        ydo.add("2015 yılı yeniden değerleme oranı :%5,58");
-        ydo.add("2016 yılı yeniden değerleme oranı :%7,7");
+        ydo.add("2006 yılı yeniden değerleme oranı : %7,8");
+        ydo.add("2007 yılı yeniden değerleme oranı : %7,2");
+        ydo.add("2008 yılı yeniden değerleme oranı : %12");
+        ydo.add("2009 yılı yeniden değerleme oranı : %2,2");
+        ydo.add("2010 yılı yeniden değerleme oranı : %7,7");
+        ydo.add("2011 yılı yeniden değerleme oranı : %10,26");
+        ydo.add("2012 yılı yeniden değerleme oranı : %7,80");
+        ydo.add("2013 yılı yeniden değerleme oranı : %3,93");
+        ydo.add("2014 yılı yeniden değerleme oranı : %10,11");
+        ydo.add("2015 yılı yeniden değerleme oranı : %5,58");
+        ydo.add("2016 yılı yeniden değerleme oranı : %3.83");
 
         List<String> tecil_faizi = new ArrayList<>();
         tecil_faizi.add("25.01.2000 - 20.12.2000 tarihleri arasında :%48");
