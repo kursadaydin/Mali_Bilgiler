@@ -113,7 +113,7 @@ public class PDFActivity extends AppCompatActivity  {
                                     public boolean onDoubleTapEvent(MotionEvent e) {
 
                                         //Double Tap
-                                        mwebView.setInitialScale(400);
+                                        mwebView.setInitialScale(200);
 
                                         return true;
                                     }
@@ -196,21 +196,21 @@ public class PDFActivity extends AppCompatActivity  {
         String url = bundle.getString("url");
         setTitle(bundle.getString("parent"));
         mwebView = (WebView) findViewById(R.id.webView);
-        mwebView.setInitialScale(200);
+        mwebView.setInitialScale(100);
         webSettings = mwebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
         //improve webView performance
         mwebView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        mwebView.getSettings().setAppCacheEnabled(true);
+        //mwebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        //mwebView.getSettings().setAppCacheEnabled(true);
         mwebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webSettings.setDomStorageEnabled(true);
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
         webSettings.setUseWideViewPort(true);
-        webSettings.setSavePassword(true);
-        webSettings.setSaveFormData(true);
+        //webSettings.setSavePassword(true);
+        //webSettings.setSaveFormData(true);
         webSettings.setEnableSmoothTransition(true);
 
         String last3 = url.substring(url.length() - 3);
