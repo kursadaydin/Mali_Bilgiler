@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/fragments_background"
-    android:id="@+id/relativeLayout">
+    android:id="@+id/relativeLayoutGelirVergisi">
 
     <TextView
         android:layout_width="wrap_content"
@@ -132,20 +132,22 @@
     </LinearLayout>
 
     <TextView
-        android:text=""
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
         android:gravity="center"
-        android:maxLines="2"
-        android:lines="2"
+        android:maxLines="4"
+        android:lines="4"
         android:id="@+id/textViewSonucGelirVergisi"
         android:layout_below="@+id/ll"
         android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="14sp"
+        android:textSize="22sp"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/ll"
-        android:layout_alignEnd="@+id/ll" />
+        android:layout_alignEnd="@+id/ll"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif" />
 
 
     <com.google.android.gms.ads.AdView

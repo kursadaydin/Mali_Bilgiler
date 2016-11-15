@@ -173,6 +173,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewAyGunGoster"
             android:textSize="15sp"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
             android:textColor="@color/colorWhite"
             android:gravity="center" />
 
@@ -181,6 +183,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewOranGoster"
             android:textSize="15sp"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
             android:textColor="@color/colorWhite"
             android:gravity="center" />
 
@@ -189,6 +193,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/textViewTutarGoster"
             android:textSize="15sp"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
             android:textColor="@color/colorWhite"
             android:gravity="center" />
 

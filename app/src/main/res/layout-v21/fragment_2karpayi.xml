@@ -71,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number|numberDecimal"
+            android:imeOptions="actionDone"
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:hint="Brüt Kar Payı Tutarı"
@@ -80,17 +81,13 @@
             android:layout_marginBottom="18dp"
             android:layout_alignStart="@+id/llkarpayiSpinner" />
 
-
     </android.support.design.widget.TextInputLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ll2"
-        android:layout_centerInParent="false"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/textviewLayout"
         android:layout_alignEnd="@+id/textviewLayout"
         android:layout_alignStart="@+id/llkarpayiSpinner">
 
@@ -109,25 +106,25 @@
             android:id="@+id/buttonKarPayiTemizle"
             android:layout_weight="1"
             android:elevation="24dp" />
-
-
     </LinearLayout>
-
-
     <TextView
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
+        android:maxLines="4"
+        android:lines="4"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:fontFamily="sans-serif"
         android:layout_marginTop="20dp"
         android:layout_centerVertical="true"
         android:gravity="center"
         android:id="@+id/textViewSonucKarPayi"
         android:layout_below="@+id/ll2"
-        android:layout_alignStart="@+id/ll2"
-        android:layout_alignEnd="@+id/ll2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:textSize="14sp" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
 
     <com.google.android.gms.ads.AdView

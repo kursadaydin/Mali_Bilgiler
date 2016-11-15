@@ -165,7 +165,7 @@ public class Calculater {
                 } else if (income < 60000 && income >= 27000) {
                     vergi = 4850 + (income - 27000) * 0.27;
                 } else if (income >= 60000.0) {
-                    vergi = 23750 + ((income - 60000) * 0.35);
+                    vergi = 13760 + ((income - 60000) * 0.35);
                 }
                 break;
 
@@ -177,7 +177,7 @@ public class Calculater {
                 } else if (income < 66000 && income >= 29000) {
                     vergi = 5200 + (income - 29000) * 0.27;
                 } else if (income >= 66000.0) {
-                    vergi = 25990 + ((income - 66000) * 0.35);
+                    vergi = 15190 + ((income - 66000) * 0.35);
                 }
                 break;
 
@@ -190,7 +190,7 @@ public class Calculater {
                 } else if (income < 69000 && income >= 30000) {
                     vergi = 5370 + (income - 30000) * 0.27;
                 } else if (income >= 69000.0) {
-                    vergi = 26970 + (income - 69000) * 0.35;
+                    vergi = 15900 + (income - 69000) * 0.35;
                 }
                 break;
 

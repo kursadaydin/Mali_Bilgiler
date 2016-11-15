@@ -99,7 +99,7 @@ public class Fragment1GelirVergisi extends Fragment {
         AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/7585635869");
         mAdView.setAdSize(AdSize.BANNER);
-        RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayout);
+        RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutGelirVergisi);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -123,11 +123,11 @@ public class Fragment1GelirVergisi extends Fragment {
 
     public void generateComponents() {
 
-        RelativeLayout mainLayout = (RelativeLayout) getActivity().findViewById(R.id.relativeLayout); // You must use the layout root
+        RelativeLayout mainLayoutGelirvergisi = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutGelirVergisi); // You must use the layout root
         InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
 
         SoftKeyboard softKeyboard;
-        softKeyboard = new SoftKeyboard(mainLayout, im);
+        softKeyboard = new SoftKeyboard(mainLayoutGelirvergisi, im);
         softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
 
             @Override
@@ -170,6 +170,7 @@ public class Fragment1GelirVergisi extends Fragment {
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYillar.setAdapter(adapter);
+        spinnerYillar.setSelection(adapter.getPosition("2016"));
 
         spinnerYillar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -225,15 +226,5 @@ public class Fragment1GelirVergisi extends Fragment {
 
     }
 
-    public void gelirVergisiHesapla() {
-        if (booleanUcret) {
-
-        } else {
-
-        }
-
-
-
-    }
 
 }

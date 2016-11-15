@@ -104,11 +104,11 @@ public class Fragment2KarPayi extends Fragment {
     }
 
     public void generateComponents() {
-        RelativeLayout mainLayout = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutKarpayi);
+        RelativeLayout mainLayoutKarPayi = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutKarpayi);
         InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
 
 
-        softKeyboard = new SoftKeyboard(mainLayout, im);
+        softKeyboard = new SoftKeyboard(mainLayoutKarPayi, im);
         softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
 
             @Override
@@ -142,6 +142,7 @@ public class Fragment2KarPayi extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYillarKarPayi.setAdapter(adapter);
+        spinnerYillarKarPayi.setSelection(adapter.getPosition("2016"));
         spinnerYillarKarPayi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -178,7 +179,12 @@ public class Fragment2KarPayi extends Fragment {
                     softKeyboard.closeSoftKeyboard();
                     Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
                     sonuc = calculater.karPayi(hesaplanacakTutar, year);
-                    textViewSonucKarPayi.setText("Brüt " + hesaplanacakTutar + " TL kar payının nihai hesaplanan vergisi " + sonuc + "TL'dir.");
+                    if (sonuc < 0) {
+                        textViewSonucKarPayi.setText("Yapılan hesaplama sonucu " + Math.abs(sonuc) + "TL tutarında iadeniz çıkmaktadır.");
+                    } else {
+                        textViewSonucKarPayi.setText("Yapılan hesaplama sonucu " + (sonuc) + "TL tutarında vergi ödemeniz gerekmektedir.");
+                    }
+
                 }
 
             }

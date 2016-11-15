@@ -99,7 +99,7 @@ public class Info implements Comparator<Info> {
         Info i15 = new Info("Özel Tüketim Vergisi I sayılı liste", R.drawable.ic_action_ok, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/08092016.htm");
         Info i16 = new Info("Özel Tüketim Vergisi II sayılı liste", R.drawable.ic_action_ok, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/05102016_II_sayili_liste.htm");
         Info i17 = new Info("Özel Tüketim Vergisi III sayılı liste", R.drawable.ic_action_ok, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/otv_3_sayili-OpenPage.htm");
-        Info i18 = new Info("Özel Tüketim Vergisi VI sayılı liste", R.drawable.ic_action_ok, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/11_09_2014_IV_Sayili_Liste.htm");
+        Info i18 = new Info("Özel Tüketim Vergisi IV sayılı liste", R.drawable.ic_action_ok, "http://www.gib.gov.tr/fileadmin/mevzuatek/otv_oranlari_tum/11_09_2014_IV_Sayili_Liste.htm");
         Info i19 = new Info("Tecil Faizi Oranı", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/tecil_faizi.htm");
         Info i20 = new Info("Veraset ve İntikal Vergisi Oranları", R.drawable.ic_action_ok, "http://malibilgiler.hayatimizburada.com/veraset_intikal.htm");
         Info i21 = new Info("Vergi Cezaları", R.drawable.ic_action_ok, "http://www.gib.gov.tr/sites/default/files/fileadmin/user_upload/Yararli_Bilgiler/vergicezalari.pdf");

@@ -108,6 +108,7 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
         final ArrayAdapter<CharSequence> adapterYillar = ArrayAdapter.createFromResource(getActivity(), R.array.kapiciyillar, android.R.layout.simple_spinner_item);
         adapterYillar.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYilSecimi.setAdapter(adapterYillar);
+        spinnerYilSecimi.setSelection(adapterYillar.getPosition("2016 2. dönem"));
         spinnerYilSecimi.setOnItemSelectedListener(this);
 
 
@@ -248,10 +249,10 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
                 sonuc = getBrutAsgariUcret("2015 2. dönem") - getSGKPrim("2015 2. dönem") - getIssizlikSigortasi("2015 2. dönem");
                 break;
             case "2016 1. dönem":
-                sonuc = getBrutAsgariUcret("2016 1. dönem") - getSGKPrim("2016 1. dönem") - getIssizlikSigortasi("2015 1. dönem");
+                sonuc = getBrutAsgariUcret("2016 1. dönem") - getSGKPrim("2016 1. dönem") - getIssizlikSigortasi("2016 1. dönem");
                 break;
             case "2016 2. dönem":
-                sonuc = getBrutAsgariUcret("2016 2. dönem") - getSGKPrim("2016 2. dönem") - getIssizlikSigortasi("2015 2. dönem");
+                sonuc = getBrutAsgariUcret("2016 2. dönem") - getSGKPrim("2016 2. dönem") - getIssizlikSigortasi("2016 2. dönem");
                 break;
         }
         return sonuc;
