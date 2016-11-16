@@ -17,14 +17,11 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.kaproduction.malibilgiler.Fragments.Tab1;
 import com.kaproduction.malibilgiler.Fragments.Tab2;
 import com.kaproduction.malibilgiler.Fragments.Tab3;
 import com.kaproduction.malibilgiler.Fragments.Tab4;
-import com.kaproduction.malibilgiler.R;
+
 
 public class TabbedActivity extends AppCompatActivity  {
 
@@ -38,8 +35,8 @@ public class TabbedActivity extends AppCompatActivity  {
 
     Bundle bundle;
 
-    InterstitialAd interstitialAd;
-    private AdRequest adRequest;
+    // InterstitialAd interstitialAd;
+    // private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +67,7 @@ public class TabbedActivity extends AppCompatActivity  {
             tab.select();
         }
 
-        interstitialAd = new InterstitialAd(this);
+      /*  interstitialAd = new InterstitialAd(this);
         interstitialAd.setAdUnitId("ca-app-pub-5654718909401990/9642621862");
         adRequest = new AdRequest.Builder()
                 .build();
@@ -81,11 +78,11 @@ public class TabbedActivity extends AppCompatActivity  {
             public void onAdLoaded() {
                 requestNewInterstitial();
             }
-        });
+        });*/
 
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         interstitialAd.loadAd(adRequest);
 
@@ -95,13 +92,13 @@ public class TabbedActivity extends AppCompatActivity  {
 
             super.onBackPressed();
         }
-    }
+    }*/
 
-    private void requestNewInterstitial() {
+  /*  private void requestNewInterstitial() {
         if (interstitialAd.isLoaded()) {
             interstitialAd.show();
         }
-    }
+    }*/
 
 
     @Override

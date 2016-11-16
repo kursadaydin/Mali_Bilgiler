@@ -2,26 +2,23 @@ package com.kaproduction.malibilgiler.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
@@ -34,10 +31,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.kaproduction.malibilgiler.R.id.radioGroupEsCalismaDurumu;
-import static com.kaproduction.malibilgiler.R.id.textViewAgiGoster;
-
 
 /**
  * Created by reis on 04/11/16.
@@ -57,11 +50,11 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     TextView textViewAyGunGoster, textViewOranGoster, textViewTutarGoster;
     EditText editTextGecikmeFaizi;
 
+    InputMethodManager imm;
 
     Calculater calculater;
 
     RadioGroup radio_gecikme;
-    RadioButton radioButtonGecikmeFaizi;
 
     public static int baslangic_gun = 0;
     public static int baslangic_ay = 0;
@@ -97,7 +90,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_6gecikmefaizi, container, false);
 
-        AdView mAdView = new AdView(getActivity());
+       /* AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/2758483468");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutGecikmeFaizi);
@@ -112,7 +105,7 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
         mAdView.loadAd(adRequest);
 
 
-
+*/
         return layout;
     }
 
@@ -123,6 +116,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
     }
 
     public void generateComponents() {
+
+        imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         imageButtonBaslangicTarihiGecikmeFaizi = (ImageButton) getActivity().findViewById(R.id.imageButtonBaslangicTarihiGecikmeFaizi);
         imageButtonOdemeTarihiGecikmeFaizi = (ImageButton) getActivity().findViewById(R.id.imageButtonOdemeTarihiGecikmeFaizi);
@@ -141,6 +136,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
 
 
         editTextGecikmeFaizi = (EditText) getActivity().findViewById(R.id.editTextGecikmeFaizi);
+
+        editTextGecikmeFaizi.setRawInputType(Configuration.KEYBOARD_12KEY);
 
         calculater = new Calculater();
 
@@ -187,7 +184,8 @@ public class Fragment6GecikmeFaizi extends Fragment implements View.OnClickListe
                 break;
 
             case R.id.buttonGecikmeFaiziHesapla:
-
+                //once numpad kapatiliyor
+                imm.hideSoftInputFromWindow(editTextGecikmeFaizi.getWindowToken(), 0);
                 String baslangic = baslangic_gun + "/" + baslangic_ay + "/" + baslangic_yil;
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 try {

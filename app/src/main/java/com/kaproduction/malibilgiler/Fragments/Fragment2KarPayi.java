@@ -1,10 +1,8 @@
 package com.kaproduction.malibilgiler.Fragments;
 
-import android.app.Service;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.kaproduction.malibilgiler.Other.SoftKeyboard;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
@@ -41,13 +34,11 @@ public class Fragment2KarPayi extends Fragment {
     TextView textViewSonucKarPayi;
     Button buttonHesaplaKarPayi, buttonTemizleKarPayi;
     String year;
-    AdView adViewKarPayi;
+    //AdView adViewKarPayi;
 
     Calculater calculater;
 
     Double sonuc;
-    SoftKeyboard softKeyboard;
-
 
     public static Fragment2KarPayi newInstance(String param1, String param2) {
         Fragment2KarPayi fragment = new Fragment2KarPayi();
@@ -78,7 +69,7 @@ public class Fragment2KarPayi extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_2karpayi, container, false);
 
-        AdView mAdView = new AdView(getActivity());
+        /*AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/5352023060");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutKarpayi);
@@ -91,7 +82,7 @@ public class Fragment2KarPayi extends Fragment {
         rr.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+*/
 
         return layout;
     }
@@ -104,39 +95,7 @@ public class Fragment2KarPayi extends Fragment {
     }
 
     public void generateComponents() {
-        RelativeLayout mainLayoutKarPayi = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutKarpayi);
-        InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
-
-
-        softKeyboard = new SoftKeyboard(mainLayoutKarPayi, im);
-        softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
-
-            @Override
-            public void onSoftKeyboardHide() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Code here will run in UI thread
-                    }
-                });
-            }
-
-            @Override
-            public void onSoftKeyboardShow() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Code here will run in UI thread
-                        editTextTutarKarPayi.setText("");
-                        textViewSonucKarPayi.setText("");
-                    }
-                });
-            }
-        });
-
-
-
-
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         spinnerYillarKarPayi = (Spinner) getActivity().findViewById(R.id.spinnerYillarKarPayi);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.yillar, android.R.layout.simple_spinner_item);
@@ -160,11 +119,13 @@ public class Fragment2KarPayi extends Fragment {
         buttonHesaplaKarPayi = (Button) getActivity().findViewById(R.id.buttonKarPayiHesapla);
         buttonTemizleKarPayi = (Button) getActivity().findViewById(R.id.buttonKarPayiTemizle);
 
+        editTextTutarKarPayi.setRawInputType(Configuration.KEYBOARD_12KEY);
+
 
         buttonTemizleKarPayi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editTextTutarKarPayi.setText("");
+                editTextTutarKarPayi.getText().clear();
                 textViewSonucKarPayi.setText("");
             }
         });
@@ -172,11 +133,13 @@ public class Fragment2KarPayi extends Fragment {
         buttonHesaplaKarPayi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //once numpad kapatiliyor
+                imm.hideSoftInputFromWindow(editTextTutarKarPayi.getWindowToken(), 0);
 
                 if (editTextTutarKarPayi.getText().length() == 0) {
                     Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
                 } else {
-                    softKeyboard.closeSoftKeyboard();
+                    //softKeyboard.closeSoftKeyboard();
                     Double hesaplanacakTutar = Double.valueOf(editTextTutarKarPayi.getText().toString());
                     sonuc = calculater.karPayi(hesaplanacakTutar, year);
                     if (sonuc < 0) {

@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
@@ -71,7 +68,7 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_5kapiciucret, container, false);
 
-        AdView mAdView = new AdView(getActivity());
+      /*  AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/1281750267");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutKapiciUcret);
@@ -84,7 +81,7 @@ public class Fragment5KapiciUcret extends Fragment implements AdapterView.OnItem
         rr.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+*/
 
 
         return layout;

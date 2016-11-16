@@ -69,8 +69,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number|numberDecimal"
             android:imeOptions="actionDone"
+            android:digits="0123456789."
             android:textColor="@color/colorWhite"
             android:gravity="center"
             android:hint="Brüt Kar Payı Tutarı"
@@ -110,7 +110,6 @@
 
 
     </LinearLayout>
-
 
     <TextView
         android:layout_width="match_parent"

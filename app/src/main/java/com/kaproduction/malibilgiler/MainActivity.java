@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 
-import android.text.Html;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,8 +24,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.kaproduction.malibilgiler.Data.ExpandableListViewData;
 import com.kaproduction.malibilgiler.Other.ExpandableListViewAdapter;
@@ -101,6 +98,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+
             new AlertDialog.Builder(this)
                     .setTitle("Kapat")
                     .setMessage("Uygulamadan Çıkmak İster Misiniz?")

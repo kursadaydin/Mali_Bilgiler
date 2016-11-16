@@ -16,10 +16,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.kaproduction.malibilgiler.Pojo.Info;
 import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
 import com.kaproduction.malibilgiler.R;
@@ -86,7 +82,7 @@ public class Tab4 extends Fragment implements SearchView.OnQueryTextListener{
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             View layout = inflater.inflate(R.layout.fragment_tab4, container, false);
-            AdView mAdView = new AdView(getActivity());
+           /* AdView mAdView = new AdView(getActivity());
             mAdView.setAdUnitId("ca-app-pub-5654718909401990/7293087869");
             mAdView.setAdSize(AdSize.BANNER);
             RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.content_main_tab4);
@@ -98,7 +94,7 @@ public class Tab4 extends Fragment implements SearchView.OnQueryTextListener{
             mAdView.setLayoutParams(lp);
             rr.addView(mAdView);
             AdRequest adRequest = new AdRequest.Builder().build();
-            mAdView.loadAd(adRequest);
+            mAdView.loadAd(adRequest);*/
 
             return layout;
         }

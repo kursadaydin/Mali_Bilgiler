@@ -1,42 +1,26 @@
 package com.kaproduction.malibilgiler.Fragments;
 
-import android.app.Service;
-import android.graphics.Color;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.kaproduction.malibilgiler.Other.SoftKeyboard;
+
 import com.kaproduction.malibilgiler.Pojo.Calculater;
-import com.kaproduction.malibilgiler.Pojo.Info;
-import com.kaproduction.malibilgiler.Pojo.RecyclerAdapter;
 import com.kaproduction.malibilgiler.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 /**
  * Created by reis on 04/11/16.
@@ -54,13 +38,11 @@ public class Fragment1GelirVergisi extends Fragment {
     TextView textViewSonuc;
     Button buttonHesapla, buttonTemizle;
     String year;
-    AdView adViewGelirVergisi;
 
     Calculater calculater;
 
     Double sonuc;
 
-    RelativeLayout relativeLayout;
     RadioGroup radioGroup;
     boolean booleanUcret = true;
 
@@ -96,7 +78,7 @@ public class Fragment1GelirVergisi extends Fragment {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_1gelirvergisi, container, false);
 
-        AdView mAdView = new AdView(getActivity());
+       /* AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/7585635869");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutGelirVergisi);
@@ -108,7 +90,7 @@ public class Fragment1GelirVergisi extends Fragment {
         mAdView.setLayoutParams(lp);
         rr.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(adRequest);*/
 
 
         return layout;
@@ -123,35 +105,10 @@ public class Fragment1GelirVergisi extends Fragment {
 
     public void generateComponents() {
 
-        RelativeLayout mainLayoutGelirvergisi = (RelativeLayout) getActivity().findViewById(R.id.relativeLayoutGelirVergisi); // You must use the layout root
-        InputMethodManager im = (InputMethodManager) getActivity().getSystemService(Service.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        SoftKeyboard softKeyboard;
-        softKeyboard = new SoftKeyboard(mainLayoutGelirvergisi, im);
-        softKeyboard.setSoftKeyboardCallback(new SoftKeyboard.SoftKeyboardChanged() {
 
-            @Override
-            public void onSoftKeyboardHide() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Code here will run in UI thread
-                    }
-                });
-            }
 
-            @Override
-            public void onSoftKeyboardShow() {
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Code here will run in UI thread
-                        editTextTutar.setText("");
-                        textViewSonuc.setText("");
-                    }
-                });
-            }
-        });
 
         radioGroup = (RadioGroup) getActivity().findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -189,13 +146,14 @@ public class Fragment1GelirVergisi extends Fragment {
         buttonHesapla = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesapla);
         buttonTemizle = (Button) getActivity().findViewById(R.id.buttonGelirVergisiHesaplaTemizle);
 
-
+        editTextTutar.setRawInputType(Configuration.KEYBOARD_12KEY);
 
 
         buttonHesapla.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //once numpad kapatiliyor
+                imm.hideSoftInputFromWindow(editTextTutar.getWindowToken(), 0);
 
                 if (editTextTutar.getText().length() == 0) {
                     Toast.makeText(getActivity(), "Değer Girmeden Hesaplama Yapamazsınız", Toast.LENGTH_SHORT).show();
@@ -216,8 +174,9 @@ public class Fragment1GelirVergisi extends Fragment {
         buttonTemizle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editTextTutar.setText("");
+                editTextTutar.getText().clear();
                 textViewSonuc.setText("");
+
             }
         });
 

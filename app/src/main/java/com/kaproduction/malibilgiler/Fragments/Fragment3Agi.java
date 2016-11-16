@@ -8,24 +8,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.kaproduction.malibilgiler.Other.SoftKeyboard;
+
 import com.kaproduction.malibilgiler.R;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 /**
  * Created by reis on 04/11/16.
@@ -78,7 +70,7 @@ public class Fragment3Agi extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_3agi, container, false);
-        AdView mAdView = new AdView(getActivity());
+        /*AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/7328283860");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutAgi);
@@ -91,7 +83,7 @@ public class Fragment3Agi extends Fragment {
         rr.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+*/
 
 
         return layout;

@@ -11,16 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.kaproduction.malibilgiler.Pojo.Calculater;
 import com.kaproduction.malibilgiler.R;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+
 
 /**
  * Created by reis on 04/11/16.
@@ -71,7 +67,7 @@ public class Fragment4AsgariUcret extends Fragment implements AdapterView.OnItem
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_4asgariucret, container, false);
 
-        AdView mAdView = new AdView(getActivity());
+      /*  AdView mAdView = new AdView(getActivity());
         mAdView.setAdUnitId("ca-app-pub-5654718909401990/8805017063");
         mAdView.setAdSize(AdSize.BANNER);
         RelativeLayout rr = (RelativeLayout) layout.findViewById(R.id.relativeLayoutAsgariUcret);
@@ -84,7 +80,7 @@ public class Fragment4AsgariUcret extends Fragment implements AdapterView.OnItem
         rr.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-
+*/
 
 
         return layout;
@@ -113,11 +109,6 @@ public class Fragment4AsgariUcret extends Fragment implements AdapterView.OnItem
         adapterAylar.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAySecimi.setAdapter(adapterAylar);
         spinnerAySecimi.setOnItemSelectedListener(this);
-
-
-        AdView mAdView = (AdView) getActivity().findViewById(R.id.adViewAsgariUcret);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
 
 
     }
